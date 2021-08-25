@@ -1,6 +1,6 @@
 <?php
 
-$dsn = 'mysql:dbname=csv_db;host=127.0.0.1:54306;charset=utf8';
+$dsn = 'mysql:dbname=csv_db;host=127.0.0.1:55937;charset=utf8';
 $user = 'azure';
 $password = '6#vWHD_$';
 
