@@ -15,7 +15,7 @@ del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
 dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
+fieldset, form,  legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
@@ -465,7 +465,7 @@ h11 {
 }
 /* line 74, ../scss/modules/_sections.scss */
 .about-us h1 {
-  margin-bottom: 40px;
+  margin: 40px;
 }
 
 /* team members */
@@ -672,50 +672,15 @@ h11 {
   padding: 20px;
 }
 
-/* line 8, ../scss/modules/_forms.scss */
-label, input, textarea {
-  display: block;
-  width: 100%;
-  outline: none;
-}
-
-/* line 14, ../scss/modules/_forms.scss */
-label {
-  font-weight: 700;
-  margin-bottom: 7px;
-}
-
-/* line 19, ../scss/modules/_forms.scss */
-input, textarea {
-  background-color: #f7f7f7;
-  border: 1px solid #ddd;
-  padding: 10px 5px;
-  margin-bottom: 20px;
-}
-
 /* line 26, ../scss/modules/_forms.scss */
 textarea {
   height: 130px;
   margin-bottom: 20px;
 }
 
-/* line 31, ../scss/modules/_forms.scss */
-input.custom-button {
-  border: none;
-  font-family: "Roboto Mono";
-}
 
-/* line 36, ../scss/modules/_forms.scss */
-label.local-error {
-  background-color: #FCF8E3;
-  color: #C74581;
-  font-weight: 300;
-  font-size: 12px;
-  margin-top: -10px;
-  margin-bottom: 20px;
-  padding: 3px 20px;
-  border-radius: 2px;
-}
+
+
 
 /* line 1, ../scss/modules/_tables.scss */
 table {
@@ -918,4 +883,41 @@ table tr td:first-of-type {
 
 .footer-text a:hover {
   text-decoration: none;
+}
+
+
+.Search {
+  position: relative;
+  display: flex;
+  font-weight: 400;
+  font-size: 50px;
+  color: #555;
+}
+
+.Search-box {
+  flex: 1 0 auto;
+  margin: 0 12px;
+  padding: 8px 20px;
+  height: 80px;
+  border: 0;
+  font-size: 20px;
+  box-shadow: 0 3px 12px -1px rgba(0, 0, 0, .3);
+  transition: all .15s ease-in-out;
+}
+.Search-box:focus {
+  flex: 1 0 90%;
+  margin: 0;
+  outline: 0;
+}
+
+.Search-label {
+  position: absolute;
+  top: 14px;
+  right: 60px;
+  font-size: 40px;
+  transition: all .15s ease-in-out;
+}
+
+.Search-box:focus + .Search-label {
+  transform: translateX(12px);
 }
