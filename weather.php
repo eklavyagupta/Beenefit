@@ -45,7 +45,7 @@ echo 'Suburb: '.$suburb. "<br>";
 
 
 
-$sql1= "select long from `postcodes` where postcode = '$search_value'";
+$sql1= "select longitude from `postcodes` where postcode = '$search_value'";
 
 $lo = $db->query($sql1);
 
@@ -59,8 +59,8 @@ $la = $db->query($sql2);
 if ($lo->num_rows > 0 ) {
     // output data of each row
     while($row1 = $lo->fetch_assoc()) {
-      $new_long =  $row1["long"];
-      echo  " - long: " . $row1["long"]. "<br>";
+      $new_long =  $row1["longitude"];
+      echo  " - long: " . $row1["longitude"]. "<br>";
     }
   } else {
     echo "0 results";
