@@ -1,15 +1,10 @@
 <?php
 
-$dsn = 'mysql:dbname=csv_db;host=127.0.0.1:55937;charset=utf8';
-$user = 'azure';
-$password = '6#vWHD_$';
+$user ="azure";
+$pass ='6#vWHD_$';
+$db ="csv_db";
 
-try {
-    $dbh = new PDO($dsn, $user, $password);
-} catch (PDOException $e) {
-    echo 'Connection failed: ' . $e->getMessage();
-    exit;
-}
+$db =new mysqli('127.0.0.1:55937', $user, $pass, $db) or die ("Unable to connect");
 
 echo "Success: A proper connection to MySQL was made!";
 
