@@ -943,7 +943,7 @@ input, button
     position: absolute;
     left: 0;
     right: 0;
-    width: 950px;
+    width: auto;
     padding: 15px;
     margin: -73px auto 0 auto;
     background-color: #f8b500;
@@ -984,6 +984,7 @@ button
 {
     position: relative;
     top: -8px;
+    left: 470px;
     width: 63px;
     height: 63px;
     margin-top: 0;
@@ -998,7 +999,7 @@ button span
 {
     position: absolute;
     top: 68px;
-    left: 43px;
+    left: 510px;
     display: block;
     width: 45px;
     height: 15px;
@@ -1035,7 +1036,7 @@ button span:before, button span:after
 #s-cover:hover span
 {
     top: 50%;
-    left: 56px;
+    left: 550px;
     width: 25px;
     margin-top: -9px;
     transform: rotateZ(0);
@@ -1059,19 +1060,3 @@ button span:before, button span:after
     background-color: #fff;
 }
 
-#ytd-url {
-  display: block;
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  padding: 10px 14px;
-  margin: 20px;
-  color: #fff;
-  font-family: Nunito;
-  font-size: 14px;
-  text-decoration: none;
-  background-color: #ff7575;
-  border-radius: 4px;
-  box-shadow: 0 10px 20px -5px rgba(255, 117, 117, 0.86);
-  z-index: 125;
-}
