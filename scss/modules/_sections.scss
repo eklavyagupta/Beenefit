@@ -123,4 +123,75 @@
         margin-bottom: 30px;
     }
 }
+.td
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+input, button
+{
+    color: rgb(0, 0, 0);
+    font-family: Nunito;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+#cover
+{
+    position: absolute;
+    Top: 130px;
+    right: 25px;
+    width: 700px;
+    padding: 15px;
+    margin: -73px auto 0 auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    transform: scale(0.5);
+}
+
+
+input[type="text"]
+{
+    width: 100%;
+    height: 96px;
+    font-size: 60px;
+    line-height: 1;
+}
+
+input[type="text"]::placeholder
+{
+    color: #000000;
+}
+
+#s-cover
+{
+    width: 1px;
+    padding-left: 35px;
+}
+
+button
+{
+    position: relative;
+    display: block;
+    width: 84px;
+    height: 96px;
+    cursor: pointer;
+}
+.btn {
+  border: none;
+  color: #f8b500;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.italic {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 40px;
+}
 
