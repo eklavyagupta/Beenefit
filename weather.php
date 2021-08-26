@@ -118,98 +118,79 @@ $air_qi = $air_data ->list[0] ->main ->aqi;
 
 # temperature suggestion
 //echo '<br>';
-/*
+
 if ($temperature <= 10) {
-  echo "Temperature Suggestion: "."<br>";
-  echo "·Build hives in almond plantations where temperatures are warmer"."<br>";
-  echo "· Cold area: add a little insulation to the outside of their hives"."<br>";
-  echo "· Most beekeepers don't need to do anything "."<br>";
-  echo "· Make sure there aren't drafty holes in their equipment that let cold air or, worse, water in."."<br>";
-  echo "· Hives are distributed evenly throughout the orchard individually";
+    $temp_suggestion = "·Build hives in almond plantations where temperatures are warmer"."<br>".
+   "· Add a little insulation to the outside of their hives"."<br>".
+  "· Make sure there aren't drafty holes in their equipment that let cold air or, worse, water in."."<br>".
+   "· Hives are distributed evenly throughout the orchard individually";
+    
+  } 
   
-} 
-
-elseif ($temperature > 35 & $temperature < 37){
-  echo "Temperature Suggestion: "."<br>";
-  echo "·Don’t open hive lip to do hive management"."<br>";
-  echo "·Spraying water on the external walls of the hive"."<br>";
-}
-elseif ($temperature > 37 ){
-  echo "Temperature Suggestion: "."<br>";
-  echo "·Hive construction with adequate air circulation"."<br>";
-}
-else {
-  echo "No suggestion, good temperature!";
-}
-
-echo '<br>';
-
-# Air quality suggestion
-echo '<br>';
-
-if ($air_qi >= 3) {
-  echo "Air quality Suggestion: "."<br>";
-  echo "Move the hive inside.";
+  elseif ($temperature > 35 & $temperature < 37){
+    $temp_suggestion = "·Don’t open hive lip to do hive management"."<br>".
+    "·Spraying water on the external walls of the hive";
+  }
+  elseif ($temperature > 37 ){
+    $temp_suggestion = "· Hive construction with adequate air circulation";
+  }
+  else {
+    $temp_suggestion = "· Temperature: Suitable !";
+  }
   
-} 
-else {
-  echo "No suggestion, good air quality!";
-}
-
-echo '<br>';
-
-
-# Rain suggestion
-echo '<br>';
-
-if ($main_weather == "Rain"|$main_weather == "Thunderstorm" |$main_weather == "Drizzle") {
-  echo "Weather Suggestion: "."<br>";
-  echo "· Build a full hive"."<br>";
-  echo "· Hives are distributed evenly throughout the orchard individually.";
   
-} 
-else {
-  echo "No suggestion, good weather!";
-}
-
-echo '<br>';
-
-
-
-
-# Humidity suggestion
-echo '<br>';
-
-if ($humidity >80 |$humidity<75) {
-  echo "Humidity Suggestion: "."<br>";
-  echo "keep 75%-80% humidity in winter";
   
-} 
-else {
-  echo "No suggestion, Suitable humidity!";
-}
-
-echo '<br>';
-
-# Wind Speed suggestion
-echo '<br>';
-
-if ($wind_speed > 5.5) {
-  echo "Wind Speed Suggestion: "."<br>";
-  echo "· Place bees in places with frequent winds. "."<br>";
-  echo "· Ensure The location of the bee farm should be set at the downwind of the honey powder source, so that the bees will go against the wind when they are out of the nest without load.";
+  # Air quality suggestion
   
-} 
-else {
-  echo "No suggestion, Suitable wind speed!";
-}
-
-
-
-
-
-
-*/
+  
+  if ($air_qi >= 3) {
+    $air_qi_suggestion =  "· Move the hive inside.";
+    
+  } 
+  else {
+    $air_qi_suggestion = "· Air quality: GOOD!";
+  }
+  
+  
+  
+  # Rain suggestion
+  
+  if ($main_weather == "Rain"|$main_weather == "Thunderstorm" |$main_weather == "Drizzle") {
+    $weather_suggestion = "· Build a full hive"."<br>"." · Hives are distributed evenly throughout the orchard individually.";
+    
+  } 
+  else {
+    $weather_suggestion = "· Weather: GOOD !";
+  }
+  
+  
+  
+  
+  
+  
+  # Humidity suggestion
+  
+  
+  if ($humidity >80 |$humidity<75) {
+    $humi_suggestion = "· keep 75%-80% humidity in winter";
+    
+  } 
+  else {
+    $humi_suggestion = "· Humidity: Suitable!";
+  }
+  
+  
+  
+  # Wind Speed suggestion
+  
+  
+  if ($wind_speed > 5.5) {
+    $wind_suggestion = "· Place bees in places with frequent winds"."<br>"." · Ensure The location of the bee farm should be set at the downwind of the honey powder source, so that the bees will go against the wind when they are out of the nest without load.";
+    
+  } 
+  else {
+    $wind_suggestion =  "· Wind speed: Suitable!";
+  }
 
 
 
@@ -343,14 +324,14 @@ span.min-temperature {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">BEENEFIT<span class="thin"></span></a>
+                        <a class="navbar-brand" href="index.html">BEENEFIT<span class="thin"></span></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="top-navigation-bar">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">Bee Aware of Weather</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="about.html">Bee Aware of Weather</a></li>
                             <!-- <li><a href="contact.html">Get in Touch</a></li>                             -->
                         </ul>
                     </div>
@@ -398,8 +379,12 @@ span.min-temperature {
                     </div>
                     <div class="col-md-6">
                     <div class="map-wrapper wow fadeInUp" data-wow-delay="0.6s">
-                    <p>We are a digital design company based in Bangladesh, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua.</p>                     
+                        <h2> Suggestion: <h1>
+                        <h3> <?php echo $temp_suggestion ."<br>"; ?></h2>
+                        <h3> <?php echo $air_qi_suggestion ."<br>"; ?></h2>
+                        <h3> <?php echo $humi_suggestion ."<br>"; ?></h2>
+                        <h3> <?php echo $weather_suggestion; ?></h2>
+                        <h3> <?php echo $wind_suggestion; ?></h2>                    
                     </div>
                     </div>
                     
