@@ -326,14 +326,14 @@ span.min-temperature {
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#">BEENEFIT<span class="thin"></span></a>
+                        <a class="navbar-brand" href="index.html">BEENEFIT<span class="thin"></span></a>
                     </div>
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="top-navigation-bar">
                         <ul class="nav navbar-nav navbar-right">
-                            <li class="active"><a href="index.html">Home</a></li>
-                            <li><a href="about.html">Bee Aware of Weather</a></li>
+                            <li><a href="index.html">Home</a></li>
+                            <li class="active"><a href="about.html">Bee Aware of Weather</a></li>
                             <!-- <li><a href="contact.html">Get in Touch</a></li>                             -->
                         </ul>
                     </div>
