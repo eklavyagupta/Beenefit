@@ -293,9 +293,9 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
 .report-container {
     border: #E0E0E0 1px solid;
     padding: 20px 40px 40px 40px;
-    border-radius: 2px;
-    width: 550px;
+    border-radius: 20px;
     margin: 0 auto;
+    background: #f8b500;
 }
 
 .weather-icon {
@@ -382,47 +382,71 @@ span.min-temperature {
         <section id="address" class="address page-top">
             <div class="container">
                 <div class="row">
-                    
-                        <div class="col-md-5">
-                        <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
-                        <div>
-                          <h1><?php echo $suburb; ?></h1>
-                          <h1><?php echo $temperature; ?>°C</h1>
-                          <div class="time">
-                              <div><h12><?php echo  $dateInLocal; ?></h12></div>
-                          </div>
-                          <div class="weather-forecast">
-                                <img
-                                    src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>.png"
-                                    class="weather-icon" /> <span
-                                    class="min-temperature"><h12><?php echo $weather; ?></h12></span>
-                            </div>
-                          <div class="time">
-                              <div><h12>Humidity: <?php echo $humidity; ?> %</h12></div>
-                              <div><h12>Wind: <h12><?php echo $wind_speed; ?> m/s</h12></div>
-                              <div><h12>Air quality: <h12> <?php echo $airsituation; ?></h12></div>
-                          </div>
-                        </div>
-                            </div>
-                    </div>
-                    <div class="col-md-7">
-                    <div class="map-wrapper wow fadeInUp" data-wow-delay="0.6s">
-                      <h12> Suggestion: <h12>
-                    <h3> <?php echo $temp_suggestion ."<br>"; ?></h2>
-                    <h3> <?php echo $air_qi_suggestion ."<br>"; ?></h2>
-                    <h3> <?php echo $humi_suggestion ."<br>"; ?></h2>
-                    <h3> <?php echo $weather_suggestion; ?></h2>
-                    <h3> <?php echo $wind_suggestion; ?></h2>
-                                         
-                    </div>
-                    </div>
+                <div class="container wow fadeInUp">
+                <p>sdgg</p>
+                </div>
+                  
+                      
                     
                     
             </div>
             </div>
         </section>
 
-       
+        <section id="who-are-we" class="who-are-we page">
+            <div class="container wow fadeInUp">
+                <div class="row">
+
+                <div class="col-md-5">
+                        <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
+                        <div>
+                        
+                              <div><h14><?php echo $suburb." ".$postcode ; ?></h14></div>
+                        
+                          
+                              <div><h12><?php echo  $dateInLocal; ?></h12></div>
+
+
+                          <div class="weather-forecast">
+                                <img
+                                    src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>.png"
+                                    class="weather-icon" /> <span
+                                    class="min-temperature"></span>
+                
+                            </div>
+                            <h12><?php echo $main_weather; ?></h12>
+                          
+                          
+                          
+                          
+                          <div class="time">
+                              <div><h12>Humidity: </h12><h3><?php echo $humidity; ?> %</h3></div>
+                              <div><h12>Wind:</h12> <h3><?php echo $wind_speed; ?> m/s</h3></div>
+                              <div><h12>Air quality: </h12><h3> <?php echo $airsituation; ?></h3></div>
+                          </div>
+                        </div>
+                            </div>
+                    </div>
+                    <div class="col-md-7">
+                    <div class="map-wrapper wow fadeInUp" data-wow-delay="0.6s">
+                      <div class = "report-container">
+                        <h12> Suggestion: <h12>
+                        <h13> <?php echo "<br>".$temp_suggestion ."<br>"; ?></h13>
+                        <h13> <?php echo $air_qi_suggestion ."<br>"; ?></h13>
+                        <h13> <?php echo $humi_suggestion ."<br>"; ?></h13>
+                        <h13> <?php echo $weather_suggestion."<br>"; ?></h13>
+                        <h13> <?php echo $wind_suggestion; ?></h13>
+                          </div>
+
+                                         
+                    </div>
+                    </div>
+
+                   
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
     </main>
