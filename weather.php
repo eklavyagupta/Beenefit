@@ -375,19 +375,22 @@ span.min-temperature {
                         <div class="col-md-6">
                         <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
                         <div class = "report-container">
-                          <h2><?php echo $suburb; ?> Weather Status</h2>
+                          <h1><?php echo $suburb; ?><br></h1>
+                          <h1><?php echo $temperature; ?> °C</h1>
                           <div class="time">
-                              <div><?php echo "time", $dateInLocal; ?></div>
+                              <div><?php echo $dateInLocal; ?>
+                             </div>
                           </div>
                           <div class="weather-forecast">
-                                <img
+                               <img
                                     src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>.png"
-                                    class="weather-icon" /> <?php echo $temperature; ?>°C<span
-                                    class="min-temperature"><?php echo $weather; ?></span>
+                                    class="weather-icon" /><span
+                                    class="min-temperature"><h2><?php echo $weather; ?></h2></span> </
                             </div>
-                          <div class="time">
-                              <div>Humidity: <?php echo $humidity; ?> %</div>
-                              <div>Wind: <?php echo $wind_speed; ?> m/s</div>
+                           <h2><div>
+                              <div>Humidity: <?php echo $humidity; ?> %</div><br>
+                              <div>Wind: <?php echo $wind_speed; ?> m/s</div><br>
+                              <div>Air quality: <?php echo "level ", $air_qi; ?></div></h2>
                           </div>
                         </div>
                             </div>
