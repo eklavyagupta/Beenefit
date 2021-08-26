@@ -11,6 +11,10 @@ $db =new mysqli('127.0.0.1:55937', $user, $pass, $db) or die ("Unable to connect
 
 
 
+//echo"great work!!";
+
+
+
 $search_value=$_POST["search"];
 
 $sql1= "select longitude from `postcodes` where postcode = '$search_value'";
@@ -232,6 +236,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
 <!--[if gt IE 8]><!-->
 <html lang="en">
 
+
 <head>
 
     <!--meta tags -->
@@ -240,11 +245,13 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--meta tags ends-->
 
-    <title>Beenefit</title>
-
+    <title>Beenifit</title>
+    <!-- Links to logo fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bangers" />
+    
     <!--- Links to google fonts -->
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800%7cRoboto+Mono:400,700%7cMerriweather:300%7cAbril+Fatface'
-          rel='stylesheet'>
+          rel='stylesheet' >
     <!-- Links to fonts ends -->
 
     <!-- Bootstrap stylesheet -->
@@ -262,7 +269,14 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
     <!-- custom stylesheets -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
-<style>
+
+    <!-- font-awesome icons -->
+    <link href="fontawesome.css" rel="stylesheet"> 
+    <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abril+Fatface" />
+    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
+    
+    <style>
 
 
 .report-container {
@@ -294,8 +308,7 @@ span.min-temperature {
     line-height: 25px;
 }
 </style>
-  
-
+    
 
 </head>
 
@@ -310,44 +323,46 @@ span.min-temperature {
 <!-- DOCUMENT WRAPPER STARTS -->
     <main>
 
-<!-- MAIN HEADER STARTS-->
-<header id="header">
 
-<!-- TOP NAVIGATION -->
-<nav class="top-navigation-bar navbar navbar-default navbar-fixed-top">
-    <div class="container">
-    <div class="row">
-    <div class="col-md-12">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" 
-                    data-toggle="collapse" data-target="#top-navigation-bar" 
-                    aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index.html">BEENEFIT<span class="thin"></span></a>
-        </div>
+        <!-- MAIN HEADER STARTS-->
+        <header id="header">
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="top-navigation-bar">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.html">Home</a></li>
-                <li><a href="about.html">Bee Aware of Weather</a></li>
-                <!-- <li><a href="contact.html">Get in Touch</a></li>                             -->
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
-        </div>
-        </div>
-    </div>
-    <!-- /.container-->
-</nav>
-<!-- TOP NAVIGATION ENDS -->
+            <!-- TOP NAVIGATION -->
+            <nav class="top-navigation-bar navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                <div class="row">
+                <div class="col-md-12">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" 
+                                data-toggle="collapse" data-target="#top-navigation-bar" 
+                                aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">BEENEFIT<span class="thin"></span></a>
+                    </div>
 
-</header>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="top-navigation-bar">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="active"><a href="index.html">Home</a></li>
+                            <li><a href="about.html">Bee Aware of Weather</a></li>
+                            <!-- <li><a href="contact.html">Get in Touch</a></li>                             -->
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+                    </div>
+                    </div>
+                </div>
+                <!-- /.container-->
+            </nav>
+            <!-- TOP NAVIGATION ENDS -->
+
+        </header>
+        
         <!-- main header ends-->
 
 
