@@ -356,7 +356,7 @@ span.min-temperature {
                     
                         <div class="col-md-6">
                         <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
-                        <div class = "report-container">
+                        <div >
                           <h1><?php echo $suburb; ?><br></h1>
                           <h1><?php echo $temperature; ?> °C</h1>
                           <div class="time">
@@ -396,53 +396,7 @@ span.min-temperature {
        
 
 
-         <!-- footer section starts -->
-        <footer id="footer" class="footer">
-            <div class="container wow fadeInUp">
-                <div class="row">
-                    <div class="footer-wrapper clearfix">
-                    <div class="col-md-6 footer-left">
-                        <div class="row">
-                            <div class="col-xs-6">
-                                <div class="footer-link footer-link-1">
-                                    <h4>Create Free Account</h4>
-                                    <ul>
-                                        <li><a href="#">View courses</a></li>
-                                        <li><a href="#">Discuss</a></li>
-                                        <li><a href="#">Suggest course</a></li>
-                                        <li><a href="#">View courses</a></li>
-                                        <li><a href="#">Discuss</a></li>
-                                        <li><a href="#">Suggest course</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-xs-6">
-                                <div class="footer-link footer-link-2">
-                                    <h4>Create Free Account</h4>
-                                    <ul>
-                                        <li><a href="#">View courses</a></li>
-                                        <li><a href="#">Discuss</a></li>
-                                        <li><a href="#">Suggest course</a></li>
-                                        <li><a href="#">View courses</a></li>
-                                        <li><a href="#">Discuss</a></li>
-                                        <li><a href="#">Suggest course</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-5 col-md-offset-1 footer-text">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip</p>
-                        <span>&copy; 2016 G&amp;G. Theme By <a href="https://themewagon.com/" target="_blank">ThemeWagon</a></span>
-                    </div>
-                    </div>
-                </div><!-- End: .row -->
-            </div><!-- End: .container-->
-        </footer>
-        <!-- footer section ends -->
-
-    </main>
-<!-- DOCUMENT WRAPPER ENDS -->
+        
 
 
 
