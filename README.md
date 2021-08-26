@@ -1,1 +1,1 @@
-# ghughu
+# The project we working on is about saving bees from extinction. We would like to help amateur beekeepers do healthy beekeeping practices by sharing information and providing suggestions regarding weather predictions.
