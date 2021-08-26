@@ -130,10 +130,17 @@
                             width: 800px;"> Enter the postcode of your area to the the weather 
                             information and suggestions!</h1> 
                         
-                        <form action="weather.php" method="post" class="Search">
-                          <input class="Search-box" type="text" name="search" id="Search-box" autocomplete="off" placeholder="Please enter the VIC postcode here:Eg. 3168">
-                          <button type="submit"><i class="fa fa-search"></i></button>
-                        </form>
+                        <div id="cover">
+                            <form action="weather.php" method="POST">
+                                <div class="td"><input type="text" name="search" autocomplete="off" placeholder="Search" required></div>
+                                <div class="td" id="s-cover">
+                                  <button type="submit">
+                                    <div id="s-circle"></div>
+                                    <span></span>
+                                  </button>
+                              </div>
+                            </form>
+                        </div>  
 
                     </div>
                 </div>
