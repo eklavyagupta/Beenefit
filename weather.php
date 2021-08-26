@@ -1,10 +1,11 @@
 <?php
 
-$user ="azure";
-$pass ='6#vWHD_$';
-$db ="csv_db";
+$user ="root";
+$pass ="";
+$db ="csv_db 6";
 
-$db =new mysqli('127.0.0.1:55937', $user, $pass, $db) or die ("Unable to connect");
+$db =new mysqli('localhost', $user, $pass, $db) or die ("Unable to connect");
+
 
 
 //echo"great work!!";
@@ -83,7 +84,7 @@ $humidity = $data -> current ->humidity;
 $wind_speed = $data ->current ->wind_speed;
 $weather = $data ->current ->weather[0]->description;
 $main_weather = $data ->current ->weather[0]->main;
-$dateInLocal = date("Y-m-d", $Time);
+$dateInLocal = date("Y.m.d", $Time);
 $weather_icon =$data ->current ->weather[0]->icon;
 
 /*
@@ -137,20 +138,25 @@ if($air_qi == 5){
 # temperature suggestion
 //echo '<br>';
 
+$bee_safe = 0;
+
+
 if ($temperature <= 10) {
   $temp_suggestion = "· Build hives in almond plantations where temperatures are warmer"."<br>".
  "· Add a little insulation to the outside of their hives"."<br>".
 "· Make sure there aren't drafty holes in their equipment that let cold air or, worse, water in."."<br>".
  "· Hives are distributed evenly throughout the orchard individually";
-  
+  $bee_safe +=1;
 } 
 
 elseif ($temperature > 35 & $temperature < 37){
   $temp_suggestion = "·Don’t open hive lip to do hive management"."<br>".
   "· Spraying water on the external walls of the hive";
+  $bee_safe +=1;
 }
 elseif ($temperature > 37 ){
   $temp_suggestion = "· Hive construction with adequate air circulation";
+  $bee_safe +=1;
 }
 else {
   $temp_suggestion = "· Temperature: Suitable !";
@@ -164,7 +170,7 @@ else {
 
 if ($air_qi >= 3) {
   $air_qi_suggestion =  "· Move the hive inside.";
-  
+  $bee_safe +=1;
 } 
 else {
   $air_qi_suggestion = "· Air quality: GOOD!";
@@ -176,7 +182,7 @@ else {
 
 if ($main_weather == "Rain"|$main_weather == "Thunderstorm" |$main_weather == "Drizzle") {
   $weather_suggestion = "· Build a full hive"."<br>"." · Hives are distributed evenly throughout the orchard individually.";
-  
+  $bee_safe +=1;
 } 
 else {
   $weather_suggestion = "· Weather: GOOD!";
@@ -192,7 +198,7 @@ else {
 
 if ($humidity >80 |$humidity<75) {
   $humi_suggestion = "· keep 75%-80% humidity in winter";
-  
+  $bee_safe +=1;
 } 
 else {
   $humi_suggestion = "· Humidity: Suitable!";
@@ -205,12 +211,18 @@ else {
 
 if ($wind_speed > 5.5) {
   $wind_suggestion = "· Place bees in places with frequent winds"."<br>"." · Ensure The location of the bee farm should be set at the downwind of the honey powder source, so that the bees will go against the wind when they are out of the nest without load.";
-  
+  $bee_safe +=1;
 } 
 else {
   $wind_suggestion =  "· Wind speed: Suitable!";
 }
 
+$bee_safe_leve = "Bee Happy";
+
+if ($bee_safe >0) {
+
+  $bee_safe_leve = "Bee Aware";
+} 
 
 
 
@@ -252,11 +264,6 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
     <!--meta tags ends-->
 
     <title>Beenifit</title>
-    <!-- Links to favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images//favicon-16x16.png">
-    <link rel="manifest" href="images/site.webmanifest">
     <!-- Links to logo fonts -->
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bangers" />
     
@@ -298,9 +305,14 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
     background: #f8b500;
 }
 
+
+
+
 .weather-icon {
     vertical-align: middle;
-    margin-right: 20px;
+    margin: 10px;
+    width:70px;
+    height:70px
 }
 
 .weather-forecast {
@@ -383,10 +395,13 @@ span.min-temperature {
             <div class="container">
                 <div class="row">
                 <div class="container wow fadeInUp">
-                <p>sdgg</p>
+                  
+                  <h15>Bee Safety Level: <?php echo $bee_safe_leve ; ?></h15>
                 </div>
                   
-                      
+                    
+                        
+                    
                     
                     
             </div>

@@ -197,6 +197,11 @@ h14 {
   line-height: 1.5;
   color: #c4c1c154;
 }
+h15 {
+  font-family: 'Caveat';
+  font-size: 80px;
+  color: #ffffff;
+}
 
 
 /* line 1, ../scss/layout/_nav.scss */
