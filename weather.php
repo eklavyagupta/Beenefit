@@ -1,10 +1,11 @@
 <?php
 
-$user ="root";
-$pass ="";
-$db ="csv_db 6";
+$user ="azure";
+$pass ='6#vWHD_$';
+$db ="csv_db";
 
-$db =new mysqli('localhost', $user, $pass, $db) or die ("Unable to connect");
+$db =new mysqli('127.0.0.1:55937', $user, $pass, $db) or die ("Unable to connect");
+
 
 
 
