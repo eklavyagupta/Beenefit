@@ -434,6 +434,15 @@ h15 {
 .banner {
   background-color: #f8b500;
 }
+
+.about-banner-background
+{
+  max-width: 1100px;
+  height: 400px;
+  background-position: right;
+  background-image: url(/images/banner-carousel/mobile.png);
+}
+
 /* line 14, ../scss/modules/_sections.scss */
 .banner .container {
   position: relative;
