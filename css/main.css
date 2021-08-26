@@ -452,6 +452,7 @@ h12 {
 /* line 55, ../scss/modules/_sections.scss */
 .about-banner {
   background-color: #f8b500;
+  margin-top: 150px;
 }
 
 /* line 59, ../scss/modules/_sections.scss */
@@ -472,7 +473,7 @@ h12 {
 }
 /* line 74, ../scss/modules/_sections.scss */
 .about-us h1 {
-  margin: 40px;
+  margin: 90px;
 }
 
 /* team members */
@@ -948,8 +949,8 @@ input, button
 #cover
 {
     position: absolute;
-    left: 0;
-    right: 0;
+    Top: 130px;
+    right: 25px;
     width: 700px;
     padding: 15px;
     margin: -73px auto 0 auto;
@@ -998,5 +999,5 @@ button
 }
 
 h1 {
-  font-size: 50px;
+  font-size: 40px;
 }
