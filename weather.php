@@ -117,7 +117,7 @@ $air_qi = $air_data ->list[0] ->main ->aqi;
 //echo '<br>';
 
 if ($temperature <= 10) {
-  $temp_suggestion = "·Build hives in almond plantations where temperatures are warmer"."<br>".
+  $temp_suggestion = "· Build hives in almond plantations where temperatures are warmer"."<br>".
  "· Add a little insulation to the outside of their hives"."<br>".
 "· Make sure there aren't drafty holes in their equipment that let cold air or, worse, water in."."<br>".
  "· Hives are distributed evenly throughout the orchard individually";
@@ -126,7 +126,7 @@ if ($temperature <= 10) {
 
 elseif ($temperature > 35 & $temperature < 37){
   $temp_suggestion = "·Don’t open hive lip to do hive management"."<br>".
-  "·Spraying water on the external walls of the hive";
+  "· Spraying water on the external walls of the hive";
 }
 elseif ($temperature > 37 ){
   $temp_suggestion = "· Hive construction with adequate air circulation";
