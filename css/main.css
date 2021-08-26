@@ -171,6 +171,13 @@ h11 {
 
 }
 
+h12 {
+  font-family: "Open sans", "Sans Serif";
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: #ffffff;
+}
 
 
 /* line 1, ../scss/layout/_nav.scss */
