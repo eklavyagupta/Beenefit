@@ -416,10 +416,10 @@ span.min-temperature {
                         <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
                         <div>
                         
-                              <div><h14><?php echo $suburb." ".$postcode ; ?></h14></div>
-                        
-                          
-                              <div><h12><?php echo  $dateInLocal; ?></h12></div>
+                              <div><h14 style="color:black"><?php echo $suburb.", ".$postcode ?></h14></div>
+                              <div><h1 style="color:black"><?php echo $temperature?> °C</h1></div>
+
+                              <div><h12 style="color:black"><?php echo  $dateInLocal; ?></h12></div>
 
 
                           <div class="weather-forecast">
@@ -435,9 +435,9 @@ span.min-temperature {
                           
                           
                           <div class="time">
-                              <div><h12>Humidity: </h12><h3><?php echo $humidity; ?> %</h3></div>
-                              <div><h12>Wind:</h12> <h3><?php echo $wind_speed; ?> m/s</h3></div>
-                              <div><h12>Air quality: </h12><h3> <?php echo $airsituation; ?></h3></div>
+                              <div><h12 style="color:black">Humidity: </h12><h3 style="color:black"><?php echo $humidity; ?> %</h3></div>
+                              <div><h12 style="color:black">Wind:</h12> <h3 style="color:black"><?php echo $wind_speed; ?> m/s</h3></div>
+                              <div><h12 style="color:black">Air quality: </h12><h3 style="color:black"> <?php echo $airsituation; ?></h3></div>
                           </div>
                         </div>
                             </div>
