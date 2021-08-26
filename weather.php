@@ -362,7 +362,7 @@ span.min-temperature {
                           <h1><?php echo $suburb; ?></h1>
                           <h1><?php echo $temperature; ?>°C</h1>
                           <div class="time">
-                              <div><?php echo  $dateInLocal; ?></div>
+                              <div><h12><?php echo  $dateInLocal; ?></h12></div>
                           </div>
                           <div class="weather-forecast">
                                 <img
@@ -371,16 +371,16 @@ span.min-temperature {
                                     class="min-temperature"><h12><?php echo $weather; ?></h12></span>
                             </div>
                           <div class="time">
-                              <div>Humidity: <h12><?php echo $humidity; ?> %</h12></div>
-                              <div>Wind: <h12><?php echo $wind_speed; ?> m/s</h12></div>
-                              <div>Air quality: <h12> <?php echo "level ". $air_qi; ?></h12></div>
+                              <div><h12>Humidity: <?php echo $humidity; ?> %</h12></div>
+                              <div><h12>Wind: <h12><?php echo $wind_speed; ?> m/s</h12></div>
+                              <div><h12>Air quality: <h12> <?php echo "level ". $air_qi; ?></h12></div>
                           </div>
                         </div>
                             </div>
                     </div>
                     <div class="col-md-6">
                     <div class="map-wrapper wow fadeInUp" data-wow-delay="0.6s">
-                      <h2> Suggestion: <h1>
+                      <h12> Suggestion: <h12>
                     <h3> <?php echo $temp_suggestion ."<br>"; ?></h2>
                     <h3> <?php echo $air_qi_suggestion ."<br>"; ?></h2>
                     <h3> <?php echo $humi_suggestion ."<br>"; ?></h2>
