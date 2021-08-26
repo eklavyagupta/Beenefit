@@ -110,23 +110,23 @@ curl_close($ch);
 $air_data = json_decode($air_response);
 $air_qi = $air_data ->list[0] ->main ->aqi;
 
-if($air_qi = 1){
+if($air_qi == 1){
   $airsituation = "Good";
 }
 
-if($air_qi = 2){
+if($air_qi == 2){
   $airsituation = "Fair";
 }
 
-if($air_qi = 3){
+if($air_qi == 3){
   $airsituation = "Moderate";
 }
 
-if($air_qi = 4){
+if($air_qi == 4){
   $airsituation = "Poor";
 }
 
-if($air_qi = 5){
+if($air_qi == 5){
   $airsituation = "Very Poor";
 }
 
