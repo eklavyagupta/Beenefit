@@ -19,7 +19,26 @@ echo '<br>';
 
 $search_value=$_POST["search"];
 
-$SuburbApi = 'http://api.openweathermap.org/geo/1.0/zip?zip='.$search_value.',au&appid=f8602df67c495efda45f5097b5244ba6';
+$sql1= "select longitude from `postcodes` where postcode = '$search_value'";
+
+$lo = $db->query($sql1);
+
+$sql2= "select lat from `postcodes` where postcode = '$search_value'";
+
+$la = $db->query($sql2);
+
+if ($lo->num_rows > 0 ) {
+  // output data of each row
+  while($row1 = $lo->fetch_assoc()) {
+    $new_long =  $row1["longitude"];
+    echo  " - long: " . $row1["longitude"]. "<br>";
+  }
+    // output data of each row
+  while($row = $la->fetch_assoc()) {
+    $new_lat =  $row["lat"];
+    echo  " - lat: " . $row["lat"]. "<br>";
+  }
+  $SuburbApi = 'http://api.openweathermap.org/geo/1.0/zip?zip='.$search_value.',au&appid=f8602df67c495efda45f5097b5244ba6';
 
 
 $ch = curl_init();
@@ -41,43 +60,6 @@ $suburb = $Sub_data ->name;
 echo 'Postcode: '.$postcode. "<br>";
 echo 'Suburb: '.$suburb. "<br>"; 
 
-
-
-
-
-$sql1= "select longitude from `postcodes` where postcode = '$search_value'";
-
-$lo = $db->query($sql1);
-
-$sql2= "select lat from `postcodes` where postcode = '$search_value'";
-
-$la = $db->query($sql2);
-
-
-
-
-if ($lo->num_rows > 0 ) {
-    // output data of each row
-    while($row1 = $lo->fetch_assoc()) {
-      $new_long =  $row1["longitude"];
-      echo  " - long: " . $row1["longitude"]. "<br>";
-    }
-  } else {
-    echo "0 results";
-  }
-
-
-if ($la->num_rows > 0) {
-  // output data of each row
-  while($row = $la->fetch_assoc()) {
-    $new_lat =  $row["lat"];
-    echo  " - lat: " . $row["lat"]. "<br>";
-  }
-} else {
-  echo "0 results";
-}
-
-echo '<br>';
 
 
 $ApiUrl ='https://api.openweathermap.org/data/2.5/onecall?lat='.$new_lat.'&lon='.$new_long.'&exclude=minutely,hourly,daily,alerts&appid=f8602df67c495efda45f5097b5244ba6&units=metric';
@@ -220,4 +202,19 @@ else {
   echo "No suggestion, Suitable wind speed!";
 }
 
-?> 
+
+
+
+
+
+
+
+
+
+
+
+} 
+
+
+else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'</script>";
+}
