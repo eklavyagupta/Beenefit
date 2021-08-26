@@ -110,6 +110,27 @@ curl_close($ch);
 $air_data = json_decode($air_response);
 $air_qi = $air_data ->list[0] ->main ->aqi;
 
+if($air_qi = 1){
+  $airsituation = "Good";
+}
+
+if($air_qi = 2){
+  $airsituation = "Fair";
+}
+
+if($air_qi = 3){
+  $airsituation = "Moderate";
+}
+
+if($air_qi = 4){
+  $airsituation = "Poor";
+}
+
+if($air_qi = 5){
+  $airsituation = "Very Poor";
+}
+
+
 //echo '<br>';
 //echo 'Air quality: '.$air_qi. "<br>";
 
@@ -138,6 +159,7 @@ else {
 
 
 # Air quality suggestion
+
 
 
 if ($air_qi >= 3) {
@@ -356,9 +378,9 @@ span.min-temperature {
             <div class="container">
                 <div class="row">
                     
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                         <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
-                        <div class = "report-container">
+                        <div>
                           <h1><?php echo $suburb; ?></h1>
                           <h1><?php echo $temperature; ?>°C</h1>
                           <div class="time">
@@ -373,12 +395,12 @@ span.min-temperature {
                           <div class="time">
                               <div><h12>Humidity: <?php echo $humidity; ?> %</h12></div>
                               <div><h12>Wind: <h12><?php echo $wind_speed; ?> m/s</h12></div>
-                              <div><h12>Air quality: <h12> <?php echo "level ". $air_qi; ?></h12></div>
+                              <div><h12>Air quality: <h12> <?php echo $airsituation; ?></h12></div>
                           </div>
                         </div>
                             </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                     <div class="map-wrapper wow fadeInUp" data-wow-delay="0.6s">
                       <h12> Suggestion: <h12>
                     <h3> <?php echo $temp_suggestion ."<br>"; ?></h2>
