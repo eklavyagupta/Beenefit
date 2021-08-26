@@ -55,7 +55,6 @@ $Sub_data = json_decode($sub_response);
 $postcode = $Sub_data ->zip;
 $suburb = $Sub_data ->name;
 
-$output .="<div>". $suburb."</div>";
 
 //echo 'Postcode: '.$postcode. "<br>";
 //echo 'Suburb: '.$suburb. "<br>"; 
@@ -88,6 +87,7 @@ $wind_speed = $data ->current ->wind_speed;
 $weather = $data ->current ->weather[0]->description;
 $main_weather = $data ->current ->weather[0]->main;
 $dateInLocal = date("Y-m-d", $Time);
+$weather_icon =$data ->current ->weather[0]->icon;
 
 /*
 echo 'Time: '.$dateInLocal. "<br>";
@@ -366,29 +366,6 @@ span.min-temperature {
         <!-- main header ends-->
 
 
-        <section id="about-banner" class="about-banner">
-          <div class="container">
-            <div class="about-banner-wrapper full-height">
-            <div class="about-heading">
-              <div class="report-container">
-                  <h2><?php echo $suburb; ?> Weather Status</h2>
-                  <div class="time">
-                      <div><?php echo "time", $dateInLocal; ?></div>
-                      
-                  </div>
-                  <div class="weather-forecast">
-                              </div>
-                  <div class="time">
-                      <div>Humidity: <?php echo $humidity; ?> %</div>
-                      <div>Wind: <?php echo $wind_speed; ?> m/s</div>
-                  </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-
-        </section>
-
 
 
         <section id="address" class="address page-top">
@@ -397,32 +374,28 @@ span.min-temperature {
                     
                         <div class="col-md-6">
                         <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
-                        <h1>Our Address</h1>
-                        <table class="address-table">
-                                <tbody>
-                                    <tr>
-                                        <td>Location</td>
-                                        <td>House No.124, Road No.1, Mohakhali<br>Dhaka 1206, Bangladesh</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Phone:</td>
-                                        <td>+8801922556041</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Email:</td>
-                                        <td>ghughu@gmail.com</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Facebook:</td>
-                                        <td>facebook.com/pages/ghughu</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class = "report-container">
+                          <h2><?php echo $suburb; ?> Weather Status</h2>
+                          <div class="time">
+                              <div><?php echo "time", $dateInLocal; ?></div>
+                          </div>
+                          <div class="weather-forecast">
+                                <img
+                                    src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>.png"
+                                    class="weather-icon" /> <?php echo $temperature; ?>°C<span
+                                    class="min-temperature"><?php echo $weather; ?></span>
+                            </div>
+                          <div class="time">
+                              <div>Humidity: <?php echo $humidity; ?> %</div>
+                              <div>Wind: <?php echo $wind_speed; ?> m/s</div>
+                          </div>
+                        </div>
                             </div>
                     </div>
                     <div class="col-md-6">
                     <div class="map-wrapper wow fadeInUp" data-wow-delay="0.6s">
-                        <div id="map"></div>                     
+                    <p>We are a digital design company based in Bangladesh, consectetur adipisicing elit, sed do eiusmod
+                            tempor incididunt ut labore et dolore magna aliqua.</p>                     
                     </div>
                     </div>
                     
@@ -502,4 +475,3 @@ span.min-temperature {
 </body>
 
 </html>
-
