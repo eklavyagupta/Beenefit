@@ -950,7 +950,7 @@ input, button
     position: absolute;
     left: 0;
     right: 0;
-    width: auto;
+    width: 700px;
     padding: 15px;
     margin: -73px auto 0 auto;
     background-color: #ffffff;
@@ -985,4 +985,18 @@ button
     width: 84px;
     height: 96px;
     cursor: pointer;
+}
+.btn {
+  border: none;
+  color: #f8b500;
+  font-size: 60px;
+  cursor: pointer;
+}
+
+.italic {
+  font-style: italic;
+}
+
+h1 {
+  font-size: 50px;
 }
