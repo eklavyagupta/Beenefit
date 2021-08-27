@@ -15,7 +15,7 @@
         - Open with Github Desktop
         Select "Open with Github Desktop" and it will be prompt to your github desktop.
         
-2. Without Github Desktop
+2. Without Github Desktop<br />
         Download ZIP<br />
         Select "Download zip" and unzip them on your local path. Go to the VSC and select File --> open repository. 
         
