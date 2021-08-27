@@ -198,7 +198,7 @@ else {
 
 
 if ($humidity >80 |$humidity<75) {
-  $humi_suggestion = "· keep 75%-80% humidity in winter";
+  $humi_suggestion = "· Keep 75%-80% humidity in winter";
   $bee_safe +=1;
 } 
 else {
