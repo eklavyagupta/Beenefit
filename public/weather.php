@@ -262,6 +262,8 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
     <!-- ===============================================-->
     <link href="assets/css/theme.css" rel="stylesheet" />
 
+<style>    
+
 
 .report-container {
     border: #E0E0E0 1px solid;
