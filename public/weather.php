@@ -320,14 +320,6 @@ span.min-temperature {
                 <div class="col-md-12">
                     <!-- Brand and toggle get grouped for better mobile display -->
                     <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" 
-                                data-toggle="collapse" data-target="#top-navigation-bar" 
-                                aria-expanded="false">
-                      
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
                         <a class="navbar-brand" href="index.html">BEENEFIT<span class="thin"></span></a>
                     </div>
 
