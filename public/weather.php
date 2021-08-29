@@ -218,7 +218,7 @@ else {
 } 
 
 
-else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'</script>";
+else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'</script>";
 }
 
 
@@ -327,7 +327,7 @@ span.min-temperature {
                     <div class="collapse navbar-collapse" id="top-navigation-bar">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="about.html">Bee Aware of Weather</a></li>
+                            <li class="active"><a href="index.html">Bee Aware of Weather</a></li>
                             <!-- <li><a href="contact.html">Get in Touch</a></li>                             -->
                         </ul>
                     </div>
