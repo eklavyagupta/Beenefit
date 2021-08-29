@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Protected Site"
+AuthUserFile D:\home\site\wwwroot\public\.htpasswd
+require valid-user
