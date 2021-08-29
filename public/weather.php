@@ -7,12 +7,6 @@ $db ="csv_db";
 $db =new mysqli('127.0.0.1:55937', $user, $pass, $db) or die ("Unable to connect");
 
 
-//echo"great work!!";
-
-
-
-//echo"great work!!";
-
 
 $search_value=$_POST["search"];
 
@@ -237,57 +231,36 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'about.html'<
 
 
 <!DOCTYPE html>
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en-US"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en-US"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<html lang="en">
+<html lang="en-US" dir="ltr">
 
-
-<head>
-
-    <!--meta tags -->
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--meta tags ends-->
-
-    <title>Beenifit</title>
-    <!-- Links to favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="images//favicon-16x16.png">
-    <link rel="manifest" href="images/site.webmanifest">
-    <!-- Links to logo fonts -->
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Bangers" />
-    
-    <!--- Links to google fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,800%7cRoboto+Mono:400,700%7cMerriweather:300%7cAbril+Fatface'
-          rel='stylesheet' >
-    <!-- Links to fonts ends -->
-
-    <!-- Bootstrap stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Font Icons -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
-    <!-- Popup Images -->
-    <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
-
-    <!-- css animation -->
-    <link rel="stylesheet" type="text/css" href="css/animate.css">
-
-    <!-- custom stylesheets -->
-    <link rel="stylesheet" type="text/css" href="css/main.css">
 
 
-    <!-- font-awesome icons -->
-    <link href="fontawesome.css" rel="stylesheet"> 
-    <link href="//fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Abril+Fatface" />
-    <link href='https://fonts.googleapis.com/css?family=Caveat' rel='stylesheet'>
-    
-    <style>
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Beenefit</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="assets/css/theme.css" rel="stylesheet" />
 
 
 .report-container {
