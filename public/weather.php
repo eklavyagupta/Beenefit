@@ -8,9 +8,12 @@ $db =new mysqli('127.0.0.1:55937', $user, $pass, $db) or die ("Unable to connect
 
 
 
+
 $search_value=$_POST["search"];
 
-$sql1= "select longitude from `postcodes` where postcode = '$search_value'";
+
+if (strlen($search_value) == 4){
+  $sql1= "select longitude from `postcodes` where postcode = '$search_value'";
 
 $lo = $db->query($sql1);
 
@@ -29,7 +32,11 @@ if ($lo->num_rows > 0 ) {
     $new_lat =  $row["lat"];
    // echo  " - lat: " . $row["lat"]. "<br>";
   }
-  $SuburbApi = 'http://api.openweathermap.org/geo/1.0/zip?zip='.$search_value.',au&appid=f8602df67c495efda45f5097b5244ba6';
+
+
+
+
+$SuburbApi = 'http://api.openweathermap.org/geo/1.0/zip?zip='.$search_value.',au&appid=f8602df67c495efda45f5097b5244ba6';
 
 
 $ch = curl_init();
@@ -218,6 +225,11 @@ else {
 } 
 
 
+else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'</script>";
+}
+
+
+}
 else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'</script>";
 }
 
