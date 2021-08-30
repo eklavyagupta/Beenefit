@@ -13,7 +13,7 @@ $search_value=$_POST["search"];
 
 
 if (strlen($search_value) == 4){
-  $sql1= "select longitude from `postcodes` where postcode = '$search_value'";
+$sql1= "select longitude from `postcodes` where postcode = '$search_value'";
 
 $lo = $db->query($sql1);
 
@@ -132,93 +132,6 @@ if($air_qi == 5){
 }
 
 
-//echo '<br>';
-//echo 'Air quality: '.$air_qi. "<br>";
-
-# temperature suggestion
-//echo '<br>';
-
-if ($temperature <= 10) {
-  $temp_suggestion = "· Build hives in almond plantations where temperatures are warmer"."<br>".
- "· Add a little insulation to the outside of their hives"."<br>".
-"· Make sure there aren't drafty holes in their equipment that let cold air or, worse, water in."."<br>".
- "· Hives are distributed evenly throughout the orchard individually";
-  
-} 
-
-elseif ($temperature > 35 & $temperature < 37){
-  $temp_suggestion = "·Don’t open hive lip to do hive management"."<br>".
-  "· Spraying water on the external walls of the hive";
-}
-elseif ($temperature > 37 ){
-  $temp_suggestion = "· Hive construction with adequate air circulation";
-}
-else {
-  $temp_suggestion = "· Temperature: Suitable !";
-}
-
-
-
-# Air quality suggestion
-
-
-
-if ($air_qi >= 3) {
-  $air_qi_suggestion =  "· Move the hive inside.";
-  
-} 
-else {
-  $air_qi_suggestion = "· Air quality: GOOD!";
-}
-
-
-
-# Rain suggestion
-
-if ($main_weather == "Rain"|$main_weather == "Thunderstorm" |$main_weather == "Drizzle") {
-  $weather_suggestion = "· Build a full hive"."<br>"." · Hives are distributed evenly throughout the orchard individually.";
-  
-} 
-else {
-  $weather_suggestion = "· Weather: GOOD!";
-}
-
-
-
-
-
-
-# Humidity suggestion
-
-
-if ($humidity >80 |$humidity<75) {
-  $humi_suggestion = "· keep 75%-80% humidity in winter";
-  
-} 
-else {
-  $humi_suggestion = "· Humidity: Suitable!";
-}
-
-
-
-# Wind Speed suggestion
-
-
-if ($wind_speed > 5.5) {
-  $wind_suggestion = "· Place bees in places with frequent winds"."<br>"." · Ensure The location of the bee farm should be set at the downwind of the honey powder source, so that the bees will go against the wind when they are out of the nest without load.";
-  
-} 
-else {
-  $wind_suggestion =  "· Wind speed: Suitable!";
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -319,111 +232,165 @@ span.min-temperature {
 <!-- End: Preloader section -->
 
 <!-- DOCUMENT WRAPPER STARTS -->
-    <main>
 
 
-        <!-- MAIN HEADER STARTS-->
-        <header id="header">
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand d-flex align-items-center fw-bolder fs-2 fst-italic" href="index.html">
+            <div class="text-warning">BENEEFIT</div>
+          </a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="index.html">Home</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="index.html">Calender</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="index.html">Learn More</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
-            <!-- TOP NAVIGATION -->
-            <nav class="top-navigation-bar navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                <div class="row">
-                <div class="col-md-12">
-                    <!-- Brand and toggle get grouped for better mobile display -->
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="index.html">BEENEFIT<span class="thin"></span></a>
-                    </div>
+      </br>
+      </br>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="top-navigation-bar">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="index.html">Home</a></li>
-                            <li class="active"><a href="index.html">Bee Aware of Weather</a></li>
-                            <!-- <li><a href="contact.html">Get in Touch</a></li>                             -->
-                        </ul>
-                    </div>
-                    <!-- /.navbar-collapse -->
-                    </div>
-                    </div>
-                </div>
-                <!-- /.container-->
-            </nav>
-            <!-- TOP NAVIGATION ENDS -->
 
-        </header>
+
+
+        <section class="py-5">
         
-        <!-- main header ends-->
+        <!--/.bg-holder-->
 
+        <div class="container">
+          <div class="row flex-center">
 
-
-
-        <section id="address" class="address page-top">
-            <div class="container">
-                <div class="row">
-                    
-                        <div class="col-md-5">
-                        <div class="address-wrapper wow fadeInUp" data-wow-delay="0.3s">
-                        <div>
-                          <h1><?php echo $suburb; ?></h1>
-                          <h1><?php echo $temperature; ?>°C</h1>
-                          <div class="time">
-                              <div><h12><?php echo  $dateInLocal; ?></h12></div>
-                          </div>
-                          <div class="weather-forecast">
-                                <img
-                                    src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>.png"
-                                    class="weather-icon" /> <span
-                                    class="min-temperature"><h12><?php echo $weather; ?></h12></span>
-                            </div>
-                          <div class="time">
-                              <div><h12>Humidity: <?php echo $humidity; ?> %</h12></div>
-                              <div><h12>Wind: <h12><?php echo $wind_speed; ?> m/s</h12></div>
-                              <div><h12>Air quality: <h12> <?php echo $airsituation; ?></h12></div>
-                          </div>
-                        </div>
-                            </div>
-                    </div>
-                    <div class="col-md-7">
-                    <div class="map-wrapper wow fadeInUp" data-wow-delay="0.6s">
-                      <h12> Suggestion: <h12>
-                    <h3> <?php echo $temp_suggestion ."<br>"; ?></h2>
-                    <h3> <?php echo $air_qi_suggestion ."<br>"; ?></h2>
-                    <h3> <?php echo $humi_suggestion ."<br>"; ?></h2>
-                    <h3> <?php echo $weather_suggestion; ?></h2>
-                    <h3> <?php echo $wind_suggestion; ?></h2>
-                                         
-                    </div>
-                    </div>
-                    
-                    
+            <div class="col-md-5 order-md-0 text-center text-md-start">
+              <h1><?php echo $suburb; ?></h1>
+                <h1><?php echo $temperature; ?>°C</h1>
+                <div class="time">
+                  <div><h3><?php echo  $dateInLocal; ?></h3></div>
+                </div>
+                <div class="weather-forecast">
+                    <img
+                        src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>.png"
+                        class="weather-icon" /> <span
+                        class="min-temperature"><h3><?php echo $weather; ?></h3></span>
+                </div>
+                <div class="time">
+                    <div><h4>Humidity: <?php echo $humidity; ?> %</h4></div>
+                    <div><h4>Wind: <?php echo $wind_speed; ?> m/s</h4></div>
+                    <div><h4>Air quality:  <?php echo $airsituation; ?></h4></div>
+                </div>
             </div>
-            </div>
-        </section>
 
-       
+            <div class="col-md-5 text-center text-md-start">
+              <h3> Suggestion: <h3>
+                <h4> 
+                  <?php
+                      if ($temperature > 10 & 
+                          $temperature <= 35 &
+                          $air_qi <= 2 &
+                          $main_weather != "Rain" & $main_weather != "Thunderstorm" & $main_weather != "Drizzle" &
+                          $humidity >= 75 &
+                          $humidity <= 75 &
+                          $wind_speed < 5.5
+                          ){ echo $humidity;
+                            echo "Bees are vey safe now :)";
+
+                      }
+                      else {
+                        if ($temperature <= 10) {
+                          echo"· Build hives in almond plantations where temperatures are warmer"."<br>".
+                        "· Add a little insulation to the outside of their hives"."<br>".
+                        "· Make sure there aren't drafty holes in their equipment that let cold air or, worse, water in."."<br>".
+                        "· Hives are distributed evenly throughout the orchard individually"."<br>";
+                          
+                        } 
+  
+                        elseif ($temperature > 35 & $temperature < 37){
+                          echo "·Don’t open hive lip to do hive management"."<br>".
+                          "· Spraying water on the external walls of the hive"."<br>";
+                        }
+                        elseif ($temperature > 37 ){
+                          echo "· Hive construction with adequate air circulation"."<br>";
+                        }
+                        
+  
+  
+  
+                        # Air quality suggestion
+  
+  
+  
+                        if ($air_qi >= 3) {
+                          echo"· Move the hive inside."."<br>";
+                          
+                        } 
+  
+  
+  
+                        # Rain suggestion
+  
+                        if ($main_weather == "Rain"|$main_weather == "Thunderstorm" |$main_weather == "Drizzle") {
+                          echo "· Build a full hive"."<br>"." · Hives are distributed evenly throughout the orchard individually."."<br>";
+                          
+                        } 
+  
+  
+  
+  
+  
+  
+                        # Humidity suggestion
+  
+  
+                        if ($humidity >80 |$humidity<75) {
+                          echo"· keep 75%-80% humidity in winter"."<br>";
+                          
+                        }
+  
+  
+  
+                        # Wind Speed suggestion
+  
+  
+                        if ($wind_speed > 5.5) {
+                          echo "· Place bees in places with frequent winds"."<br>"." · Ensure The location of the bee farm should be set at the downwind of the honey powder source, so that the bees will go against the wind when they are out of the nest without load.";
+                          
+                        }
+                      }
+                      
+
+                    ?>
+                </h4>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+
+    
+
+
+
+
 
 
     </main>
 <!-- DOCUMENT WRAPPER ENDS -->
 
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="assets/js/theme.js"></script>
 
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap" rel="stylesheet">
 
-<!-- SCRIPTS -->
-
-    <!-- jQuery (necessary for all the plugins) -->
-    <script src="js/jquery-1.11.2.min.js"></script>
-
-    <script src="http://maps.google.com/maps/api/js"></script>
-    <script src="js/gmaps.js"></script>
-    <script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="js/wow.min.js"></script>
-    <script type="text/javascript" src="js/jquery.validate.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-
-<!-- SCRIPTS ENDS -->
 </body>
 
 </html>
