@@ -10,7 +10,7 @@ $email_input=$_POST["email"];
 $postcode_input=$_POST["postcode"];
 
 
-$sql="INSERT INTO `beekeeper` (email,postcode) VALUES ('$email_input','$postcode_input' COLLATE latin1_swedish_ci)";
+$sql="INSERT INTO `beekeeper` (email,postcode) VALUES ('$email_input','$postcode_input')";
 
 $bk = $connection->query($sql);
 
