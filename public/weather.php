@@ -2,7 +2,7 @@
 
 $user ="azure";
 $pass ='6#vWHD_$';
-$db ="csv_db";
+$db ="localdb";
 
 $db =new mysqli('127.0.0.1:50190', $user, $pass, $db) or die ("Unable to connect");
 
