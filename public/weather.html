@@ -313,12 +313,16 @@
               <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Subscribe Us</h6>
               <p class="my-4 pe-xl-8">Enter your Email to get Latest Bee Alerts.</p>
               <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
-                <form class="row row-cols-lg-auto g-0 align-items-center">
+                <form class="row row-cols-lg-auto g-0 align-items-center" action = "email.php"  method="POST">
                   <div class="col-9 col-lg-8">
                     <label class="visually-hidden" for="colFormLabel">Username</label>
                     <div class="input-group">
-                      <input class="rounded-end-0 form-control" id="colFormLabel" type="email" placeholder="email address" />
+                      <input class="rounded-end-0 form-control" id="colFormLabel" type="email" name="email" placeholder="email address" />
                     </div>
+                    <div class="input-group">
+                      <input class="rounded-end-0 form-control" id="colFormLabel" type="text" name= "postcode" placeholder="Postcode" />
+                    </div>
+                  </div>
                   </div>
                   <div class="col-3 col-lg-4">
                     <button class="btn btn-primary rounded-start-0" type="submit">Submit</button>
