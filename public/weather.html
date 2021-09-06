@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Beenefit</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+    <link rel="manifest" href="assets/img/favicons/manifest.json">
+    <meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="assets/css/theme.css" rel="stylesheet" />
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container"><a class="navbar-brand d-flex align-items-center fw-bolder fs-2 fst-italic" href="index.html">
+            <div class="text-warning">BEENEFIT</div>
+          </a>
+          <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="index.html">Home</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="#features">Calender</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="weather.html">Factor</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+    </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+</br>
+</br>
+</br>
+</br>
+</br>
+</br>
+
+    <section class="py-0">
+      <div class="container">
+        
+        <div class="row align-items-center">
+          <div class="col-12 text-center">
+            
+           
+                          
+            <!-- Load d3.js -->
+            <script src="https://d3js.org/d3.v4.js"></script>
+            <h2 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Different factor causing hive loss</h2>
+          </br>
+            <p class="pe-xl-8">What kind of beekeepers you are? Choose below:</p>
+            <!-- Add 2 buttons -->
+            <button  class="btn btn-primary rounded-start-0" onclick="update(data1)">Hobby beekeepers</button>
+            <div style = "width:15px; height:auto; display:inline-block;"></div>
+            <button  class="btn btn-primary rounded-start-0" onclick="update(data2)">Commercial beekeepers</button>
+            <style>
+
+              .btn:hover {background-color: #ff7e5f}
+              
+              </style>
+              
+            <!-- Create a div where the graph will take place -->
+            <div id="barchart" class="col-12 text-center"></div>
+
+
+            <script>
+
+            // create 2 data_set
+            var data1 = [
+              {group: "pests/diseases ", value: 24},
+              {group: "queen loss ", value: 19},
+              {group: "overwintering ", value: 12},
+              {group: "extreme weather ", value: 12},
+              {group: "starvation ", value: 16},
+              {group: "others ", value: 17}
+            ];
+
+            var data2 = [
+              {group: "pests/diseases ", value: 20},
+              {group: "queen loss ", value: 19},
+              {group: "overwintering ", value: 17},
+              {group: "extreme weather ", value: 13},
+              {group: "agricultural chemicals ", value: 11},
+              {group: "theft/vandalism ", value: 3},
+              {group: "others ", value: 17}
+            ];
+
+            // set the dimensions and margins of the graph
+            var margin = {top: 30, right: 50, bottom: 120, left: 80},
+                width = d3.select('#barchart').node().getBoundingClientRect().width - margin.left - margin.right,
+                height = 500 - margin.top - margin.bottom;;
+
+            // append the svg object to the body of the page
+            var svg = d3.select("#barchart")
+              .append("svg")
+                .attr("width", width + margin.left + margin.right)
+                .attr("height", height + margin.top + margin.bottom)
+              .append("g")
+                .attr("transform",
+                      "translate(" + margin.left + "," + margin.top + ")")
+                ;
+
+            // Initialize the X axis
+            var x = d3.scaleBand()
+              .range([ 0, width ])
+              .padding(0.2)
+              
+            var xAxis = svg.append("g")
+              .attr("transform", "translate(0," + height + ")")
+              svg.append("text")             
+                  .attr("transform",
+                  function(d) {
+                        if (width >= 500) {return "translate(" + (width/2) + " ," + 
+                                        (height + margin.top + 20) + ")" }
+                        else 	{ return "translate(" + (width/2) + " ," + 
+                                        (height + margin.top + 80) + ")" };}
+                        )
+                  .style("text-anchor", "middle")
+                  .text("Factor of lossing hive")
+                  .attr("class", "h5");
+              
+
+            // Initialize the Y axis
+            var y = d3.scaleLinear()
+              .range([ height, 0]);
+            var yAxis = svg.append("g")
+              .attr("class", "h6")
+            svg.append("text")
+              .attr("transform", "rotate(-90)")
+              .attr("y", 0 - margin.left+20)
+              .attr("x",0 - (height / 2))
+              .attr("dy", "1em")
+              .style("text-anchor", "middle")
+              .attr("class", "h5")
+              .text("Hive loss rate (%) ");
+
+            var getcolors = d3.scaleLinear()
+              .domain([d3.min(data1, function(d){
+                              return d.value;
+                            }), 
+                        d3.max(data1, function(d){
+                              return d.value;
+                            })])
+              .range(['#ffc371','#ff7e5f', '#ff4b1f'])
+
+
+            //Create a tooltip div 
+            var tooltip = d3.select("#barchart")
+                .append("div")
+                  .style("opacity", 0)
+                  .attr("class", "tooltip")
+                  .style("background-color", "#313131")
+                  .style("border-radius", "5px")
+                  .style("padding", "8px")
+                  .style("color", "white")
+                  .style("position", "absolute")
+                  .style("font-size","15px")
+
+
+            //Create functions to show tooltip
+            var showTooltip = function(d) {
+              tooltip
+                .transition()
+                .duration(100)
+                .style("opacity", 0.75)
+                
+            }
+            var moveTooltip = function(d) {
+              tooltip
+              .html( d.value+ " % Hive loss")
+                .style("left", (d3.event.pageX)-50 + "px")
+                .style("top", (d3.event.pageY)-120 + "px")
+            }
+            var hideTooltip = function(d) {
+              tooltip
+                .style("opacity", 0)
+                .style("top", (d3.event.pageY - 800) + "px")   
+                .style("left", (d3.event.pageX - 1000) + "px")
+            }
+
+
+            // A function that create / update the plot for a given variable:
+            function update(data) {
+
+              // Update the X axis
+              x.domain(data.map(function(d) { return d.group; }))
+              xAxis.call(d3.axisBottom(x))
+                  .selectAll("text") 
+                        .style("text-anchor",  function(d) {
+                        if (width >= 500) {return "middle"}
+                        else 	{ return "end" }
+                    ;})
+                        .attr("transform",  function(d) {
+                        if (width >= 500) {return "rotate(0)"}
+                        else 	{ return "rotate(-45)" }
+                        ;})
+                  .attr("class", "h6")
+
+              // Update the Y axis
+              y.domain([0, d3.max(data, function(d) { return d.value }) ]);
+              yAxis.transition().duration(1000).call(d3.axisLeft(y)).attr("class", "h6");
+
+              
+
+              // Create the u variable
+              var u = svg.selectAll("rect")
+                .data(data)
+
+              u
+                .enter()
+                .append("rect") // Add a new rect for each new elements
+                .on("mouseover", showTooltip)
+                .on("mousemove", moveTooltip )
+                .on("mouseleave", hideTooltip )
+                .merge(u) // get the already existing elements as well
+                .transition() // and apply changes to all of them
+                .duration(1000)
+                  .attr("x", function(d) { return x(d.group); })
+                  .attr("y", function(d) { return y(d.value); })
+                  .attr("width", x.bandwidth())
+                  .attr("height", function(d) { return height - y(d.value); })
+                  .attr("fill", function(d) { return getcolors(d.value);})
+
+              // If less group in the new dataset, I delete the ones not in use anymore
+              u
+                .exit()
+                .remove()
+            }
+
+            // Initialize the plot with the first dataset
+            update(data1)
+
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-0">
+
+        <div class="container">
+
+
+          <!-- ============================================-->
+          <!-- <section> begin ============================-->
+          <section class="py-8">
+
+            <div class="container">
+              <div class="row flex-center">
+                <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4" src="assets/img/illustrations/jobs.png" width="450" alt="" /></div>
+                <div class="col-md-5 text-center text-md-start">
+                  <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">How to take measures coping<br> with bad weathers that affect bees?</h6>
+                  <p class="my-4 pe-xl-8">We provide click and search to help you !</p>
+                </div>
+              </div>
+            </div>
+            <!-- end of .container-->
+
+          </section>
+          <!-- <section> close ============================-->
+          <!-- ============================================-->
+
+
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+     
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-8">
+
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4" src="assets/img/illustrations/feature.png" width="450" alt="" /></div>
+            <div class="col-md-5 text-center text-md-start">
+              <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Subscribe Us</h6>
+              <p class="my-4 pe-xl-8">Enter your Email to get Latest Bee Alerts.</p>
+              <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
+                <form class="row row-cols-lg-auto g-0 align-items-center">
+                  <div class="col-9 col-lg-8">
+                    <label class="visually-hidden" for="colFormLabel">Username</label>
+                    <div class="input-group">
+                      <input class="rounded-end-0 form-control" id="colFormLabel" type="email" placeholder="email address" />
+                    </div>
+                  </div>
+                  <div class="col-3 col-lg-4">
+                    <button class="btn btn-primary rounded-start-0" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+      <section class="py-0 bg-primary-gradient">
+        <div class="bg-holder" style="background-image:url(assets/img/illustrations/footer-bg.png);background-position:center;background-size:cover;">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+          <div class="row flex-center py-8">
+            <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-auto mb-2">
+              <p class="mb-0 fs--1 text-white my-2 text-center">&copy; This template is made with&nbsp;
+                <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1F3A63" viewBox="0 0 16 16">
+                  <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"></path>
+                </svg>&nbsp;by&nbsp;<a class="text-white" href="https://themewagon.com/" target="_blank">ThemeWagon </a>
+                 <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> 
+                <div> Presented by <a href="https://www.beenefit.studio" title="BEENEFIT">BEENEFIT</a></div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="assets/js/theme.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap" rel="stylesheet">
+  </body>
+
+</html>
