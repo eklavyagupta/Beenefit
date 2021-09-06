@@ -10,9 +10,6 @@ $email_input=$_POST["email"];
 $postcode_input=$_POST["postcode"];
 
 
-$sql="INSERT INTO `beekeeper` ('id', 'email', 'postcode') VALUES (NULL, '$email_input','$postcode_input')";
-
-$bk = $connection->query($sql);
 
 echo "<script>alert('Subscribed successfully'); location.href = 'index.html'</script>";
 
