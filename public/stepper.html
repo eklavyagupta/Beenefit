@@ -13,6 +13,31 @@ body {
 	font-family: 'Roboto Condensed', sans-serif;
 }
 
+.table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table td,
+.table th {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 16px;
+}
+
+.table th {
+  background-color: #ee9541be;
+  color: #ffffff;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f5e7d1f6;
+}
+
+
  
 h1 {
 	 	  
@@ -160,6 +185,7 @@ h1 {
 	text-transform:uppercase;
 	color:#333;
 	letter-spacing:1px;
+	margin: auto;
 }
 
 #progress-content-section .section-content p {
@@ -192,6 +218,9 @@ h1 {
 	}
 }
 
+
+
+
  
     </style>
 </head>
@@ -219,10 +248,10 @@ h1 {
 	<div class="section-content discovery active">
 		<h2>REGISTRATION SECTION</h2>
         <p>You must be registered to keep bees in Victoria. Click <a href="https://bees.agriculture.vic.gov.au/" target="_blank">here</a>
-			and start registering
+			and start registration
 		</p>
-		<p>Cost (up 5 hives): free for register online; $30 for paper application.</p>
-		<p>Cost (more than 5 hives): $30 for 6-50 hives; 60 cents per hive for more than 50 hives.</p>
+		<p>Cost (up to 5 hives): free register online; $30 for paper application.</p>
+		<p>Cost (more than 5 hives): 6-50 hives:$30 ; 60 cents / hive for more than 50 hives.</p>
 	</br>
 		<p>Hint: After successfully registered, you will receive a certificate which lasts for 2 years. After that, please renew your registration.</p>
         <p>You can click <a href="https://agriculture.vic.gov.au/livestock-and-animals/honey-bees/beekeeper-registration-and-hive-disposal" title="registration information" target="_blank">here</a>
@@ -232,11 +261,59 @@ h1 {
 	
 	<div class="section-content strategy">
 		<h2>HIVE DENSITY CHECK SECTION</h2>
-		<p>If density of hives meets the requirements, you can start a beekeeping on Victorian land without a planning permit.</p>
-		<p>Urban areas:</p><img class="img-fluid mb-4" src="assets/img/illustrations/hive density.png"  />
+		<p>If density of hives meets the requirements, you can start beekeeping on Victorian land without a planning permit.</p>
+		<p>Urban areas:</p>
+		
+		<table class="table">
+			<thead>
+			  <tr>
+				<th>Tenement size</th>
+				<th>Max No. of hives</th>
+			  </tr> 
+			</thead>
+			<tbody>
+			  <tr>
+				<td>500 &#13217; or less</td>
+				<td>1</td>
+
+			  </tr>
+			  <tr>
+				<td>501 &#13217; to 1000 &#13217;</td>
+				<td>2</td>
+
+			  </tr> 
+			  <tr>
+				<td>1001 &#13217; to 2000 &#13217;</td>
+				<td>5</td>
+
+			  </tr> 
+			  <tr>
+				<td>2001 &#13217; to less than 4000 &#13217;</td>
+				<td>10</td>
+
+			  </tr>
+			  <tr>
+				<td>4000 &#13217; to less than 1ha</td>
+				<td>60</td>
+
+			  </tr>
+			  <tr>
+				<td>1 ha to 2 ha</td>
+				<td>100</td>
+
+			  </tr>
+			  <tr>
+				<td>Larger than 2 ha</td>
+				<td>No limit</td>
+
+			  </tr>
+			  
+			</tbody>
+		  </table>
+
 		<p>Urban areas: </p>
 		<p>no planning permit is required.</p>
-		<p>See more detial at <a href="https://vgls.sdp.sirsidynix.net.au/client/search/asset/1145118" target="_blank">APIARYCODE OF PRACTICE</a>
+		<p>See more details at <a href="https://vgls.sdp.sirsidynix.net.au/client/search/asset/1145118" target="_blank">APIARYCODE OF PRACTICE</a>
 		</p>  
 
 	</div>
