@@ -78,9 +78,9 @@
           </br>
             <p class="pe-xl-8">What kind of beekeepers you are? Choose below:</p>
             <!-- Add 2 buttons -->
-            <button  class="btn btn-primary rounded-start-0" onclick="update(data1)">Hobby beekeepers</button>
+            <button  class="btn btn-primary rounded-start-0" onclick="update(data1)" id ="hobby">Hobby beekeepers</button>
             <div style = "width:15px; height:auto; display:inline-block;"></div>
-            <button  class="btn btn-primary rounded-start-0" onclick="update(data2)">Commercial beekeepers</button>
+            <button  class="btn btn-primary rounded-start-0" onclick="update(data2)" id ="Commercial">Commercial beekeepers</button>
             <style>
 
               .btn:hover {background-color: #ff7e5f}
@@ -89,6 +89,7 @@
               
             <!-- Create a div where the graph will take place -->
             <div id="barchart" class="col-12 text-center"></div>
+            <div id="describe" class="col-12 text-center"></div>
 
 
             <script>
@@ -100,7 +101,7 @@
               {group: "overwintering ", value: 12},
               {group: "extreme weather ", value: 12},
               {group: "starvation ", value: 16},
-              {group: "others ", value: 17}
+              {group: "others ", value: 17},
             ];
 
             var data2 = [
@@ -114,7 +115,7 @@
             ];
 
             // set the dimensions and margins of the graph
-            var margin = {top: 30, right: 50, bottom: 120, left: 80},
+            var margin = {top: 30, right: 50, bottom: 160, left: 100},
                 width = d3.select('#barchart').node().getBoundingClientRect().width - margin.left - margin.right,
                 height = 500 - margin.top - margin.bottom;;
 
@@ -162,6 +163,26 @@
               .attr("class", "h5")
               .text("Hive loss rate (%) ");
 
+
+
+            var summary = d3.select("#barchart")
+                            .append("p")
+                            .style("text-anchor", "middle")
+                            .attr("transform", "translate(" + (width/2) + " ," + 
+                                        (height + margin.top + 70) + ")" )
+                            .data(data1)
+                            .text("The rate of hive loss due to weather is: 24%(hobby), 30%(commercial)") 
+                            .attr("class", "h3");
+            var summary2 = d3.select("#barchart")
+                            .append("p")
+                            .style("text-anchor", "end")
+                            .attr("transform", "translate(" + (width/2) + " ," + 
+                                        (height + margin.top + 190) + ")" )
+                            .text("Protect the bees while the weather is not good, check more infomatition below.")
+                            .attr("class", "p");
+
+
+
             var getcolors = d3.scaleLinear()
               .domain([d3.min(data1, function(d){
                               return d.value;
@@ -206,6 +227,7 @@
                 .style("left", (d3.event.pageX - 1000) + "px")
             }
 
+            var dataIndex=1;
 
             // A function that create / update the plot for a given variable:
             function update(data) {
@@ -228,8 +250,9 @@
               y.domain([0, d3.max(data, function(d) { return d.value }) ]);
               yAxis.transition().duration(1000).call(d3.axisLeft(y)).attr("class", "h6");
 
-              
 
+
+             
               // Create the u variable
               var u = svg.selectAll("rect")
                 .data(data)
@@ -248,6 +271,8 @@
                   .attr("width", x.bandwidth())
                   .attr("height", function(d) { return height - y(d.value); })
                   .attr("fill", function(d) { return getcolors(d.value);})
+                  .attr("summary","8888")
+                  
 
               // If less group in the new dataset, I delete the ones not in use anymore
               u
@@ -281,6 +306,9 @@
                 <div class="col-md-5 text-center text-md-start">
                   <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">How to take measures coping<br> with bad weathers that affect bees?</h6>
                   <p class="my-4 pe-xl-8">We provide click and search to help you !</p>
+                  <div class="col-3 col-lg-4">
+                    <button class="btn btn-primary rounded-start-0" onclick="location.href='index.html';">Check</button>
+                  </div>
                 </div>
               </div>
             </div>
