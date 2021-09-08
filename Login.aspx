@@ -7,7 +7,7 @@
 public void Login_OnClick(object sender, EventArgs args)
 {
    if (FormsAuthentication.Authenticate(UsernameTextbox.Text, PasswordTextbox.Text))
-      {FormsAuthentication.SetAuthCookie(UsernameTextbox.Text);
+      {FormsAuthentication.SetAuthCookie(UsernameTextbox.Text, NotPublicCheckBox.Checked);
         Response.Redirect("public/index.html");
       }
    else
@@ -25,6 +25,8 @@ public void Login_OnClick(object sender, EventArgs args)
   Username: <asp:Textbox id="UsernameTextbox" runat="server" /><br />
   Password: <asp:Textbox id="PasswordTextbox" runat="server" TextMode="Password" /><br />
   <asp:Button id="LoginButton" Text="Login" OnClick="Login_OnClick" runat="server" />
+  <asp:CheckBox id="NotPublicCheckBox" runat="server" /> 
+  Check here if this is <span style="text-decoration:underline">not</span> a public computer.
 </form>
 </body>
 </html>
