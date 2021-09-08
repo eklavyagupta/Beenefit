@@ -7,8 +7,8 @@
 public void Login_OnClick(object sender, EventArgs args)
 {
    if (FormsAuthentication.Authenticate(UsernameTextbox.Text, PasswordTextbox.Text))
-     FormsAuthentication.SetAuthCookie(IDTextBox.Text, RememberCheckBox.Checked);
-     Response.Redirect("index.html");
+    FormsAuthentication.SetAuthCookie(UsernameTextbox.Text, NotPublicCheckBox.Checked);
+    Response.Redirect("index.html");
    else
      Msg.Text = "Login failed. Please check your user name and password and try again.";
 }
