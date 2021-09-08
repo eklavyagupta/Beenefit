@@ -1,0 +1,280 @@
+/* TIMELINE
+			–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+            .intro {
+                background: #fff;
+                padding: 100px 0;
+              }
+              .container {
+                width: 90%;
+                max-width: 1200px;
+                margin: 0 auto;
+                text-align: center;
+              
+              }
+              
+            
+
+                
+              .container h2 {
+                margin-top: 0;
+                margin-bottom: 0.5rem;
+               font-family: "Poppins", "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+               font-weight: 500;
+               line-height: 1.2;
+               color: #112D58;
+              font-size: calc(1.37383rem + 1.48598vw);
+              }
+  
+  
+              
+              
+                          .timeline2 {
+                              overflow-y: scroll;
+                              overflow-x: hidden;
+                              height: 550px;
+                              top: calc(100%-600px);
+                              position: relative;
+                              scroll-behavior:  smooth ;
+                               
+                          }
+              
+       
+                          .timeline2   *, .timeline2   *::before, .timeline2   *::after { 
+                              font: normal 16px/1.5 "Helvetica Neue", sans-serif;
+                              color: black;
+                              margin: 0;
+                              padding: 0;
+                              box-sizing: border-box;
+                          }
+                          .timeline2::-webkit-scrollbar {
+                              width: 12px;
+                              background-color: #F8b500;
+                          }
+                           
+                          .timeline2::-webkit-scrollbar-track {
+                              -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+                              border-radius: 10px;
+                              background-color: #F5F5F5;
+                          }
+                           
+                          .timeline2::-webkit-scrollbar-thumb {
+                              border-radius: 10px;
+                              -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+                              background-color: #F8b500
+                          }
+                           
+                          .timeline2 ul {
+                            background: #fff;
+                            /* padding: 50px 0; */
+                          }
+              
+                          .timeline2 ul li {
+                            list-style-type: none;
+                            position: relative;
+                                width: 2px;/* width: 6px; */
+                            margin: 0 auto;
+                              padding-top: 10px;/* 50px; */
+                              padding-bottom: 10px;/* padding-bottom: 20px; = center padding-bottom: 10px; = center */
+                           background: #555; /* background: black;  */
+                            
+                              border-left: 3px double #555;
+                              
+                          }
+              
+                   
+              
+                           
+                          .timeline2 ul li::after {
+                            content: '';
+                            position: absolute;
+                            left: 50%;
+                            top: 30px; /* bottom: 0;  bottom: 50%;=center top: 30px;=top  */ 
+                            transform: translateX(-55%);/* transform: translateX(-50%); */
+                            -webkit-transform: translateX(-55%);
+                            width: 30px;
+                            height: 30px;
+                            border-radius: 50%;
+                            background: inherit;
+                            border: 2px solid #f7b12ff6;
+                          }
+              
+                          .timeline2 ul li div {
+                            position: relative;
+                            bottom: 0;
+                            width: 400px;
+                            padding: 15px;
+                            background: #f7b12ff6;
+                            
+                          }
+              
+                          .timeline2 ul li div::before {
+                            content: '';
+                            position: absolute;
+                            top: 20px; /* bottom: 7px; bottom: 50%;=center top: 20px;=top */
+                            
+                            width: 0;
+                            height: 0;
+                            border-style: solid;
+                          }
+              
+                          .timeline2 ul li:nth-child(odd) div {
+                            left: 45px;
+                          }
+              
+                          .timeline2 ul li:nth-child(odd) div::before {
+                            left: -15px;
+                              border-width: 16px 16px 16px 0;/* border-width: 8px 16px 8px 0; */
+                            border-color: transparent #f7b12ff6 transparent transparent;
+                          }
+              
+                          .timeline2 ul li:nth-child(even) div {
+                            left: -439px;
+                          }
+              
+                          .timeline2 ul li:nth-child(even) div::before {
+                            right: -15px;
+                                border-width: 16px 0 16px 16px; /* border-width: 8px 0 8px 16px; */
+                            border-color: transparent transparent transparent #f7b12ff6;
+                          }
+                          
+                          
+                          .timeline2 ul li:nth-child(odd) .time {
+                              position: absolute;
+                              top: 20px;
+                              left: -100px;
+                              width: 90px;
+                 
+                          }
+                          .timeline2 ul li:nth-child(even) .time {
+                              position: absolute;
+                              top: 20px;
+                              right: -120px;
+                              width: 90px;
+                          }
+                          
+                          
+                          .timeline2 time {
+                            display: block;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+                            margin-bottom: 8px;
+                      color: black;
+                          }
+              
+              
+                          /* EFFECTS
+                          –––––––––––––––––––––––––––––––––––––––––––––––––– */
+              
+                          .timeline2 ul li::after {
+                              transition: background .5s ease-in-out;
+                              -webkit-transition: background .5s ease-in-out;
+                          }
+              
+                          .timeline2 ul li.in-view::after {
+                            background: #f7b12ff6 ;
+                            border: 2px solid #fff;
+                          }
+              
+                          .timeline2 ul li div {
+                            visibility: hidden;
+                            opacity: 0;
+                              transition: all .5s ease-in-out;
+                              -webkit-transition: all .5s ease-in-out;
+                          }
+              
+                          .timeline2 ul li:nth-child(odd) div {
+                              transform: translate3d(200px, 0, 0);
+                              -webkit-transform: translate(200px, 0, 0);
+                          }
+              
+                          .timeline2 ul li:nth-child(even) div {
+                              transform: translate3d(-200px, 0, 0);
+                              -webkit-transform: translate(-200px, 0, 0);
+                          }
+              
+                          .timeline2 ul li.in-view div {
+                              transform: none;
+                              -webkit-transform: none;
+                            visibility: visible;
+                            opacity: 1;
+                            /* disabled when arrow is on top position
+                            border-radius: 10px;
+                            */
+                          }
+                          
+                          .timeline2 ul li  .time {
+                              transition: all .5s ease-in-out;
+                              -webkit-transition: all .5s ease-in-out;
+                              transform: rotate(-90deg);
+                              -webkit-transform:rotate(270deg);
+                          }
+                          .timeline2 ul li.in-view  .time {
+                              transform: rotate(0deg);
+                              -webkit-transform:rotate(0deg);
+                          }
+              
+                          /* GENERAL MEDIA QUERIES
+                          –––––––––––––––––––––––––––––––––––––––––––––––––– */
+              
+                          @media screen and (max-width: 900px) {
+                            .timeline2 ul li div {
+                              width: 250px;
+                            }
+                            .timeline2 ul li:nth-child(even) div {
+                              left: -289px;
+                              /*250+45-6*/
+                            }
+                          }
+              
+                          @media screen and (max-width: 600px) {
+                            .timeline2 ul li {
+                              margin-left: 20px;
+                            }
+                            .timeline2 ul li div {
+                              width: calc(100vw - 120px);
+                            }
+                            .timeline2 ul li:nth-child(even) div {
+                              left: 45px;
+                            }
+                            .timeline2 ul li:nth-child(even) div::before {
+                              left: -15px;
+                              border-width: 16px 16px 16px 0; /* border-width: 8px 16px 8px 0;  */
+                              border-color: transparent #f7b12ff6 transparent transparent;
+                            }
+                            
+                              
+                              .timeline2 ul li:nth-child(odd) .time {
+                                  position: absolute;
+                                  top: 60px;
+                                  left: -23px;
+                                  width: 90px;
+                                  /*
+                                  transform: rotate(-90deg);
+                                  -webkit-transform:rotate(270deg);
+                                  */
+                                  transform: rotate(0deg);
+                                  -webkit-transform:rotate(0deg);
+                              }
+                              .timeline2 ul li:nth-child(even) .time {
+                                  position: absolute;
+                                  top: 60px;
+                                  right: -67px;
+                                  width: 90px;
+                                  /*
+                                  transform: rotate(-90deg);
+                                  -webkit-transform:rotate(270deg);
+                                  */
+                                  transform: rotate(0deg);
+                                  -webkit-transform:rotate(0deg);
+                              }
+                              .timeline2 ul li.in-view:nth-child(odd) .time {
+                                  transform: rotate(-90deg);
+                                  -webkit-transform:rotate(270deg);					 
+                              }
+                              .timeline2 ul li.in-view:nth-child(even) .time {
+                                  transform: rotate(-90deg);
+                                  -webkit-transform:rotate(270deg);
+                              }
+                            
+                          }
