@@ -7,7 +7,7 @@
 public void Login_OnClick(object sender, EventArgs args)
 {
    if (FormsAuthentication.Authenticate(UsernameTextbox.Text, PasswordTextbox.Text))
-      FormsAuthentication.RedirectFromLoginPage(UsernameTextbox.Text, NotPublicCheckBox.Checked);
+   window.location.href = 'http://www.google.com';
    else
      Msg.Text = "Login failed. Please check your user name and password and try again.";
 }
