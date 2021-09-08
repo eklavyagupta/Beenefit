@@ -7,7 +7,7 @@
 public void Login_OnClick(object sender, EventArgs args)
 {
    if (FormsAuthentication.Authenticate(UsernameTextbox.Text, PasswordTextbox.Text))
-      {FormsAuthentication.SetAuthCookie(UsernameTextbox.Text, NotPublicCheckBox.Checked);
+      {FormsAuthentication.SetAuthCookie(UsernameTextbox.Text);
         Response.Redirect("public/index.html");
       }
    else
