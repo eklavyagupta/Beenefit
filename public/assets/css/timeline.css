@@ -13,7 +13,7 @@
               
               }
               
-            
+            .h3
 
                 
               .container h2 {
@@ -161,7 +161,16 @@
                             margin-bottom: 8px;
                       color: black;
                           }
-              
+
+                       .timeline2 span{
+
+                        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+                        color: #F8b500;
+                        font-size: 20px;
+
+
+                       }
+                                      
               
                           /* EFFECTS
                           –––––––––––––––––––––––––––––––––––––––––––––––––– */
