@@ -76,14 +76,15 @@
             <script src="https://d3js.org/d3.v4.js"></script>
             <h2 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Different factor causing hive loss</h2>
           </br>
-            <p class="pe-xl-8">What kind of beekeepers you are? Choose below:</p>
+            <p class="pe-xl-8">What kind of beekeeper are you? Choose below:</p>
             <!-- Add 2 buttons -->
-            <button  class="btn btn-primary rounded-start-0" onclick="update(data1)" id ="hobby">Hobby beekeepers</button>
+            <button  class="btn btn-primary rounded-start-0" onclick="update('var1')" id ="hobby">Hobby beekeepers</button>
             <div style = "width:15px; height:auto; display:inline-block;"></div>
-            <button  class="btn btn-primary rounded-start-0" onclick="update(data2)" id ="Commercial">Commercial beekeepers</button>
+            <button  class="btn btn-primary rounded-start-0" onclick="update('var2')" id ="Commercial">Commercial beekeepers</button>
             <style>
 
-              .btn:hover {background-color: #ff7e5f}
+              .btn:focus {background-color: #ec9a41;
+                          border-width:3px}
               
               </style>
               
@@ -115,7 +116,7 @@
             ];
 
             // set the dimensions and margins of the graph
-            var margin = {top: 30, right: 50, bottom: 160, left: 100},
+            var margin = {top: 30, right: 50, bottom: 180, left: 80},
                 width = d3.select('#barchart').node().getBoundingClientRect().width - margin.left - margin.right,
                 height = 500 - margin.top - margin.bottom;;
 
@@ -140,9 +141,9 @@
                   .attr("transform",
                   function(d) {
                         if (width >= 500) {return "translate(" + (width/2) + " ," + 
-                                        (height + margin.top + 20) + ")" }
+                                        (height + margin.top + 80) + ")" }
                         else 	{ return "translate(" + (width/2) + " ," + 
-                                        (height + margin.top + 80) + ")" };}
+                                        (height + margin.top + 100) + ")" };}
                         )
                   .style("text-anchor", "middle")
                   .text("Factor of lossing hive")
@@ -164,7 +165,7 @@
               .text("Hive loss rate (%) ");
 
 
-
+            /*          
             var summary = d3.select("#barchart")
                             .append("p")
                             .style("text-anchor", "middle")
@@ -180,17 +181,9 @@
                                         (height + margin.top + 190) + ")" )
                             .text("Protect the bees while the weather is not good, check more infomatition below.")
                             .attr("class", "p");
+            */
 
 
-
-            var getcolors = d3.scaleLinear()
-              .domain([d3.min(data1, function(d){
-                              return d.value;
-                            }), 
-                        d3.max(data1, function(d){
-                              return d.value;
-                            })])
-              .range(['#ffc371','#ff7e5f', '#ff4b1f'])
 
 
             //Create a tooltip div 
@@ -216,7 +209,7 @@
             }
             var moveTooltip = function(d) {
               tooltip
-              .html( d.value+ " % Hive loss")
+              .html( d['var1']+ " % Hive loss")
                 .style("left", (d3.event.pageX)-50 + "px")
                 .style("top", (d3.event.pageY)-120 + "px")
             }
@@ -227,30 +220,40 @@
                 .style("left", (d3.event.pageX - 1000) + "px")
             }
 
-            var dataIndex=1;
+            // A function that create / update the plot for a given variable:
+            function update(selectedVar) {
+
+              
 
             // A function that create / update the plot for a given variable:
-            function update(data) {
+            d3.csv("https://raw.githubusercontent.com/Yuzhen299/test/master/loss_hive.csv", function(data) {
 
               // Update the X axis
               x.domain(data.map(function(d) { return d.group; }))
               xAxis.call(d3.axisBottom(x))
                   .selectAll("text") 
                         .style("text-anchor",  function(d) {
-                        if (width >= 500) {return "middle"}
+                        if (width >= 500) {return "end"}
                         else 	{ return "end" }
                     ;})
                         .attr("transform",  function(d) {
-                        if (width >= 500) {return "rotate(0)"}
+                        if (width >= 500) {return "rotate(-25)"}
                         else 	{ return "rotate(-45)" }
                         ;})
                   .attr("class", "h6")
 
               // Update the Y axis
-              y.domain([0, d3.max(data, function(d) { return d.value }) ]);
+              y.domain([0, d3.max(data, function(d) { return +d[selectedVar]}) ]);
               yAxis.transition().duration(1000).call(d3.axisLeft(y)).attr("class", "h6");
 
-
+              var getcolors = d3.scaleLinear()
+              .domain([d3.max(data, function(d){
+                              return d[selectedVar];
+                            }) /3, 
+                        d3.min(data, function(d){
+                              return d[selectedVar];
+                            })*1.5])
+              .range(['#F5D0A9',"#FE9A2E"])
 
              
               // Create the u variable
@@ -267,21 +270,16 @@
                 .transition() // and apply changes to all of them
                 .duration(1000)
                   .attr("x", function(d) { return x(d.group); })
-                  .attr("y", function(d) { return y(d.value); })
+                  .attr("y", function(d) { return y(d[selectedVar]); })
                   .attr("width", x.bandwidth())
-                  .attr("height", function(d) { return height - y(d.value); })
-                  .attr("fill", function(d) { return getcolors(d.value);})
-                  .attr("summary","8888")
+                  .attr("height", function(d) { return height - y(d[selectedVar]); })
+                  .attr("fill",function(d) { return getcolors(d[selectedVar]); })
                   
-
-              // If less group in the new dataset, I delete the ones not in use anymore
-              u
-                .exit()
-                .remove()
+              })
             }
 
             // Initialize the plot with the first dataset
-            update(data1)
+            update('var1')
 
             </script>
           </div>
@@ -298,14 +296,13 @@
 
           <!-- ============================================-->
           <!-- <section> begin ============================-->
-          <section class="py-8">
-
+          <section class="py-0">
             <div class="container">
               <div class="row flex-center">
                 <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4" src="assets/img/illustrations/jobs.png" width="450" alt="" /></div>
                 <div class="col-md-5 text-center text-md-start">
-                  <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">How to take measures coping<br> with bad weathers that affect bees?</h6>
-                  <p class="my-4 pe-xl-8">We provide click and search to help you !</p>
+                  <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">The total rate of hive loss due to weather is:</br> </br>24%(hobby) </br> 30%(commercial)</h6>
+                  <p class="my-4 pe-xl-8">Protect the bees while the weather is not good, check more infomatition below!</p>
                   <div class="col-3 col-lg-4">
                     <button class="btn btn-primary rounded-start-0" onclick="location.href='index.html';">Check</button>
                   </div>
