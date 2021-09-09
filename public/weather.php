@@ -291,9 +291,9 @@ span.min-temperature {
                           $air_qi <= 2 &
                           $main_weather != "Rain" & $main_weather != "Thunderstorm" & $main_weather != "Drizzle" &
                           $humidity >= 75 &
-                          $humidity <= 75 &
+                          $humidity <= 80 &
                           $wind_speed < 5.5
-                          ){ echo $humidity;
+                          ){
                             echo "Bees are vey safe now :)";
 
                       }
