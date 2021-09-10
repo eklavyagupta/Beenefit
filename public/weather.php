@@ -243,8 +243,8 @@ span.min-temperature {
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
               <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="index.html">Home</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href="index.html">Calender</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href="weather.html">Factor</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="timeline.html">Timeline</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" href="weather.html">Discovery</a></li>
             </ul>
           </div>
         </div>
