@@ -257,6 +257,8 @@ span.min-temperature {
 
 
         <section class="py-5">
+        <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/category-bg.png);background-position:right top;background-size:200px 320px;">
+        </div>
         
         <!--/.bg-holder-->
 
