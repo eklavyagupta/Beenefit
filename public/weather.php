@@ -367,7 +367,66 @@ span.min-temperature {
           </div>
         </div>
       </section>
+      
+            <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="py-8">
+        <div class="container">
+          <div class="row flex-center">
+            <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4" src="assets/img/illustrations/feature.png" width="450" alt="" /></div>
+            <div class="col-md-5 text-center text-md-start">
+              <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Subscribe Us</h6>
+              <p class="my-4 pe-xl-8">Enter your Email and Postcode to get Latest Bee Alerts.</p>
+              <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
+                <form class="row row-cols-lg-auto g-0 align-items-center" action = "email.php"  method="POST">
+                  <div class="col-9 col-lg-8">
+                    <label class="visually-hidden" for="colFormLabel">Username</label>
+                    <div class="input-group">
+                      <input class="rounded-end-0 form-control" id="colFormLabel" type="email" name= "email" placeholder="Email" />
+                    </div>
+                    </br>
+                    <div class="input-group">
+                      <input class="rounded-end-0 form-control" id="colFormLabel" type="text" name= "postcode" placeholder="Postcode" />
+                    </div>
+                  </div>
+                  <div class="col-3 col-lg-4">
+                    <button class="btn btn-primary rounded-start-0" type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end of .container-->
+        <!-- end of .container-->
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
 
+
+      <section class="py-0 bg-primary-gradient">
+        <div class="bg-holder" style="background-image:url(assets/img/illustrations/footer-bg.png);background-position:center;background-size:cover;">
+        </div>
+        <!--/.bg-holder-->
+
+        <div class="container">
+          <div class="row flex-center py-8">
+            <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
+            </div>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-auto mb-2">
+              <p class="mb-0 fs--1 text-white my-2 text-center">&copy; This template is made with&nbsp;
+                <svg class="bi bi-suit-heart-fill" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#1F3A63" viewBox="0 0 16 16">
+                  <path d="M4 1c2.21 0 4 1.755 4 3.92C8 2.755 9.79 1 12 1s4 1.755 4 3.92c0 3.263-3.234 4.414-7.608 9.608a.513.513 0 0 1-.784 0C3.234 9.334 0 8.183 0 4.92 0 2.755 1.79 1 4 1z"></path>
+                </svg>&nbsp;by&nbsp;<a class="text-white" href="https://themewagon.com/" target="_blank">ThemeWagon </a>
+                 <div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div> 
+                <div> Presented by <a href="https://www.beenefit.studio" title="BEENEFIT">BEENEFIT</a></div>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
 
 
