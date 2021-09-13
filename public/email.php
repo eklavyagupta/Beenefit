@@ -22,10 +22,10 @@ if (strlen($postcode_input) == 4 & preg_match($regex, $email_input)){
     $la = $db->query($sql2);
 
     if ($lo->num_rows > 0 ) {
-        $sql_check = "select email,postcode from `beekeeper` where postcode = '$postcode_input' and email ='$email_input' ";
+        $sql_check = "select email from `beekeeper` where email ='$email_input' ";
         $check = $db->query($sql_check);
         if ($check->num_rows > 0 ) {
-            echo "<script>alert('You have subscribed to this postcode, try a new one!'); location.href = 'index.html#sub'</script>";
+            echo "<script>alert('You have subscribed.'); location.href = 'index.html#sub'</script>";
         }
         else {
             $sql="INSERT INTO `beekeeper` (email, postcode) VALUES ('$email_input', '$postcode_input')";
