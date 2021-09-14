@@ -284,7 +284,7 @@ span.min-temperature {
                     <div><h4>Air quality:  <?php echo $airsituation; ?></h4></div>
                 </div>
             </div>
-
+            </br>
             <div class="col-md-5 text-center text-md-start">
               <h1><b><p style="color:#ffaa00">Suggestion: </p></b></h1>
                 <h4> 
