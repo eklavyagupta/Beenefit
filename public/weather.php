@@ -275,7 +275,7 @@ span.min-temperature {
                     <h2><b><?php echo $temperature; ?>°C</b>
                     <img src="http://openweathermap.org/img/wn/<?php echo $weather_icon; ?>@4x.png" class="weather-icon" style="vertical-align:middle" /> 
                         </h2>
-                        <h2><b><?php echo $weather; ?></b></h2>
+                        <h2><b><?php echo ucwords($weather); ?></b></h2>
                 </div>
                 </br>
                 <div class="time">
@@ -284,7 +284,7 @@ span.min-temperature {
                     <div><h4>Air quality:  <?php echo $airsituation; ?></h4></div>
                 </div>
             </div>
-            </br>
+            
             <div class="col-md-5 text-center text-md-start">
               <h1><b><p style="color:#ffaa00">Suggestion: </p></b></h1>
                 <h4> 
