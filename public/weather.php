@@ -272,9 +272,9 @@ span.min-temperature {
                 </div>
                 
                 <div class="weather-forecast">
-                    <h1><?php echo $temperature; ?>°C</h1>
                     <img
-                        src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>@2x.png" class="weather-icon" /> 
+                        src="http://openweathermap.org/img/wd/<?php echo $weather_icon; ?>@2x.png" class="weather-icon" style="vertical-align:middle" /> 
+                        <h1><?php echo $temperature; ?>°C</h1>
                         <span class="min-temperature"><h3><?php echo $weather; ?></h3></span>
                 </div>
                 </br>
@@ -286,7 +286,7 @@ span.min-temperature {
             </div>
 
             <div class="col-md-5 text-center text-md-start">
-              <h1><strong><i><p style="color:#ffaa00">Suggestion: </p></i></strong></h1>
+              <h1><b><p style="color:#ffaa00">Suggestion: </p></b></h1>
                 <h4> 
                   <?php
                       if ($temperature > 10 & 
