@@ -286,7 +286,7 @@ span.min-temperature {
             </div>
 
             <div class="col-md-5 text-center text-md-start">
-              <h1><b>Suggestion: </b></h1>
+              <h1><b><i style="color:#ffaa00">Suggestion: </i></b></h1>
                 <h4> 
                   <?php
                       if ($temperature > 10 & 
