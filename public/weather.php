@@ -210,10 +210,6 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
     margin: 20px 0px;
 }
 
-span.min-temperature {
-    margin-left: 15px;
-    color: #929292;
-}
 
 .time {
     line-height: 25px;
