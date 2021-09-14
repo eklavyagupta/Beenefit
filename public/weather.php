@@ -200,7 +200,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
 
 .weather-icon {
     
-    margin-left: 20px;
+    margin-left: 120px;
 }
 
 .weather-forecast {
