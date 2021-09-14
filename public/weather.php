@@ -388,7 +388,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
                       <input class="rounded-end-0 form-control" id="colFormLabel" type="text" name= "postcode" placeholder="Postcode" />
                     </div>
                   </div>
-                  <div class="col-3 col-lg-4" style = "padding-left:30px">
+                  <div class="col-3 col-lg-4" style = "padding-right:100px; padding-top:20px" >
                     <button class="btn btn-primary rounded-start-0" type="submit">Submit</button>
                   </div>
                 </form>
