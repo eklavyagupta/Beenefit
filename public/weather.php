@@ -200,7 +200,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
 
 .weather-icon {
     
-    margin-left: 120px;
+    margin-right: 120px;
 }
 
 .weather-forecast {
@@ -274,7 +274,7 @@ span.min-temperature {
                 <div class="weather-forecast">
                     <p>
                     <img src="http://openweathermap.org/img/wn/<?php echo $weather_icon; ?>@4x.png" class="weather-icon" style="vertical-align:middle" /> 
-                        <?php echo $temperature; ?>°C</p>
+                        <h1><?php echo $temperature; ?>°C<</h1>/p>
                         <span class="min-temperature"><h3><?php echo $weather; ?></h3></span>
                 </div>
                 </br>
