@@ -266,11 +266,11 @@ span.min-temperature {
           <div class="row flex-center">
 
             <div class="col-md-5 order-md-0 text-center text-md-start">
-              <h1><?php echo $suburb; ?></h1>
-                <h1><?php echo $temperature; ?>°C</h1>
-                <div class="time">
+              <h1><b><?php echo $suburb; ?></b></h1>
+              <div class="time">
                   <div><h3><?php echo  $dateInLocal; ?></h3></div>
                 </div>
+                <h1><?php echo $temperature; ?>°C</h1>
                 <div class="weather-forecast">
                     <img
                         src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>.png"
