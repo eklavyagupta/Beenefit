@@ -273,7 +273,7 @@ span.min-temperature {
                 <h1><?php echo $temperature; ?>°C</h1>
                 <div class="weather-forecast">
                     <img
-                        src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>@2x.png"
+                        src="http://openweathermap.org/img/w/<?php echo $weather_icon; ?>2x.png"
                         class="weather-icon" /> <span
                         class="min-temperature"><h3><?php echo $weather; ?></h3></span>
                 </div>
