@@ -172,7 +172,7 @@
             // A function that create / update the plot for a given variable:
             function update(selectedVar) {
 
-              d3.csv("https://raw.githubusercontent.com/Yuzhen299/test/master/loss_hive.csv", function(d) {
+              d3.csv("loss_hive.csv", function(d) {
                 return {
                   group: d.group, 
                   var: d[selectedVar] 
