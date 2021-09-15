@@ -95,6 +95,7 @@
 
             <script>
 
+
             // create 2 data_set
             var data1 = [
               {group: "pests/diseases ", value: 24},
@@ -227,7 +228,7 @@
               
 
             // A function that create / update the plot for a given variable:
-            d3.csv("https://raw.githubusercontent.com/Yuzhen299/test/master/loss_hive.csv", function(data) {
+            d3.csv("loss_hive.csv", function(data) {
 
               // Update the X axis
               x.domain(data.map(function(d) { return d.group; }))
