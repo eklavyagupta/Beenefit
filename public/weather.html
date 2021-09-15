@@ -95,27 +95,6 @@
 
             <script>
 
-
-            // create 2 data_set
-            var data1 = [
-              {group: "pests/diseases ", value: 24},
-              {group: "queen loss ", value: 19},
-              {group: "overwintering ", value: 12},
-              {group: "extreme weather ", value: 12},
-              {group: "starvation ", value: 16},
-              {group: "others ", value: 17},
-            ];
-
-            var data2 = [
-              {group: "pests/diseases ", value: 20},
-              {group: "queen loss ", value: 19},
-              {group: "overwintering ", value: 17},
-              {group: "extreme weather ", value: 13},
-              {group: "agricultural chemicals ", value: 11},
-              {group: "theft/vandalism ", value: 3},
-              {group: "others ", value: 17}
-            ];
-
             // set the dimensions and margins of the graph
             var margin = {top: 30, right: 50, bottom: 180, left: 80},
                 width = d3.select('#barchart').node().getBoundingClientRect().width - margin.left - margin.right,
@@ -166,16 +145,7 @@
               .text("Hive loss rate (%) ");
 
 
-            /*          
-            var summary = d3.select("#barchart")
-                            .append("p")
-                            .style("text-anchor", "middle")
-                            .attr("transform", "translate(" + (width/2) + " ," + 
-                                        (height + margin.top + 70) + ")" )
-                            .data(data1)
-                            .text("The rate of hive loss due to weather is: 24%(hobby), 30%(commercial)") 
-                            .attr("class", "h3");
-            */
+
             var summary2 = d3.select("#barchart")
                             .append("p")
                             .style("text-anchor", "end")
@@ -184,8 +154,6 @@
                             .text("Hint: Put mouse on the bar chart, you can check the specific probability!")
                             .attr("class", "p");
             
-
-
 
 
             //Create a tooltip div 
@@ -201,36 +169,17 @@
                   .style("font-size","15px")
 
 
-            //Create functions to show tooltip
-            var showTooltip = function(d) {
-              tooltip
-                .transition()
-                .duration(100)
-                .style("opacity", 0.75)
-                
-            }
-            var moveTooltip = function(d) {
-              tooltip
-              .html( d['var1']+ " % Hive loss")
-                .style("left", (d3.event.pageX)-50 + "px")
-                .style("top", (d3.event.pageY)-120 + "px")
-            }
-            var hideTooltip = function(d) {
-              tooltip
-                .style("opacity", 0)
-                .style("top", (d3.event.pageY - 800) + "px")   
-                .style("left", (d3.event.pageX - 1000) + "px")
-            }
-
             // A function that create / update the plot for a given variable:
             function update(selectedVar) {
 
-              
+              d3.csv("https://raw.githubusercontent.com/Yuzhen299/test/master/loss_hive.csv", function(d) {
+                return {
+                  group: d.group, 
+                  var: d[selectedVar] 
+                };
+              }, function(data) {
 
-            // A function that create / update the plot for a given variable:
-            d3.csv("loss_hive.csv", function(data) {
-
-              // Update the X axis
+                  // Update the X axis
               x.domain(data.map(function(d) { return d.group; }))
               xAxis.call(d3.axisBottom(x))
                   .selectAll("text") 
@@ -245,19 +194,42 @@
                   .attr("class", "h6")
 
               // Update the Y axis
-              y.domain([0, d3.max(data, function(d) { return +d[selectedVar]}) ]);
+              y.domain([0, d3.max(data, function(d) { return +d.var}) ]);
               yAxis.transition().duration(1000).call(d3.axisLeft(y)).attr("class", "h6");
 
               var getcolors = d3.scaleLinear()
               .domain([d3.max(data, function(d){
-                              return d[selectedVar];
+                              return d.var;
                             }) /3, 
                         d3.min(data, function(d){
-                              return d[selectedVar];
+                              return d.var;
                             })*1.5])
               .range(['#F5D0A9',"#FE9A2E"])
 
-             
+                          //Create functions to show tooltip
+              var showTooltip = function(d) {
+              tooltip
+                .transition()
+                .duration(100)
+                .style("opacity", 0.75)
+                
+              }
+              var moveTooltip = function(d) {
+              tooltip
+              .html( d.var+ " % Hive loss")
+                .style("left", (d3.event.pageX)-50 + "px")
+                .style("top", (d3.event.pageY)-120 + "px")
+
+              }
+
+
+              var hideTooltip = function(d) {
+              tooltip
+                .style("opacity", 0)
+                .style("top", (d3.event.pageY - 800) + "px")   
+                .style("left", (d3.event.pageX - 1000) + "px")
+              }
+
               // Create the u variable
               var u = svg.selectAll("rect")
                 .data(data)
@@ -272,13 +244,17 @@
                 .transition() // and apply changes to all of them
                 .duration(1000)
                   .attr("x", function(d) { return x(d.group); })
-                  .attr("y", function(d) { return y(d[selectedVar]); })
+                  .attr("y", function(d) { return y(d.var); })
                   .attr("width", x.bandwidth())
-                  .attr("height", function(d) { return height - y(d[selectedVar]); })
-                  .attr("fill",function(d) { return getcolors(d[selectedVar]); })
-                  
-              })
-            }
+                  .attr("height", function(d) { return height - y(d.var); })
+                  .attr("fill",function(d) { return getcolors(d.var); })
+              u
+                .exit()
+                .remove()   
+
+
+              });
+                          }
 
             // Initialize the plot with the first dataset
             update('var1')
