@@ -4672,7 +4672,7 @@ fieldset:disabled .btn {
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
   border-color: #EBEBED #EBEBED #E1E0E4;
   isolation: isolate;
-  background-color: #F8b500;
+
 }
 
 .nav-tabs .nav-link.disabled {
@@ -4684,7 +4684,7 @@ fieldset:disabled .btn {
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
   color: #7D7987;
-  background-color: #F8b500;
+
   border-color: #E1E0E4 #E1E0E4 #fff;
 }
 
@@ -4782,7 +4782,7 @@ fieldset:disabled .btn {
 
 .navbar-brand:hover, .navbar-brand:focus {
   text-decoration: none;
-  background-color: #F8b500;
+  
 }
 
 .navbar-nav {
@@ -4847,7 +4847,7 @@ fieldset:disabled .btn {
 
 .navbar-toggler:hover {
   text-decoration: none;
-  background-color: #F8b500;
+ 
 }
 
 .navbar-toggler:focus {
@@ -4855,7 +4855,7 @@ fieldset:disabled .btn {
   outline: 0;
   -webkit-box-shadow: 0 0 0 0;
   box-shadow: 0 0 0 0;
-  background-color: #F8b500;
+
 }
 
 .navbar-toggler-icon {
@@ -5099,7 +5099,7 @@ fieldset:disabled .btn {
 
 .navbar-light .navbar-brand:hover, .navbar-light .navbar-brand:focus {
   color: #1F1534;
-  background-color: #F8b500;
+
 }
 
 .navbar-light .navbar-nav .nav-link {
@@ -5108,7 +5108,7 @@ fieldset:disabled .btn {
 
 .navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:focus {
   color: rgba(0, 0, 0, 0.95);
-  background-color: #F8b500;
+  
 }
 
 .navbar-light .navbar-nav .nav-link.disabled {
@@ -5137,7 +5137,7 @@ fieldset:disabled .btn {
 .navbar-light .navbar-text a:hover,
 .navbar-light .navbar-text a:focus {
   color: #1F1534;
-  background-color: #F8b500;
+
 }
 
 .navbar-dark .navbar-brand {
@@ -5146,7 +5146,7 @@ fieldset:disabled .btn {
 
 .navbar-dark .navbar-brand:hover, .navbar-dark .navbar-brand:focus {
   color: #fff;
-  background-color: #F8b500;
+
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -5155,7 +5155,7 @@ fieldset:disabled .btn {
 
 .navbar-dark .navbar-nav .nav-link:hover, .navbar-dark .navbar-nav .nav-link:focus {
   color: rgba(255, 255, 255, 0.9);
-  background-color: #F8b500;
+ 
 }
 
 .navbar-dark .navbar-nav .nav-link.disabled {
@@ -5184,7 +5184,7 @@ fieldset:disabled .btn {
 .navbar-dark .navbar-text a:hover,
 .navbar-dark .navbar-text a:focus {
   color: #fff;
-  background-color: #F8b500;
+
 }
 
 .card {
