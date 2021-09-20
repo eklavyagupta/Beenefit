@@ -293,24 +293,35 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
                           $humidity <= 80 &
                           $wind_speed < 5.5
                           ){
-                            echo "Bees are vey safe now :)";
+                            echo "Your bees are in good condition, just a reminder: Please remember to refill the water feeder for your bees : )";
 
                       }
                       else {
                         if ($temperature <= 10) {
-                          echo"· Build hives in almond plantations where temperatures are warmer"."<br>".
-                        "· Add a little insulation to the outside of their hives"."<br>".
+                          echo"· Close off the screened-bottom board when the hive in open plains "."<br>".
+                        "· Provide a little insulation to the outside of their hives if possible: like terrarium heaters"."<br>".
                         "· Make sure there aren't drafty holes in their equipment that let cold air or, worse, water in."."<br>".
-                        "· Hives are distributed evenly throughout the orchard individually"."<br>";
-                          
-                        } 
+                        "· Hives are distributed evenly throughout the orchard individually"."<br>t";
+                        }
+
+                        elseif ($temperature > 10 & $temperature < 30 ){
+                          echo 
+                          " Your bees are happy with current temperature. reminders: to refill the water feeder three times a week"."<br>";
+                        }
+                        
   
                         elseif ($temperature > 35 & $temperature < 37){
-                          echo "·Don’t open hive lip to do hive management"."<br>".
-                          "· Spraying water on the external walls of the hive"."<br>";
+                          echo "·Hive inspection should be postponed during extreme hot days"."<br>".
+                          " ·Provide broken shade over the hives(note that avoid total shade for the whole day"."<br>".
+                          " ·Ideally clean all the imflammable materials like grass and leaves around the hives"."<br>".
+                          "·Spraying water on the external walls of the hive"."<br>";
                         }
                         elseif ($temperature > 37 ){
-                          echo "· Hive construction with adequate air circulation"."<br>";
+                          echo "·Hive inspection should be postponed during extreme hot days"."<br>".
+                          " ·Place a spare hive cover on top of the hive cover (a sheet of hardboard or a car windscreen heat shield can be used for shading of side of the hive)"."<br>".
+                          " ·Place bricks under the hives so the hives is around 150 mm from the ground"."<br>".
+                          " ·Spraying water on the external walls of the hive"."<br>".
+                          " ·Recommended to refill the water feeder on a daily base"."<br>";
                         }
                         
   
@@ -321,7 +332,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
   
   
                         if ($air_qi >= 3) {
-                          echo"· Move the hive inside."."<br>";
+                          echo"· Put a net cover on top if possible."."<br>";
                           
                         } 
   
@@ -343,7 +354,8 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
   
   
                         if ($humidity >80 |$humidity<75) {
-                          echo"· keep 75%-80% humidity in winter"."<br>";
+                          echo " ·Forego upper ventilation or quilts and simply place a thick sheet of nonporous insulation (e.g. 2″-4″ thick styrofoam) above the inner cover"."<br>".
+                          " ·Or rear shim tilting the hive forward about 3 degrees"."<br>";
                           
                         }
   
