@@ -86,13 +86,14 @@
               .btn:focus {background-color: #ec9a41;
                           border-width:3px}
               
-              </style>
+            </style>
               
             <!-- Create a div where the graph will take place -->
             <div id="barchart" class="col-12 text-center"></div>
             <div id="describe" class="col-12 text-center"></div>
 
 
+            <!-- draw the interative bar chart -->
             <script>
 
             // set the dimensions and margins of the graph
@@ -120,6 +121,7 @@
               svg.append("text")             
                   .attr("transform",
                   function(d) {
+                    // add the condition for mobile version
                         if (width >= 500) {return "translate(" + (width/2) + " ," + 
                                         (height + margin.top + 80) + ")" }
                         else 	{ return "translate(" + (width/2) + " ," + 
@@ -144,8 +146,10 @@
               .attr("class", "h5")
               .text("Hive loss rate (%) ");
 
+            
 
 
+            // add a hint
             var summary2 = d3.select("#barchart")
                             .append("p")
                             .style("text-anchor", "end")
@@ -171,42 +175,47 @@
 
             // A function that create / update the plot for a given variable:
             function update(selectedVar) {
-
+              // read csv
               d3.csv("loss_hive.csv", function(d) {
                 return {
+                  // only get value based on the clicked button
                   group: d.group, 
                   var: d[selectedVar] 
                 };
               }, function(data) {
 
                   // Update the X axis
-              x.domain(data.map(function(d) { return d.group; }))
-              xAxis.call(d3.axisBottom(x))
-                  .selectAll("text") 
-                        .style("text-anchor",  function(d) {
-                        if (width >= 500) {return "end"}
-                        else 	{ return "end" }
-                    ;})
-                        .attr("transform",  function(d) {
-                        if (width >= 500) {return "rotate(-25)"}
-                        else 	{ return "rotate(-45)" }
-                        ;})
-                  .attr("class", "h6")
+                x.domain(data.map(function(d) { return d.group; }))
+                xAxis.call(d3.axisBottom(x))
+                    .selectAll("text") 
+                          // update the angle of the x-axis text
+                          .style("text-anchor",  function(d) {
+                          if (width >= 500) {return "end"}
+                          else 	{ return "end" }
+                      ;})
+                          .attr("transform",  function(d) {
+                          if (width >= 500) {return "rotate(-25)"}
+                          else 	{ return "rotate(-45)" }
+                          ;})
+                    .attr("class", "h6")
 
-              // Update the Y axis
-              y.domain([0, d3.max(data, function(d) { return +d.var}) ]);
-              yAxis.transition().duration(1000).call(d3.axisLeft(y)).attr("class", "h6");
 
-              var getcolors = d3.scaleLinear()
-              .domain([d3.max(data, function(d){
-                              return d.var;
-                            }) /3, 
-                        d3.min(data, function(d){
-                              return d.var;
-                            })*1.5])
-              .range(['#F5D0A9',"#FE9A2E"])
 
-                          //Create functions to show tooltip
+                // Update the Y axis
+                y.domain([0, d3.max(data, function(d) { return +d.var}) ]);
+                yAxis.transition().duration(1000).call(d3.axisLeft(y)).attr("class", "h6");
+                
+                // create a function to get color based on value
+                var getcolors = d3.scaleLinear()
+                .domain([d3.max(data, function(d){
+                                return d.var;
+                              }) /3, 
+                          d3.min(data, function(d){
+                                return d.var;
+                              })*1.5])
+                .range(['#F5D0A9',"#FE9A2E"])
+
+              //Create functions to show tooltip
               var showTooltip = function(d) {
               tooltip
                 .transition()
@@ -214,6 +223,7 @@
                 .style("opacity", 0.75)
                 
               }
+              //Create functions to show tooltip while move the mouse
               var moveTooltip = function(d) {
               tooltip
               .html( d.var+ " % Hive loss")
@@ -221,8 +231,7 @@
                 .style("top", (d3.event.pageY)-120 + "px")
 
               }
-
-
+              //Create functions to hide tooltip while mouse is left
               var hideTooltip = function(d) {
               tooltip
                 .style("opacity", 0)
@@ -230,10 +239,11 @@
                 .style("left", (d3.event.pageX - 1000) + "px")
               }
 
-              // Create the u variable
+              // Create the u variable to draw the bar
               var u = svg.selectAll("rect")
                 .data(data)
-
+              
+              // update the param of bar chart
               u
                 .enter()
                 .append("rect") // Add a new rect for each new elements
@@ -279,8 +289,8 @@
               <div class="row flex-center">
                 <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4" src="assets/img/illustrations/jobs.png" width="450" alt="" /></div>
                 <div class="col-md-5 text-center text-md-start">
-                  <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">The total rate of hive loss due to weather is:</br> </br>24%(hobby) </br> 30%(commercial)</h6>
-                  <p class="my-4 pe-xl-8">Protect the bees while the weather is not good, check more information below!</p>
+                  <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">24% hobby beekeepers lost hive due to weather, </br> 30% for commercial beekeepers.</h6>
+                  <p class="my-4 pe-xl-8">Want to protect the bees while the weather is not good? click botton below!</p>
                   <div class="col-3 col-lg-4">
                     <button class="btn btn-primary rounded-start-0" onclick="location.href='index.html';">Check</button>
                   </div>
@@ -315,6 +325,7 @@
                 <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Subscribe Us</h6>
                 <p class="my-4 pe-xl-8">Enter your Email and Postcode to get Latest Bee Alerts.</p>
                 <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
+                  <!-- the get the input for Subscribe-->
                   <form class="row row-cols-lg-auto g-0 align-items-center" action = "email.php"  method="POST">
                     <div class="col-9 col-lg-8">
                       <label class="visually-hidden" for="colFormLabel">Username</label>
@@ -355,6 +366,7 @@
             <div class="col-auto mb-2">
               <p class="mb-0 fs--1 my-2 text-center">Icons made by<a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
               <p class="mb-0 fs--1 my-2 text-center">Presented by <a href="https://www.beenefit.studio" title="BEENEFIT">BEENEFIT</a></p>
+              <!--citiation for data-->
               <p class="mb-0 fs--1 my-2 text-center">Data From <a href="https://beeaware.org.au/wp-content/uploads/2021/01/2019-Honey-Bee-Health-Survey-Report.pdf" title="Data">Survey 2019</a></p>
             </div>
           </div>
