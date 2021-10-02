@@ -228,6 +228,25 @@
           opacity:1;
         }
       }
+            
+
+        .drop-down__button{
+          display: inline-block;
+          height: 40px;
+          width: 190px;
+          border-radius: 6px;
+          border-width: 2px;
+          border-color: #f78604d5;
+          margin-bottom: 15px;
+          text-align: center;
+
+
+        }
+
+
+
+
+
        
           </style>
     
@@ -367,56 +386,78 @@
                     <div class="section-content strategy">
                       <h2>HIVE DENSITY CHECK SECTION</h2>
                       <p>If density of hives meets the requirements, you can start beekeeping on Victorian land without a planning permit.</p>
-                      <p>Urban areas:</p>
-                      
-                      <table class="table">
-                        <thead>
-                          <tr>
-                          <th>Tenement size</th>
-                          <th>Max No. of hives</th>
-                          </tr> 
-                        </thead>
-                        <tbody>
-                          <tr>
-                          <td>500 &#13217; or less</td>
-                          <td>1</td>
-                  
-                          </tr>
-                          <tr>
-                          <td>501 &#13217; to 1000 &#13217;</td>
-                          <td>2</td>
-                  
-                          </tr> 
-                          <tr>
-                          <td>1001 &#13217; to 2000 &#13217;</td>
-                          <td>5</td>
-                  
-                          </tr> 
-                          <tr>
-                          <td>2001 &#13217; to less than 4000 &#13217;</td>
-                          <td>10</td>
-                  
-                          </tr>
-                          <tr>
-                          <td>4000 &#13217; to less than 1ha</td>
-                          <td>60</td>
-                  
-                          </tr>
-                          <tr>
-                          <td>1 ha to 2 ha</td>
-                          <td>100</td>
-                  
-                          </tr>
-                          <tr>
-                          <td>Larger than 2 ha</td>
-                          <td>No limit</td>
-                  
-                          </tr>
-                          
-                        </tbody>
-                        </table>
-                  
-                      <p>Urban areas: </p>
+                      <h2>1. Urban areas:</h2>
+                      <p>Select the land size which you are prepare for beekeeing:</p>
+                      <div id="option">
+                        <script src="https://d3js.org/d3.v4.js"></script>
+                            <script type="text/javascript">
+
+                        window.onload = function()
+                            {
+                              // read csv
+                            d3.csv("land_size.csv",
+
+                                function(d) {
+                                    return {
+                                      // save value
+                                        size: d.size,
+                                        no_hives: d.no_hives
+                                    };  
+                                },      
+                                function(data) {
+                                    // run the function to store value from csv
+                                    populate_Combo(data)
+                                    
+                                });
+                            }
+
+                            function populate_Combo(data) {
+                              // create two empty array
+                              // example_list store the result
+                              // example_text store the text which shows on the dropdown
+                                var example_list= {};
+                                var example_text= {};
+
+                                for (i=0;i<data.length; i++ ) { 
+                                    example_list[i]=data[i].no_hives;
+                                    example_text[i]=data[i].size;
+                                }
+
+                                // find the input
+                                var select  = document.getElementById("exampleList")
+
+                                for (i=0; i < data.length; i++ ) {
+                                    // create option for values of each row
+                                    var el = document.createElement("option");
+                                    var temp=example_text[i]
+                                    el.textContent = temp;
+                                    el.value =example_list[i];
+                                    // combine the option
+                                    select.appendChild(el);
+                                }
+                            }
+
+                            function combo_change(thelist) {
+                                // get the input
+                                var idx_1 = thelist.selectedIndex;
+                                // update the text 
+                                // find value based on index
+                                var res = d3.select('#text')
+                                                .transition().duration(1000)
+                                res
+                                .text('The maximum number of hives you can have is:  '+' '+ thelist.options[idx_1].value)
+                            }
+
+                        </script>
+
+                        <form >
+                        <select class="drop-down__button" name="example_select" id="exampleList" onChange="combo_change(this)">
+                        </select> 
+                        </form>
+                        <h5 id = 'text'>The maximum number of hives you can have is: 1 </h5>
+                      </div>
+                      <p> </p>
+                      <h2>2. Urban areas: </h2>
                       <p>no planning permit is required.</p>
                       <p>See more details at <a href="https://vgls.sdp.sirsidynix.net.au/client/search/asset/1145118" target="_blank">APIARYCODE OF PRACTICE</a>
                       </p>  

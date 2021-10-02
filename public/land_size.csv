@@ -1,0 +1,8 @@
+size,no_hives
+500 ㎡ or less,1
+501 ㎡ to 1000 ㎡,2
+1001 ㎡ to 2000 ㎡,5
+2001 ㎡ to 4000 ㎡,10
+4000 ㎡ to 1ha,60
+1 ha to 2 ha,100
+Larger than 2 ha,No limit
