@@ -1,5 +1,11 @@
+
+    <!-- ===============================================-->
+    <!-- PHP START -->
+    <!-- ===============================================-->
+
 <?php
 
+// login database info
 $user ="azure";
 $pass ='6#vWHD_$';
 $db ="localdb";
@@ -8,11 +14,13 @@ $db =new mysqli('127.0.0.1:50190', $user, $pass, $db) or die ("Unable to connect
 
 
 
-
+// get value from input
 $search_value=$_POST["search"];
 
-
+// check the correct postcode or not
 if (strlen($search_value) == 4){
+
+  // sql query to get value
 $sql1= "select longitude from `postcodes` where postcode = '$search_value'";
 
 $lo = $db->query($sql1);
@@ -21,26 +29,26 @@ $sql2= "select lat from `postcodes` where postcode = '$search_value'";
 
 $la = $db->query($sql2);
 
+// get fetched value if postcode is avalible
 if ($lo->num_rows > 0 ) {
   // output data of each row
   while($row1 = $lo->fetch_assoc()) {
     $new_long =  $row1["longitude"];
-   // echo  " - long: " . $row1["longitude"]. "<br>";
+  
   }
     // output data of each row
   while($row = $la->fetch_assoc()) {
     $new_lat =  $row["lat"];
-   // echo  " - lat: " . $row["lat"]. "<br>";
+   
   }
 
 
 
-
+// set api link
 $SuburbApi = 'http://api.openweathermap.org/geo/1.0/zip?zip='.$search_value.',au&appid=f8602df67c495efda45f5097b5244ba6';
 
-
+// call api
 $ch = curl_init();
-
 curl_setopt($ch, CURLOPT_HEADER, 0);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_URL, $SuburbApi);
@@ -50,8 +58,8 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $sub_response = curl_exec($ch);
 
 curl_close($ch);
+// store into variables
 $Sub_data = json_decode($sub_response);
-
 $postcode = $Sub_data ->zip;
 $suburb = $Sub_data ->name;
 
@@ -60,9 +68,10 @@ $suburb = $Sub_data ->name;
 
 
 
-
+// set api link
 $ApiUrl ='https://api.openweathermap.org/data/2.5/onecall?lat='.$new_lat.'&lon='.$new_long.'&exclude=minutely,hourly,daily,alerts&appid=f8602df67c495efda45f5097b5244ba6&units=metric';
 
+// call api
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -74,10 +83,12 @@ curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $response = curl_exec($ch);
 
 curl_close($ch);
+
+
+// store into variables
 $data = json_decode($response);
 
 
-//echo '<br>';
 $Time = $data ->current ->dt;
 $temperature = $data ->current ->temp;
 $humidity = $data -> current ->humidity;
@@ -87,16 +98,11 @@ $main_weather = $data ->current ->weather[0]->main;
 $dateInLocal = date("Y-m-d", $Time);
 $weather_icon =$data ->current ->weather[0]->icon;
 
-/*
-echo 'Time: '.$dateInLocal. "<br>";
-echo 'temperature: '.$temperature.'°C'. "<br>";
-echo 'humidity: '.$humidity.'%'. "<br>"; 
-echo 'wind speed: '.$wind_speed.' m/s'. "<br>";
-echo 'weather: '.$weather. "<br>";
-*/
 
+// set api link
 $air_api = 'http://api.openweathermap.org/data/2.5/air_pollution?lat='.$new_lat.'&lon='.$new_long.'&appid=f8602df67c495efda45f5097b5244ba6';
 
+// call api
 $ch = curl_init();
 
 curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -106,11 +112,12 @@ curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 curl_setopt($ch, CURLOPT_VERBOSE, 0);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 $air_response = curl_exec($ch);
-
+// store into variables
 curl_close($ch);
 $air_data = json_decode($air_response);
 $air_qi = $air_data ->list[0] ->main ->aqi;
 
+// match number into air quality description
 if($air_qi == 1){
   $airsituation = "Good";
 }
@@ -137,21 +144,30 @@ if($air_qi == 5){
 
 } 
 
-
+// pop alert for wrong postcode
 else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'</script>";
 }
 
 
 }
+// pop alert for wrong postcode
 else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'</script>";
 }
-
 
 
 
 ?> 
 
 
+<!-- ===============================================-->
+<!-- PHP END -->
+<!-- ===============================================-->
+
+
+
+<!-- ===============================================-->
+<!-- HTML START -->
+<!-- ===============================================-->
 
 
 
@@ -251,7 +267,6 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
 
 
 
-
         <section class="py-5">
         <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/category-bg.png);background-position:right top;background-size:200px 320px;">
         </div>
@@ -262,19 +277,24 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
           <div class="row flex-center">
 
             <div class="col-md-5 order-md-0 text-center text-md-start">
+              <!-- print suburb-->
               <h1><b><?php echo $suburb; ?></b></h1>
               <div class="time">
+                  <!-- print date -->
                   <div><h3><?php echo  $dateInLocal; ?></h3></div>
                 </div>
                 
                 <div class="weather-forecast">
+                    <!-- print temperature -->
                     <h2><b><?php echo $temperature; ?>°C</b>
+                    <!-- get the weather icon by calling api -->
                     <img src="http://openweathermap.org/img/wn/<?php echo $weather_icon; ?>@4x.png" class="weather-icon" style="vertical-align:middle" /> 
                         </h2>
                         <h2><b><?php echo ucwords($weather); ?></b></h2>
                 </div>
                 </br>
                 <div class="time">
+                    <!-- print humidity, wind_speed, air quality-->
                     <div><h4>Humidity: <?php echo $humidity; ?> %</h4></div>
                     <div><h4>Wind: <?php echo $wind_speed; ?> m/s</h4></div>
                     <div><h4>Air quality:  <?php echo $airsituation; ?></h4></div>
@@ -285,7 +305,9 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
               <h1><b><p style="color:#ffaa00">Suggestion: </p></b></h1>
                 <h4> 
                   <?php
-                      if ($temperature > 10 & 
+                      // print the suggestion if there is no harmful weather for beekeeping
+                      if (
+                        $temperature > 10 & 
                           $temperature <= 35 &
                           $air_qi <= 2 &
                           $main_weather != "Rain" & $main_weather != "Thunderstorm" & $main_weather != "Drizzle" &
@@ -296,6 +318,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
                             echo "Your bees are in good condition, just a reminder: Please remember to refill the water feeder for your bees : )";
 
                       }
+                      // print the suggestion based on different weather situation
                       else {
                         if ($temperature <= 10) {
                           echo"· Close off the screened-bottom board when the hive in open plains "."<br>".
@@ -438,12 +461,6 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
 
 
 
-    
-
-
-
-
-
 
     </main>
 <!-- DOCUMENT WRAPPER ENDS -->
@@ -459,3 +476,9 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
 </body>
 
 </html>
+
+
+<!-- ===============================================-->
+<!-- HTML EMD -->
+<!-- ===============================================-->
+
