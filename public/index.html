@@ -37,29 +37,7 @@
         font-family: 'Roboto Condensed', sans-serif;
       }
       
-      .table {
-        width: 50%;
-        border-collapse: collapse;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      
-      .table td,
-      .table th {
-        padding: 12px 15px;
-        border: 1px solid #ddd;
-        text-align: center;
-        font-size: 16px;
-      }
-      
-      .table th {
-        background-color: #ee9541be;
-        color: #ffffff;
-      }
-      
-      .table tbody tr:nth-child(even) {
-        background-color: #f5e7d1f6;
-      }
+
       
       /* --- Start progress bar --- */
       
@@ -121,30 +99,32 @@
       }
       
       #progress-bar-container li .step-inner {
-        position:absolute;
+        margin-top: 10px;
+        position:relative;
         width:100%;
         bottom:0;
-          font-size: 14px;
+        font-size: 1.3vw;
       }
       
       #progress-bar-container li.active, #progress-bar-container li:hover {
         color:#444;
       }
-      
+      /*
       #progress-bar-container li:after {
         content:" ";
         display:block;
         width:6px;
         height:6px;
         background:#777;
-        margin:auto;
+        margin-left:auto;
+        margin-right:auto;
         border:solid 7px #fff;
         border-radius:50%;
-        margin-top:40px;
+        margin-top:30%;
         box-shadow:0 2px 13px -1px rgba(0,0,0,0.3);
         transition:all ease 0.2s;
            
-      }
+      }*/
       
       #progress-bar-container li:hover:after {
         background:#555;
@@ -156,7 +136,8 @@
       
       #progress-bar-container #line {
         width:80%;
-        margin:auto;
+        margin-top:1%;
+        margin-bottom:5%;
         background: #eee;
         height:6px;
         position:absolute;
@@ -354,10 +335,10 @@
                     <!-- progress bar title -->
                   <div id="progress-bar-container">
                     <ul>
-                      <li class="step step01 active"><div class="step-inner">1.Registration Link</div></li>
+                      <li class="step step01 active"><div class="step-inner">1.Register link</div></li>
                       <li class="step step02"><div class="step-inner">2.Permit Check</div></li>
                       <li class="step step03"><div class="step-inner">3.OBTAIN BEES</div></li>
-                      <li class="step step04"><div class="step-inner">4.Equipment Purchase</div></li>
+                      <li class="step step04"><div class="step-inner">4.Equipment </div></li>
                       <li class="step step05"><div class="step-inner">5.Know more </div></li>
                     </ul>
                     
