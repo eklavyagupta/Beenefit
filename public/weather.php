@@ -277,13 +277,6 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
           <div class="row flex-center">
 
             <div class="col-md-5 order-md-0 text-center text-md-start">
-              <!-- print suburb-->
-              <h3><b><?php echo $suburb; ?></b></h3>
-              <div class="time">
-                  <!-- print date -->
-                  <div><h3><?php echo  $dateInLocal; ?></h3></div>
-                </div>
-                
                 <div class="weather-forecast">
                     <!-- print temperature -->
                     <h2><b><?php echo $temperature; ?>°C</b>
@@ -292,6 +285,12 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
                         </h2>
                         <h2><b><?php echo ucwords($weather); ?></b></h2>
                 </div>
+                <!-- print suburb-->
+                <h3><b><?php echo $suburb; ?></b></h3>
+                <div class="time">
+                    <!-- print date -->
+                    <div><h3><?php echo  $dateInLocal; ?></h3></div>
+                  </div>
                 </br>
                 <div class="time">
                     <!-- print humidity, wind_speed, air quality-->
