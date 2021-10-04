@@ -1,11 +1,12 @@
 <?php
-
+// login info
 $user ="azure";
 $pass ='6#vWHD_$';
 $db ="localdb";
 
 $db =new mysqli('127.0.0.1:50190', $user, $pass, $db) or die ("Unable to connect");
 
+//
 $weather_check= mysqli_query($db,"select lat, longitude from `beekeeper`b,`postcodes`p where p.postcode = b.postcode");
 
 while($row = mysqli_fetch_array($weather_check)) {
@@ -37,6 +38,8 @@ foreach( $lat_list as $index => $lat ) {
     
     $Time = $data ->daily[1] ->dt;
     $dateInLocal = date("Y-m-d", $Time);
+    $main_weather_id = $data ->current ->weather[0]->id;
+    $main_weather = $data ->current ->weather[0]->main;
     $min_temp = $data ->daily[1] ->temp->min;
     $max_temp = $data ->daily[1] ->temp->max;
 
@@ -59,26 +62,35 @@ foreach( $lat_list as $index => $lat ) {
         $update_temp = $db->query($get_temp);
 
     }
+    if ($main_weather_id >= 502 | $main_weather_id <= 512) {
+        $set_rain = " update  `beekeeper` 
+        set      Rain = Y 
+        where  postcode = '$bad_wea_post'";
+        $update_rain = $db->query($set_rain);
+
+    }
 
     
 
 }
-
-$email= "beenefit@outlook.com.au";  /*****ENTER_FROM_EMAIL_ADDRESS*****/
-$name= "Beenefit";				/*****ENTER_A_NAME*****/
-$body= "Hello!! Beekeepers"."<br>"." The bad weather is on its way for".$bad_wea_post.". "."<br>"." For tomorrow, predicted Max Temp.  = $max_temp and Min Temp. = $min_temp. So you are advised to keep your Bees and Beehives safe."."<br>"." If you want learn about how to keep Bees safe in bad weather you can visit Beenefit.studio.";
+/*****ENTER_FROM_EMAIL_ADDRESS*****/
+$email= "beenefit@outlook.com.au";  
+/*****ENTER_A_NAME*****/
+$name= "Beenefit";	
+/*****ENTER_A_subject*****/			
 $subject= " Weather Alert.";
 
+// set the key
 $headers= array(
 
-    'Authorization: Bearer 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',  /*****ENTER_YOUR_API_KEY*****/
+    'Authorization: Bearer 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',  
     'Content-Type: application/json'
 );
 
-
+// create a query to get the postcode where max_temp, min_temp are updated
 $get_eamil= "select email, postcode, max_temp, min_temp 
             from `beekeeper`
-            where min_temp != 0 ";
+            where min_temp != NULL";
 
 $email_query = $db->query($get_eamil);
 
@@ -142,7 +154,79 @@ curl_close($ch);
 
 echo $response;
     }
-} else {
+} 
+
+
+// create a query to get the postcode where Rain are updated
+$get_eamil_rain= "select email, postcode, Rain 
+            from `beekeeper`
+            where min_temp != NULL ";
+
+$email_query_rain = $db->query($get_eamil_rain);
+
+if ($email_query_rain->num_rows > 0) {
+    // output data of each row
+    while($row = $email_query_rain->fetch_assoc()) {
+
+    $body= "Hello!! Beekeepers"."<br>"." The bad weather is on its way for ".$row["postcode"].". "."<br>"." For tomorrow, predicted weather is ".$main_weather.". So you are advised to keep your Bees and Beehives safe."."<br>"." If you want learn about how to keep Bees safe in bad weather you can visit Beenefit.studio.";
+        
+    $data = array(
+
+        "personalizations" => array(
+
+            array(
+
+                "to" =>array(
+
+                    array(
+
+                        "email" =>$row["email"], /*****ENTER_TO_EMAIL_ADDRESS*****/
+                        "name"  => "Beekeepers"
+                    )
+                )
+            )
+
+        ),
+
+
+        "from" => array(
+
+            "email"=> $email
+        ),
+
+
+        "subject" =>$subject,
+        "content" =>array(
+
+                array(
+
+                    "type" => "text/html",
+                    "value" => $body
+                )
+        )
+
+
+);
+
+
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, "https://api.sendgrid.com/v3/mail/send");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+
+$response = curl_exec($ch);
+
+curl_close($ch);
+
+echo $response;
+    }
+} 
+
+else {
     echo "0 results";
 }
 
@@ -150,9 +234,9 @@ echo $response;
     
     
 
-/*$set_null = " update  `beekeeper` 
-        set max_temp = NULL , min_temp = NULL";
-$update_NULL= $db->query($set_null);   */
+$set_null = " update  `beekeeper` 
+        set max_temp = NULL , min_temp = NULL, Rain = NULL";
+$update_NULL= $db->query($set_null);   
         
         
         
