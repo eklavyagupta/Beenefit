@@ -278,7 +278,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
 
             <div class="col-md-5 order-md-0 text-center text-md-start">
               <!-- print suburb-->
-              <h1><b><?php echo $suburb; ?></b></h1>
+              <h3><b><?php echo $suburb; ?></b></h3>
               <div class="time">
                   <!-- print date -->
                   <div><h3><?php echo  $dateInLocal; ?></h3></div>
@@ -329,22 +329,22 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
 
                         elseif ($temperature > 10 & $temperature < 30 ){
                           echo 
-                          " Your bees are happy with current temperature. reminders: to refill the water feeder three times a week"."<br>";
+                          " · Your bees are happy with current temperature. reminders: to refill the water feeder three times a week"."<br>";
                         }
                         
   
                         elseif ($temperature > 35 & $temperature < 37){
-                          echo "·Hive inspection should be postponed during extreme hot days"."<br>".
-                          " ·Provide broken shade over the hives(note that avoid total shade for the whole day"."<br>".
-                          " ·Ideally clean all the imflammable materials like grass and leaves around the hives"."<br>".
-                          "·Spraying water on the external walls of the hive"."<br>";
+                          echo "· Hive inspection should be postponed during extreme hot days"."<br>".
+                          " · Provide broken shade over the hives(note that avoid total shade for the whole day"."<br>".
+                          " · Ideally clean all the imflammable materials like grass and leaves around the hives"."<br>".
+                          "· Spraying water on the external walls of the hive"."<br>";
                         }
                         elseif ($temperature > 37 ){
-                          echo "·Hive inspection should be postponed during extreme hot days"."<br>".
-                          " ·Place a spare hive cover on top of the hive cover (a sheet of hardboard or a car windscreen heat shield can be used for shading of side of the hive)"."<br>".
-                          " ·Place bricks under the hives so the hives is around 150 mm from the ground"."<br>".
-                          " ·Spraying water on the external walls of the hive"."<br>".
-                          " ·Recommended to refill the water feeder on a daily base"."<br>";
+                          echo "· Hive inspection should be postponed during extreme hot days"."<br>".
+                          " · Place a spare hive cover on top of the hive cover (a sheet of hardboard or a car windscreen heat shield can be used for shading of side of the hive)"."<br>".
+                          " · Place bricks under the hives so the hives is around 150 mm from the ground"."<br>".
+                          " · Spraying water on the external walls of the hive"."<br>".
+                          " · Recommended to refill the water feeder on a daily base"."<br>";
                         }
                         
   
