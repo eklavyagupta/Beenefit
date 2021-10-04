@@ -377,8 +377,8 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
   
   
                         if ($humidity >80 |$humidity<75) {
-                          echo " ·Forego upper ventilation or quilts and simply place a thick sheet of nonporous insulation (e.g. 2″-4″ thick styrofoam) above the inner cover"."<br>".
-                          " ·Or rear shim tilting the hive forward about 3 degrees"."<br>";
+                          echo " · Forego upper ventilation or quilts and simply place a thick sheet of nonporous insulation (e.g. 2″-4″ thick styrofoam) above the inner cover"."<br>".
+                          " · Or rear shim tilting the hive forward about 3 degrees"."<br>";
                           
                         }
   
