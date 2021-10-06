@@ -39,7 +39,7 @@ $("#image-selector").change(function () {
 });
 
 
-fetch('https://api.github.com/users/github').then(res => res.json()).then(json => console.log(json)),
+fetch('https://api.github.com/users/github').then(res => res.json()).then(json => console.log(json));
 
 let model;
 (async function () {
