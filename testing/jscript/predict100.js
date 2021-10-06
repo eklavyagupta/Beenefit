@@ -39,11 +39,11 @@ $("#image-selector").change(function () {
 });
 
 
-
+fetch('https://api.github.com/users/github').then(res => res.json()).then(json => console.log(json)),
 
 let model;
 (async function () {
-	window.fetch = require('node-fetch');
+	fetch = require('node-fetch');
 	model = await tf.loadLayersModel('http://beenefit.studio/testing/model_kerasnative_v4/model.json');
 	$("#selected-image").attr("src", "http://bee.test.woza.work/assets/008_266.png")
 	
