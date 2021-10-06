@@ -44,7 +44,7 @@ $("#image-selector").change(function () {
 
 let model;
 (async function () {
-	
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"></meta>
 	model = await tf.loadLayersModel('http://beenefit.studio/testing/model_kerasnative_v4/model.json');
 	$("#selected-image").attr("src", "http://bee.test.woza.work/assets/008_266.png")
 	
