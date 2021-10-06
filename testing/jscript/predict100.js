@@ -1,6 +1,6 @@
 // Code is based on a YouTube tutorial by deeplizard
 // https://www.youtube.com/watch?v=HEQDRWMK6yY
-
+import * as tf from '@tensorflow/tfjs';
 
 
 // After the model loads we want to make a prediction on the default image.
@@ -44,7 +44,6 @@ $("#image-selector").change(function () {
 
 let model;
 (async function () {
-	window.fetch = require('node-fetch');
 	model = await tf.loadLayersModel('http://beenefit.studio/testing/model_kerasnative_v4/model.json');
 	$("#selected-image").attr("src", "http://bee.test.woza.work/assets/008_266.png")
 	
