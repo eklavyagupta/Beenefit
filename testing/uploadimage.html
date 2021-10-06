@@ -266,9 +266,18 @@ Image to analyze:
 <input type="file"  name="inputImage" id="inputImage" onchange="previewFile()"/><br>
 <!-- Button -->
 <div id="btnn" >
-	
 	<button onclick="setTimeout(simulateClick.bind(null, 'image-selector'), 200)"><i class='fas fa-camera w3-padding-right' style='font-size:15px'></i><b>Submit a Bee Image</b></button>
 </div> 
+
+
+<!-- We simulate clicks on these two. -->
+<div class="hide">
+	<button id='predict-button'>Predict</button>
+</div>
+
+<div class="hide">
+	<input id="image-selector" type="file" >
+</div>
 
 <br><br>
 <div id="wrapper" style="width:1020px; display:table;">
