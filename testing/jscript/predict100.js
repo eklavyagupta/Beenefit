@@ -2,6 +2,7 @@
 // https://www.youtube.com/watch?v=HEQDRWMK6yY
 
 
+
 // After the model loads we want to make a prediction on the default image.
 // Thus, the user will see predictions when the page is first loaded.
 
@@ -39,11 +40,12 @@ $("#image-selector").change(function () {
 });
 
 
-//fetch('https://api.github.com/users/github').then(res => res.json()).then(json => console.log(json));
+
 
 let model;
 (async function () {
-	model = await tf.loadGraphModel('./model_kerasnative_v4/model.json');
+	
+	model = await tf.loadModel('http://bee.test.woza.work/model_kerasnative_v4/model.json');
 	$("#selected-image").attr("src", "http://bee.test.woza.work/assets/008_266.png")
 	
 	
@@ -112,7 +114,6 @@ top5.forEach(function (p) {
 	
 	
 });
-
 
 
 
