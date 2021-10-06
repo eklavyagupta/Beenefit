@@ -45,6 +45,9 @@ html,body,h2,h3,h4 {font-family: Helvetica, sans-serif}
 
 
 
+
+
+
 <!-- w3-content defines a container for fixed size centered content,
 and is wrapped around the whole page content. -->
 <div class="w3-content card" style="max-width:960px">
@@ -95,15 +98,9 @@ and is wrapped around the whole page content. -->
 
 <!-- Button -->
 <div id="btnn" class="w3-center bottom-padding">
-	
+	<input type="file" onchange="previewFile()"><br>
 	<button class="w3-btn w3-purple w3-round w3-margin-bottom adjust-spacing w3-hover-red btn-font w3-padding w3-space-letters w3-card-4" onclick="setTimeout(simulateClick.bind(null, 'image-selector'), 200)"><i class='fas fa-camera w3-padding-right' style='font-size:15px'></i><b>Submit a Bee Image</b></button>
 </div> 
-
-
-
-
-
-
 
 <div class='w3-padding'>
 	<p class='w3-round w3-margin w3-margin-bottom w3-text-teal'>Please Note: This is a prototype.</p>
@@ -120,15 +117,15 @@ and is wrapped around the whole page content. -->
 </div>
 
 <div class="hide">
-	<input id="image-selector" type="file">
+	<input id="image-selector" type="file" >
 </div>
 <!--===================================-->
 
 
 	<!-- Load jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-
 	</script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<!-- Load TensorFlow.js -->
 	
 	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> 

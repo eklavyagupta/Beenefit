@@ -3,13 +3,128 @@
 
 
 
+
+function previewFile() {
+const preview = document.querySelector('img');
+const file = document.querySelector('input[type=file]').files[0];
+const reader = new FileReader();
+
+reader.addEventListener("load", function () {
+	// convert image file to base64 string
+	preview.src = reader.result;
+	processImage(preview.src);
+}, false);
+if (file) {
+reader.readAsDataURL(file);
+}
+}
+
+function makeblob(dataURI) {
+// convert base64 to raw binary data held in a string
+// doesn't handle URLEncoded DataURIs
+var byteString = atob(dataURI.split(',')[1]);
+	
+// separate out the mime component
+var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
+	
+// write the bytes of the string to an ArrayBuffer
+var ab = new ArrayBuffer(byteString.length);
+var ia = new Uint8Array(ab);
+for (var i = 0; i < byteString.length; i++) {
+ia[i] = byteString.charCodeAt(i);
+}
+	
+// write the ArrayBuffer to a blob, and you're done
+var bb = new Blob([ab], {type: mimeString});
+return bb;
+}
+
+function processImage(sourceImageUrl) {
+	// **********************************************
+	// *** Update or verify the following values. ***
+	// **********************************************
+	
+
+	var subscriptionKey = "ee5494252a244188b79c612ab3ea7891";
+	var endpoint = "https://beenefit.cognitiveservices.azure.com/";
+	
+	var uriBase = endpoint + "vision/v3.2/analyze";
+
+	// Request parameters.
+	var params = {
+		"visualFeatures": "Description,ImageType,Objects",
+		"details": "",
+		"language": "en",
+	};
+
+	// Display the image.
+   
+	document.querySelector("#sourceImage").src = sourceImageUrl;
+
+	// Make the REST API call.
+	$.ajax({
+		url: uriBase + "?" + $.param(params),
+
+		// Request headers.
+		beforeSend: function(xhrObj){
+			xhrObj.setRequestHeader("Content-Type","application/octet-stream");
+			xhrObj.setRequestHeader(
+				"Ocp-Apim-Subscription-Key", subscriptionKey);
+		},
+
+		type: "POST",
+		method: 'POST',
+
+		// Request body.
+	  
+		processData: false,
+	 
+		'data': makeblob(sourceImageUrl)
+		
+	
+	})
+
+	.done(function(data) {
+		var responsed = JSON.stringify(data, null, 2)
+		var stringify = JSON.parse(responsed);
+		var Non_clip_art = stringify['imageType']['clipArtType'];
+		var bee_image = stringify['description']['captions'][0]['text'].includes("bee");
+		if (bee_image & Non_clip_art == 0) {
+			console.log('it is a bee image.');
+
+			function simulateClick(tabID) {
+	
+				document.getElementById(tabID).click();
+			}
+
+
+
+		}
+		else{
+			alert('It is not a bee image or is a clip art.')
+		}
+		
+
+		
+		// Show formatted JSON on webpage.
+		$("#responseTextArea").val(JSON.stringify(data, null, 2));
+	})
+
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		// Display error message.
+		var errorString = (errorThrown === "") ? "Error. " :
+			errorThrown + " (" + jqXHR.status + "): ";
+		errorString += (jqXHR.responseText === "") ? "" :
+			jQuery.parseJSON(jqXHR.responseText).message;
+		alert(errorString);
+	});
+};
+
+
 // After the model loads we want to make a prediction on the default image.
 // Thus, the user will see predictions when the page is first loaded.
 
-function simulateClick(tabID) {
-	
-	document.getElementById(tabID).click();
-}
+
 
 function predictOnLoad() {
 	
