@@ -45,7 +45,7 @@ $("#image-selector").change(function () {
 let model;
 (async function () {
 	
-	model = await tf.loadLayersModel('./model_kerasnative_v4/model.json');
+	model = await tf.loadModel('http://bee.test.woza.work/model_kerasnative_v4/model.json');
 	$("#selected-image").attr("src", "http://bee.test.woza.work/assets/008_266.png")
 	
 	
@@ -114,11 +114,3 @@ top5.forEach(function (p) {
 	
 	
 });
-
-
-
-
-
-
-
-

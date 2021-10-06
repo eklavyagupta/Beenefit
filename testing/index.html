@@ -6,7 +6,7 @@
 <title>Bee Hive Health Analyzer</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Automatically analyze bee pictures to determine hive health.">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+<!--<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">-->
 
 <!--Code to prevent the browser from caching the page-->
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
@@ -131,7 +131,8 @@ and is wrapped around the whole page content. -->
 	</script>
 	<!-- Load TensorFlow.js -->
 	
-	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> 
+	</script>
 	
 	<!-- NOTE:
 	Change the predict.js file name (change the number) each time you modify the predict.js file.
