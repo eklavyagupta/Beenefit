@@ -44,7 +44,7 @@ $("#image-selector").change(function () {
 
 let model;
 (async function () {
-	model = await tf.loadModel('file://./model_kerasnative_v4/model.json');
+	model = await tf.loadModel('./model_kerasnative_v4/model.json');
 	$("#selected-image").attr("src", "http://bee.test.woza.work/assets/008_266.png")
 	
 	
