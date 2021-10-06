@@ -92,39 +92,13 @@ function processImage(sourceImageUrl) {
 		if (bee_image & Non_clip_art == 0) {
 			console.log('it is a bee image.');
 
-			function simulateClick(tabID) {
-	
-				document.getElementById(tabID).click();
-			}
-
-
-
-		}
-		else{
-			alert('It is not a bee image or is a clip art.')
-		}
-		
-
-		
-		// Show formatted JSON on webpage.
-		$("#responseTextArea").val(JSON.stringify(data, null, 2));
-	})
-
-	.fail(function(jqXHR, textStatus, errorThrown) {
-		// Display error message.
-		var errorString = (errorThrown === "") ? "Error. " :
-			errorThrown + " (" + jqXHR.status + "): ";
-		errorString += (jqXHR.responseText === "") ? "" :
-			jQuery.parseJSON(jqXHR.responseText).message;
-		alert(errorString);
-	});
-};
-
-
 // After the model loads we want to make a prediction on the default image.
 // Thus, the user will see predictions when the page is first loaded.
 
-
+function simulateClick(tabID) {
+	
+	document.getElementById(tabID).click();
+}
 
 function predictOnLoad() {
 	
@@ -229,3 +203,27 @@ top5.forEach(function (p) {
 	
 	
 });
+
+
+			
+		}
+		else{
+			alert('It is not a bee image or is a clip art.')
+		}
+		
+
+		
+		// Show formatted JSON on webpage.
+		$("#responseTextArea").val(JSON.stringify(data, null, 2));
+	})
+
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		// Display error message.
+		var errorString = (errorThrown === "") ? "Error. " :
+			errorThrown + " (" + jqXHR.status + "): ";
+		errorString += (jqXHR.responseText === "") ? "" :
+			jQuery.parseJSON(jqXHR.responseText).message;
+		alert(errorString);
+	});
+};
+
