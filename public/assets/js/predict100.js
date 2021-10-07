@@ -202,23 +202,66 @@ $("#predict-button").click(async function () {
 		}).slice(0, 6); // adjust the number of output predictions here.
 		console.log(top5)
 	var final;
-	for (let i = 0; i < top5.length; i++) {
-		   if (top5[i].className == 'healthy' & top5[i].probability >= 0.95){
-			console.log(top5[i].className)
-			$("#prediction-list").empty();
-			$("#prediction-list").append('p').text('Your Bees Seems to be Healthy!!  But, please check it regularly to keep you Bees healthy.');
-		   }
 
-		   
-		  }
+    if (top5[0].probability >= 0.95){
+        console.log(top5[0].className)
+        console.log(top5[0].probability)
+        $("#prediction-list").empty();
+        $("#prediction-list").append('p').text('Your Bees Seems to be Healthy!!  But, please check it regularly to keep you Bees healthy.');
+       }
+    else{
+        var largest = top5[1].probability;
+        for (let i = 0; i < top5.length; i++) {
+        if (top5[i].className != 'healthy' & largest < top5[i].probability ){
+            var largest = top5[i].probability;
+            var disease = top5[i].className;
+        }
+       }
+        console.log(disease)
+        if (disease == 'few varrao, hive beetles' | disease == 'varroa, small hive beetles' ){
+            $("#prediction-list").empty();
+            $("#prediction-list").append('p').text('Your hive may have varrao problems. The control method is shown below:');
+            $("#prediction-list").append(`<li>Using mite-resistant bees</li>`);
+            $("#prediction-list").append(`<li>Using small cell comb</li>`);
+            $("#prediction-list").append(`<li>Brood break</li>`);
+            $("#prediction-list").append(`<li>Using mite trapping</li>`);
+            $("#prediction-list").append(`<li>Screened bottom board</li>`);
+            $("#prediction-list").append(`<li>Sprinkling or applying powdered sugar on bees</li>`);
+            $("#prediction-list").append(`<li>Soft Chemicals (Organic acids, essential oils, and hop beta acids)</li>`);
+            $("#prediction-list").append(`<li>Hard Chemicals(acaricides/miticides)</li>`);
+        }
+        if (disease == 'ant problems'){
+            $("#prediction-list").empty();
+            $("#prediction-list").append('p').text('Your hive may have ant problems. The control method is shown below:');
+            $("#prediction-list").append(`<li>Keep your hives off the ground</li>`);
+            $("#prediction-list").append(`<li>Monitor the legs of your hive stand</li>`);
+            $("#prediction-list").append(`<li>Remove bridges</li>`);
+            $("#prediction-list").append(`<li>Repair your boxes</li>`);
+            $("#prediction-list").append(`<li>Carry a bucket</li>`);
+            $("#prediction-list").append(`<li>Build an oil barrier</li>`);
+        }
+        if (disease == 'hive being robbed'){
+            $("#prediction-list").empty();
+            $("#prediction-list").append('p').text('Your hive may have robbed problems. The control method is shown below:');
+            $("#prediction-list").append(`<li>Close Off The Hive</li>`);
+            $("#prediction-list").append(`<li>Apply Vicks Vapor Rub Around The Entrance</li>`);
+            $("#prediction-list").append(`<li>Open The Other Hives In The Apiary</li>`);
+            $("#prediction-list").append(`<li>Wrap A Wet Towel Around The Hive</li>`);
+            $("#prediction-list").append(`<li>Move The Hive</li>`);
+        }
+        if (disease == 'missing queen'){
+            $("#prediction-list").empty();
+            $("#prediction-list").append('p').text('Your hive may have problems with missing queen . The control method is shown below:');
+            $("#prediction-list").append(`<li>Give Them Some Open Worker Brood</li>`);
+            $("#prediction-list").append(`<li>Give Them A Queen</li>`);
+            $("#prediction-list").append(`<li>Combine The Queenless Beehive With A Queenright Nuc</li>`);
+            $("#prediction-list").append(`<li>Destroy The Colony</li>`);
+        }
+
+    
+    
+    }
 	
-//$("#prediction-list").empty();
-/*top5.forEach(function (p) {
-
-	$("#prediction-list").append(`<li>${p.className}: ${p.probability.toFixed(6)}</li>`);
-
-	
-	});*/
 	
 	
 });
