@@ -218,9 +218,10 @@ $("#predict-button").click(async function () {
         }
        }
         console.log(disease)
-        if (disease == 'few varrao, hive beetles' | disease == 'varroa, small hive beetles' ){
+        if (disease == 'few varroa, hive beetles' | disease == 'varroa, small hive beetles' ){
             $("#prediction-list").empty();
-            $("#prediction-list").append('p').text('Your hive may have varrao problems. The control method is shown below:');
+            $("#prediction-list").append(`<h5>Your hive may have varroa problems. </h5>`);
+            $("#prediction-list").append(`<p>The control method is shown below:</p>`);
             $("#prediction-list").append(`<li>Using mite-resistant bees</li>`);
             $("#prediction-list").append(`<li>Using small cell comb</li>`);
             $("#prediction-list").append(`<li>Brood break</li>`);
@@ -232,7 +233,8 @@ $("#predict-button").click(async function () {
         }
         if (disease == 'ant problems'){
             $("#prediction-list").empty();
-            $("#prediction-list").append('p').text('Your hive may have ant problems. The control method is shown below:');
+            $("#prediction-list").append(`<h5>Your hive may have ant problems. </h5>`);
+            $("#prediction-list").append(`<p>The control method is shown below:</p>`);
             $("#prediction-list").append(`<li>Keep your hives off the ground</li>`);
             $("#prediction-list").append(`<li>Monitor the legs of your hive stand</li>`);
             $("#prediction-list").append(`<li>Remove bridges</li>`);
@@ -242,7 +244,8 @@ $("#predict-button").click(async function () {
         }
         if (disease == 'hive being robbed'){
             $("#prediction-list").empty();
-            $("#prediction-list").append('p').text('Your hive may have robbed problems. The control method is shown below:');
+            $("#prediction-list").append(`<h5>Your hive may have robbed problems. </h5>`);
+            $("#prediction-list").append(`<p>The control method is shown below:</p>`);
             $("#prediction-list").append(`<li>Close Off The Hive</li>`);
             $("#prediction-list").append(`<li>Apply Vicks Vapor Rub Around The Entrance</li>`);
             $("#prediction-list").append(`<li>Open The Other Hives In The Apiary</li>`);
@@ -251,7 +254,8 @@ $("#predict-button").click(async function () {
         }
         if (disease == 'missing queen'){
             $("#prediction-list").empty();
-            $("#prediction-list").append('p').text('Your hive may have problems with missing queen . The control method is shown below:');
+            $("#prediction-list").append(`<h5>Your hive may have problems with missing queen. </h5>`);
+            $("#prediction-list").append(`<p>The control method is shown below:</p>`);
             $("#prediction-list").append(`<li>Give Them Some Open Worker Brood</li>`);
             $("#prediction-list").append(`<li>Give Them A Queen</li>`);
             $("#prediction-list").append(`<li>Combine The Queenless Beehive With A Queenright Nuc</li>`);
