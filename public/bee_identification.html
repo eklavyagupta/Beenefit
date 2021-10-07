@@ -2,41 +2,93 @@
 <html lang="en">
 
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Automatically analyze bee pictures to determine hive health.">
-<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Automatically analyze bee pictures to determine hive health.">
+	<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
-<!--Code to prevent the browser from caching the page-->
-<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-<meta http-equiv="Pragma" content="no-cache"/>
-<meta http-equiv="Expires" content="0"/>
-
-
-<!-- ===============================================-->
-<!--    Document Title-->
-<!-- ===============================================-->
-<title>Beenefit</title>
+	<!--Code to prevent the browser from caching the page-->
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
 
 
-<!-- ===============================================-->
-<!--    Favicons-->
-<!-- ===============================================-->
-<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
-<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
-<link rel="manifest" href="assets/img/favicons/manifest.json">
-<meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
-<meta name="theme-color" content="#ffffff">
+	<!-- ===============================================-->
+	<!--    Document Title-->
+	<!-- ===============================================-->
+	<title>Beenefit</title>
 
 
-<!-- ===============================================-->
-<!--    Stylesheets-->
-<!-- ===============================================-->
-<link href="assets/css/theme.css" rel="stylesheet" />
+	<!-- ===============================================-->
+	<!--    Favicons-->
+	<!-- ===============================================-->
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicons/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicons/favicon-16x16.png">
+	<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicons/favicon.ico">
+	<link rel="manifest" href="assets/img/favicons/manifest.json">
+	<meta name="msapplication-TileImage" content="assets/img/favicons/mstile-150x150.png">
+	<meta name="theme-color" content="#ffffff">
 
+
+	<!-- ===============================================-->
+	<!--    Stylesheets-->
+	<!-- ===============================================-->
+	<link href="assets/css/theme.css" rel="stylesheet" />
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+		}
+
+		/* The Modal (background) */
+		.modal {
+			display: none;
+			/* Hidden by default */
+			position: fixed;
+			/* Stay in place */
+			z-index: 1;
+			/* Sit on top */
+			padding-top: 100px;
+			/* Location of the box */
+			left: 0;
+			top: 0;
+			width: 100%;
+			/* Full width */
+			height: 100%;
+			/* Full height */
+			overflow: auto;
+			/* Enable scroll if needed */
+			background-color: rgb(0, 0, 0);
+			/* Fallback color */
+			background-color: rgba(0, 0, 0, 0.4);
+			/* Black w/ opacity */
+		}
+
+		/* Modal Content */
+		.modal-content {
+			background-color: #fefefe;
+			margin: auto;
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%;
+		}
+
+		/* The Close Button */
+		.close {
+			color: #aaaaaa;
+			float: right;
+			font-size: 28px;
+			font-weight: bold;
+		}
+
+		.close:hover,
+		.close:focus {
+			color: #000;
+			text-decoration: none;
+			cursor: pointer;
+		}
+	</style>
 
 
 
@@ -53,176 +105,273 @@
 
 <body class="w3-pale-blue">
 
-<!-- ===============================================-->
-    <!--    Main Content-->
-    <!-- ===============================================-->
-    <main class="main" id="top">
-		<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop" data-navbar-on-scroll="data-navbar-on-scroll">
-		  <div class="container"><a class="navbar-brand d-flex align-items-center fw-bolder fs-2 fst-italic" href="index.html">
-			  <div class="text-warning">BEENEFIT</div>
-			</a>
-			<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-			<div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
-			  <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
-				<!-- navbar button -->
-				<li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="index.html">Home</a></li>
-				<li class="nav-item px-2"><a class="nav-link fw-medium active" href="timeline.html">Timeline</a></li>
-				<li class="nav-item px-2"><a class="nav-link fw-medium active" href="weather.html">Discovery</a></li>
-				<li class="nav-item px-2"><a class="nav-link fw-medium active" href="bee_identification.html">Health check</a></li>
-			  </ul>
+	<!-- ===============================================-->
+	<!--    Main Content-->
+	<!-- ===============================================-->
+	<main class="main" id="top">
+		<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3 backdrop"
+			data-navbar-on-scroll="data-navbar-on-scroll">
+			<div class="container"><a class="navbar-brand d-flex align-items-center fw-bolder fs-2 fst-italic"
+					href="index.html">
+					<div class="text-warning">BEENEFIT</div>
+				</a>
+				<button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation"><span
+						class="navbar-toggler-icon"></span></button>
+				<div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+					<ul class="navbar-nav ms-auto pt-2 pt-lg-0">
+						<!-- navbar button -->
+						<li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page"
+								href="index.html">Home</a></li>
+						<li class="nav-item px-2"><a class="nav-link fw-medium active" href="timeline.html">Timeline</a>
+						</li>
+						<li class="nav-item px-2"><a class="nav-link fw-medium active" href="weather.html">Discovery</a>
+						</li>
+						<li class="nav-item px-2"><a class="nav-link fw-medium active"
+								href="bee_identification.html">Health check</a></li>
+					</ul>
+				</div>
 			</div>
-		  </div>
 		</nav>
-			  
+
 		<!-- ============================================-->
 		<!-- bee identification function <section> begin ============================-->
 		<!-- ============================================-->
 		<section class="py-0" id="home">
-		  <div class="bg-holder d-none d-sm-block" style="background-image:url(assets/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;">
-		  </div>
-		  <!--/.bg-holder-->
-  
-		  <div class="bg-holder d-sm-none" style="background-image:url(assets/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;">
-		  </div>
-		  <!--/.bg-holder-->
-  
-		  <div class="container">
-			<div class="row align-items-center min-vh-75 min-vh-md-100">
-			  <div class="col-md-7 col-lg-6 py-6 text-sm-start text-center">
-				<h1 class="mt-6 mb-sm-4 display-2 fw-semi-bold lh-sm fs-4 fs-lg-6 fs-xxl-8">Beehive Health Analyzer</h1>
-				<p class="mb-4 fs-1">You can take a photo of your bee and upload it here. Our AI image recognition function will determine the health status of the beehive and the possible cause of illness.</p>
-				<div>
-					<div class="progress-bar">Ai is Loading...</div>
-				</div>
-				<div class="pt-3">
-				  <!-- Button -->
-					<div id="btnn" >
-						<a href="#demands"><button class="btn btn-primary rounded-start-0" onclick="setTimeout(simulateClick.bind(null, 'pre-selector'), 200)"><b>Submit a Bee Image</b></button></a>
-					</div> 
-					<!-- We simulate clicks on these two. -->
-					<div style="display: none;">
-						<button id='predict-button'>Predict</button>
-					</div>
-
-					<div style="display: none;">
-						<input id="pre-selector" type="file">
-					</div>
-				</div>
-				<p class="mb-4 fs-1" style = "margin-top: 30px">* Disclaimer: this function is still need improvement there its not fully accurate.</p>
-				<p class="mb-4 fs-1">· Image should be in .jpeg and .png format</br>
-				· For better result upload an image with a single bee which is less than 4MB with a plain background.</p>
-			  </div>
+			<div class="bg-holder d-none d-sm-block"
+				style="background-image:url(assets/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;">
 			</div>
-		  </div>
+			<!--/.bg-holder-->
+
+			<div class="bg-holder d-sm-none"
+				style="background-image:url(assets/img/illustrations/hero-bg.png);background-position:right top;background-size:contain;">
+			</div>
+			<!--/.bg-holder-->
+
+			<div class="container">
+				<div class="row align-items-center min-vh-75 min-vh-md-100">
+					<div class="col-md-7 col-lg-6 py-6 text-sm-start text-center">
+						<h1 class="mt-6 mb-sm-4 display-2 fw-semi-bold lh-sm fs-4 fs-lg-6 fs-xxl-8">Beehive Health
+							Analyzer</h1>
+						<p class="mb-4 fs-1">You can take a photo of your bee and upload it here. Our AI image
+							recognition function will determine the health status of the beehive and the possible cause
+							of illness.</p>
+						<div>
+							<div class="progress-bar">Ai is Loading...</div>
+						</div>
+						<div class="pt-3">
+							<!-- Button -->
+							<div id="btnn">
+								<a href="#demands"><button class="btn btn-primary rounded-start-0"
+										onclick="setTimeout(simulateClick.bind(null, 'pre-selector'), 200)"><b>Submit a
+											Bee Image</b></button></a>
+							</div>
+							<!-- We simulate clicks on these two. -->
+							<div style="display: none;">
+								<button id='predict-button'>Predict</button>
+							</div>
+
+							<div style="display: none;">
+								<input id="pre-selector" type="file">
+							</div>
+						</div>
+						<p class="mb-4 fs-1" style="margin-top: 30px">* Disclaimer: this function is still need
+							improvement there its not fully accurate.</p>
+						<p class="mb-4 fs-1">· Image should be in .jpeg and .png format</br>
+							· For better result upload an image with a single bee which is less than 4MB with a plain
+							background.</p>
+					</div>
+				</div>
+			</div>
 		</section>
-  
+
 		<!-- bee identification function <section> close ============================-->
 		<!-- ============================================-->
-  
+
 		<section class="py-5" id="demands">
-		  <!--/.bg-holder-->
-  
-		  <div class="container">
-			<div class="row flex-center">
-			  <div class="col-md-5 order-md-0 text-center text-md-start">
-				  <!-- This image will be replaced once the js code runs. -->
-				<img id="selected-image" class="img-fluid mb-4" src="assets/img/illustrations/passion.png"width="450" alt=""> 
-			
+			<!--/.bg-holder-->
+
+			<div class="container">
+				<div class="row flex-center">
+					<div class="col-md-5 order-md-0 text-center text-md-start">
+						<!-- This image will be replaced once the js code runs. -->
+						<img id="selected-image" class="img-fluid mb-4" src="assets/img/illustrations/passion.png"
+							width="450" alt="">
+
+					</div>
+					<div class="col-md-5 text-center text-md-start">
+						<h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Results</h6>
+						<ol id='prediction-list'>The prediction results will be display in here.</ol>
+						<p class="mb-4 fs-1">Please try "Hive Check" to find out how to inspect your hives respectively.</p>
+						<!-- Trigger/Open The Modal -->
+						<button class="btn btn-primary rounded-start-0" id="myBtn"><b>Hive Check</b></button>
+
+						<!-- The Modal -->
+						<div id="myModal" class="modal">
+
+							<!-- Modal content -->
+							<div class="modal-content">
+								<span class="close">&times;</span>
+								<h2>Vorroa Check</h2>
+								<p>1. Gear up with listed equipment:</p>
+								<p>&emsp;&emsp;Powdered sugar, ½ cup measuring cup marked at 100ml or 0.42 cups,
+									Container with white bottom, Sugar roll jar, and water</p>
+								<p>2. Find a frame of brood and shake it hard once above the container.&emsp;&emsp;3.
+									Collect a 1/2 cup of nurse bees from the container and put them into the jar.</p>
+								<p>4. Add 2 tbsp powdered sugar in the
+									jar.&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&ensp;&nbsp;5.
+									Roll the jar gently to coat the bees with sugar.</p>
+								<p>6. Rest the jar aside in the shade for at least 2
+									minutes.(nessessary)&emsp;&emsp;&nbsp;7. Shake the mites out of the jar into a tub
+									and return the bees from the jar back to the hive. </p>
+								<p>8. Dissolving the sugar with water so the mites are clear to
+									count.&emsp;&emsp;&emsp;&ensp;9. Count the mites and compare to the threshold of 3%
+									infestation.(9 mites in the 1/2 cup sample)</p>
+								<h2>Ant Check</h2>
+								<p>1. Ants can usually be seen between the inner cover and the top cover. They also can
+									be seen on the feeder if bees are being fed. </p>
+								<p>2. It would be a serious warning if the ant nest with eggs was seen in the hive. </p>
+								<h2>Missing queen Check</h2>
+								<p> There are several indicators for queen-missing hives: 1. A drop in bee population 2.
+									Brood and eggs are missing 3. Queen cells appear</p>
+								<p>4. Brood cells are taken for pollen and honey stores 5. A large number of drones </p>
+								<h2>Robbed hive Check</h2>
+								<p> There are several indicators for robbed hives: 1. The number of bees flying around
+									the hive and especially the entrance seems larger than usual.</p>
+								<p> 2. The bees flying around the hive seem agitated and/or more aggressive.&emsp;3.
+									Bees trying to enter the hive through the bottom or the back of the hive.</p>
+								<p> 4. Bees swaying from side to side as the fly around the entrance and generally
+									around the hive.&emsp;5. Increased commotion around the entrance into the hive.</p>
+							</div>
+
+						</div>
+						<script>
+							// Get the modal
+							var modal = document.getElementById("myModal");
+
+							// Get the button that opens the modal
+							var btn = document.getElementById("myBtn");
+
+							// Get the <span> element that closes the modal
+							var span = document.getElementsByClassName("close")[0];
+
+							// When the user clicks the button, open the modal 
+							btn.onclick = function () {
+								modal.style.display = "block";
+							}
+
+							// When the user clicks on <span> (x), close the modal
+							span.onclick = function () {
+								modal.style.display = "none";
+							}
+
+							// When the user clicks anywhere outside of the modal, close it
+							window.onclick = function (event) {
+								if (event.target == modal) {
+									modal.style.display = "none";
+								}
+							}
+						</script>
+					</div>
+				</div>
 			</div>
-			  <div class="col-md-5 text-center text-md-start">
-				<h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm" style = "margin-left: 30px">Results</h6>
-				<ol id='prediction-list'>The prediction results will be display in here.</ol>
-			  </div>
-			</div>
-		  </div>
 		</section>
-  
-  
-		  </div>
-		  <!-- end of .container-->
-  
+
+
+		</div>
+		<!-- end of .container-->
+
 		</section>
 		<!-- <section> close ============================-->
 		<!-- ============================================-->
-	
 
-  
 
-  
-  
-  
-  
+
+
+
+
+
+
+
 		<!-- ============================================-->
 		<!-- subscribe function -->
 		<!-- <section> begin ============================-->
-		<section class="py-8" id = "sub">
-		  <div class="container">
-			<div class="row flex-center">
-			  <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4" src="assets/img/illustrations/feature.png" width="450" alt="" /></div>
-			  <div class="col-md-5 text-center text-md-start">
-				<!-- Email function title -->
-				<h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Subscribe Us</h6>
-				<p class="my-4 pe-xl-8">Enter your Email and Postcode to get Latest Bee Alerts.</p>
-				<div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
-				  <form class="row row-cols-lg-auto g-0 align-items-center" action = "email.php"  method="POST">
-					<div class="col-9 col-lg-8">
-					  <label class="visually-hidden" for="colFormLabel">Username</label>
-					  <div class="input-group">
-						<input class="rounded-end-0 form-control" id="colFormLabel" type="email" name= "email" placeholder="Email" />
-					  </div>
-					  </br>
-					  <div class="input-group">
-						<input class="rounded-end-0 form-control" id="colFormLabel" type="text" name= "postcode" placeholder="Postcode" />
-					  </div>
+		<section class="py-8" id="sub">
+			<div class="container">
+				<div class="row flex-center">
+					<div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4"
+							src="assets/img/illustrations/feature.png" width="450" alt="" /></div>
+					<div class="col-md-5 text-center text-md-start">
+						<!-- Email function title -->
+						<h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Subscribe Us</h6>
+						<p class="my-4 pe-xl-8">Enter your Email and Postcode to get Latest Bee Alerts.</p>
+						<div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
+							<form class="row row-cols-lg-auto g-0 align-items-center" action="email.php" method="POST">
+								<div class="col-9 col-lg-8">
+									<label class="visually-hidden" for="colFormLabel">Username</label>
+									<div class="input-group">
+										<input class="rounded-end-0 form-control" id="colFormLabel" type="email"
+											name="email" placeholder="Email" />
+									</div>
+									</br>
+									<div class="input-group">
+										<input class="rounded-end-0 form-control" id="colFormLabel" type="text"
+											name="postcode" placeholder="Postcode" />
+									</div>
+								</div>
+								<div class="col-3 col-lg-4" style="padding-right:100px; padding-top:20px">
+									<button class="btn btn-primary rounded-start-0" type="submit">Submit</button>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div class="col-3 col-lg-4" style = "padding-right:100px; padding-top:20px" >
-					  <button class="btn btn-primary rounded-start-0" type="submit">Submit</button>
-					</div>
-				  </form>
 				</div>
-			  </div>
 			</div>
-		  </div>
-		  <!-- end of .container-->
-		  <!-- end of .container-->
+			<!-- end of .container-->
+			<!-- end of .container-->
 		</section>
 		<!-- subscribe <section> close ============================-->
 		<!-- ============================================-->
-  
-  
-  
-		
-  
-  
+
+
+
+
+
+
 		<!-- ============================================-->
 		<!--  footer section contens -->
 		<!-- <section> begin ============================-->
 		<section class="py-0">
-		  <!-- footer background image -->
-		  <div class="bg-holder" style="background-image:url(assets/img/illustrations/footer-bg.png);background-position:center;background-size:cover;">
-		  </div>
-		  <!--/.bg-holder-->
-  
-		  <div class="container">
-			<div class="row flex-center py-6">
-			  <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
-			  </div>
+			<!-- footer background image -->
+			<div class="bg-holder"
+				style="background-image:url(assets/img/illustrations/footer-bg.png);background-position:center;background-size:cover;">
 			</div>
-			<div class="row justify-content-center">
-			  <div class="col-auto mb-2">
-				<p class="mb-0 fs--1 my-2 text-center">Icons made by<a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
-				<p class="mb-0 fs--1 my-2 text-center">Presented by <a href="https://www.beenefit.studio" title="BEENEFIT">BEENEFIT</a></p>
-			  </div>
+			<!--/.bg-holder-->
+
+			<div class="container">
+				<div class="row flex-center py-6">
+					<div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
+					</div>
+				</div>
+				<div class="row justify-content-center">
+					<div class="col-auto mb-2">
+						<p class="mb-0 fs--1 my-2 text-center">Icons made by<a href="https://www.freepik.com"
+								title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/"
+								title="Flaticon">www.flaticon.com</a></p>
+						<p class="mb-0 fs--1 my-2 text-center">Presented by <a href="https://www.beenefit.studio"
+								title="BEENEFIT">BEENEFIT</a></p>
+					</div>
+				</div>
 			</div>
-		  </div>
 		</section>
 		<!-- footer <section> close ============================-->
 		<!-- ============================================-->
-	  </main>
-	  <!-- ===============================================-->
-	  <!--    End of Main Content-->
-	  <!-- ===============================================-->
-  
+	</main>
+	<!-- ===============================================-->
+	<!--    End of Main Content-->
+	<!-- ===============================================-->
+
 
 
 
@@ -233,32 +382,35 @@
 
 
 	<!-- ===============================================-->
-    <!--    JavaScripts-->
-    <!-- ===============================================-->
-    <script src="vendors/@popperjs/popper.min.js"></script>
-    <script src="vendors/bootstrap/bootstrap.min.js"></script>
-    <script src="vendors/is/is.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="assets/js/theme.js"></script>
+	<!--    JavaScripts-->
+	<!-- ===============================================-->
+	<script src="vendors/@popperjs/popper.min.js"></script>
+	<script src="vendors/bootstrap/bootstrap.min.js"></script>
+	<script src="vendors/is/is.min.js"></script>
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+	<script src="assets/js/theme.js"></script>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap" rel="stylesheet">
-  
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400&amp;display=swap"
+		rel="stylesheet">
+
 
 	<!-- Load jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
 
 	</script>
 	<!-- Load TensorFlow.js -->
-	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> 
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js">
 	</script>
 
 	<script src="assets/js/predict100.js"></script>
 	<script src="assets/js/target_classes.js"></script>
-	
-	
-	
-	
+
+
+
+
 
 
 </body>
+
 </html>
