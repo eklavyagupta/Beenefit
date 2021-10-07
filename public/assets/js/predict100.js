@@ -147,7 +147,7 @@ $("#pre-selector").change(function ()  {
 let model;
 (async function () {
 	
-	model = await tf.loadModel('https://raw.githubusercontent.com/Yuzhen299/test/master/model.json');
+	model = await tf.loadModel('https://beenefit.studio/model/model.json');
 	$("#selected-image").attr("src", "assets/img/illustrations/passion.png")
 	
 	
