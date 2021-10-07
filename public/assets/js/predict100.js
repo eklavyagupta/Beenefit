@@ -1,36 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Analyze Sample</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Automatically analyze bee pictures to determine hive health.">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+// Code is based on a YouTube tutorial by deeplizard
+// https://www.youtube.com/watch?v=HEQDRWMK6yY
 
-    <!--Code to prevent the browser from caching the page-->
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
-    <meta http-equiv="Pragma" content="no-cache"/>
-    <meta http-equiv="Expires" content="0"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-    	<!-- Load jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-	</script>
 
-	<!-- Load TensorFlow.js -->
+
+// After the model loads we want to make a prediction on the default image.
+// Thus, the user will see predictions when the page is first loaded.
+
+function simulateClick(tabID) {
 	
-	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.13.3/dist/tf.min.js"> 
-	</script>
-	
-	<!-- NOTE:
-	Change the predict.js file name (change the number) each time you modify the predict.js file.
-	This will force the browser to load the latest predict.js and not load
-	the predict.js file that is in the user's cache.
-	There is a stackoverflow soulution that says to add a version to the js file. 
-	But it could be that some browsers can ignore the version. Therefore I think
-	it's safer to change the js file name.-->
-	<script src="jscript/target_classes.js"></script>
-<body>
+	document.getElementById(tabID).click();
+}
 
-<script>
+
+
+var test;
+
 
 $("#pre-selector").change(function ()  {
     
@@ -44,10 +28,14 @@ $("#pre-selector").change(function ()  {
         // convert image file to base64 string
         preview.src = reader.result;
         processImage(preview.src);
+		let dataURL = reader.result;
+		$("#selected-image").attr("src", dataURL);
+		$("#prediction-list").empty();
 
     }, false);
     if (file) {
     reader.readAsDataURL(file);
+	//setTimeout(simulateClick.bind(null,'predict-button'), 500);
     
     }
     });
@@ -91,9 +79,7 @@ $("#pre-selector").change(function ()  {
             "language": "en",
         };
 
-        // Display the image.
-       
-        document.querySelector("#sourceImage").src = sourceImageUrl;
+        
 
         // Make the REST API call.
         $.ajax({
@@ -125,11 +111,20 @@ $("#pre-selector").change(function ()  {
             var bee_image = stringify['description']['captions'][0]['text'].includes("bee");
             if (bee_image & Non_clip_art == 0) {
                 console.log('it is a bee image.');
+				
+	
+					// Simulate a click on the predict button
+					setTimeout(simulateClick.bind(null,'predict-button'), 500);
+				
             }
             else{
                 alert('It is not a bee image or is a clip art.')
+				$("#prediction-list").empty();
+				$("#prediction-list").append('p').text(`Try to upload another photo.`);
+
+				
             }
-            
+			        
 
             
             // Show formatted JSON on webpage.
@@ -148,58 +143,19 @@ $("#pre-selector").change(function ()  {
 
 
 
-// After the model loads we want to make a prediction on the default image.
-// Thus, the user will see predictions when the page is first loaded.
-
-function simulateClick(tabID) {
-	
-	document.getElementById(tabID).click();
-}
-
-function predictOnLoad() {
-	
-	// Simulate a click on the predict button
-	setTimeout(simulateClick.bind(null,'predict-button'), 500);
-};
-
-
-$("#image-selector").change(function () {
-	let reader = new FileReader();
-	reader.onload = function () {
-		let dataURL = reader.result;
-		$("#selected-image").attr("src", dataURL);
-		$("#prediction-list").empty();
-	}
-	
-		let file = $("#image-selector").prop('files')[0];
-		reader.readAsDataURL(file);
-		
-        
-		
-		// Simulate a click on the predict button
-		// This introduces a 0.5 second delay before the click.
-		// Without this long delay the model loads but may not automatically
-		// predict.
-		setTimeout(simulateClick.bind(null,'predict-button'), 500);
-
-});
-
-
-
 
 let model;
 (async function () {
 	
 	model = await tf.loadModel('https://raw.githubusercontent.com/Yuzhen299/test/master/model.json');
-	$("#selected-image").attr("src", "./assets/008_266.png")
+	$("#selected-image").attr("src", "assets/img/illustrations/passion.png")
 	
 	
 	
 	// Hide the model loading spinner
 	$('.progress-bar').hide();
 	
-	// Simulate a click on the predict button
-	predictOnLoad();
+	
 	
 	
 })();
@@ -212,7 +168,7 @@ $("#predict-button").click(async function () {
 	
 	
 	
-	let image = ('#image-selector').get(0);
+	let image = $('#selected-image').get(0);
 	
 	// Pre-process the image
 	let tensor = tf.fromPixels(image)
@@ -235,80 +191,36 @@ $("#predict-button").click(async function () {
 	// a promise of a typed array when the computation is complete.
 	// Notice the await and async keywords are used together.
 	let predictions = await model.predict(tensor).data();
+	console.log(predictions)
 	let top5 = Array.from(predictions)
 		.map(function (p, i) { // this is Array.map
 			return {
 				probability: p,
 				className: TARGET_CLASSES[i] // we are selecting the value from the obj
 			};
-				
-			
-		}).sort(function (a, b) {
-			return b.probability - a.probability;
-				
+
 		}).slice(0, 6); // adjust the number of output predictions here.
+		console.log(top5)
+	var final;
+	for (let i = 0; i < top5.length; i++) {
+		   if (top5[i].className == 'healthy' & top5[i].probability >= 0.95){
+			console.log(top5[i].className)
+			$("#prediction-list").empty();
+			$("#prediction-list").append('p').text('Your Bees Seems to be Healthy!!  But, please check it regularly to keep you Bees healthy.');
+		   }
+
+		   
+		  }
 	
-	
-$("#prediction-list").empty();
-top5.forEach(function (p) {
+//$("#prediction-list").empty();
+/*top5.forEach(function (p) {
 
 	$("#prediction-list").append(`<li>${p.className}: ${p.probability.toFixed(6)}</li>`);
 
 	
-	});
+	});*/
 	
 	
 });
 
-    
-</script>
 
-<h1>Analyze image:</h1>
-
-Image to analyze:
-
-
-
-<input type="file"  id="image-selector" ><br>
-<!-- Button -->
-<div id="btnn" >
-	<button onclick="setTimeout(simulateClick.bind(null, 'image-selector'), 200)"><b>Submit a Bee Image</b></button>
-</div> 
-
-<div>
-	<button id='predict-button'>Predict</button>
-</div>
-
-
-<div class="w3-center">
-	<img id="selected-image"  src="assets/008_266.png" alt=""> 
-</div> 
-
-
-<br><br>
-<div class="w3-center add-padding w3-border add-margin side-margin w3-round w3-pale-blue">
-		
-	<h5 class='new-font'>Results</h5>
-	<ol class='w3-left-align' id='prediction-list'></ol>
-		
-</div>
-
-<br><br>
-<div id="wrapper" style="width:1020px; display:table;">
-    <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:
-        <br><br>
-        <textarea id="responseTextArea" class="UIInput"
-                  style="width:580px; height:400px;"></textarea>
-    </div>
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-        Source image:
-        <br><br>
-        <img id="sourceImage" width="400" />
-    </div>
-</div>
-
-
-
-</body>
-</html>

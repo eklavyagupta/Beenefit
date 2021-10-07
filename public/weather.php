@@ -257,6 +257,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
               <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="index.html">Home</a></li>
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="timeline.html">Timeline</a></li>
               <li class="nav-item px-2"><a class="nav-link fw-medium" href="weather.html">Discovery</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" href="bee_identification.html">Healthy check</a></li>
             </ul>
           </div>
         </div>
