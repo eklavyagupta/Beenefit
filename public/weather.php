@@ -293,7 +293,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
               <p><b><?php echo $suburb; ?></b></p>
               <div class="time">
                   <!-- print date -->
-                  <div><h3><?php echo  $dateInLocal; ?></h3></div>
+                  <div><p><?php echo  $dateInLocal; ?></p></div>
                 </div>
                 <div class="time">
                     <!-- print humidity, wind_speed, air quality-->
