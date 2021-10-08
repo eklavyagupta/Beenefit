@@ -403,18 +403,20 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
         </div>
       </section>
       
-            <!-- ============================================-->
+      <!-- ============================================-->
+      <!-- subscribe function -->
       <!-- <section> begin ============================-->
-      <section class="py-8">
+      <section class="py-8" id = "sub">
         <div class="container">
           <div class="row flex-center">
             <div class="col-md-5 order-md-1 text-center text-md-end"><img class="img-fluid mb-4" src="assets/img/illustrations/feature.png" width="450" alt="" /></div>
             <div class="col-md-5 text-center text-md-start">
+              <!-- Email function title -->
               <h6 class="fw-bold fs-2 fs-lg-3 display-3 lh-sm">Subscribe Us</h6>
               <p class="my-4 pe-xl-8">Enter your Email and Postcode to get Latest Bee Alerts.</p>
               <div class="col-lg-6 d-flex justify-content-lg-end justify-content-center">
                 <form class="row row-cols-lg-auto g-0 align-items-center" action = "email.php"  method="POST">
-                  <div class="col-9 col-lg-8">
+                  <div class="col-5display-3">
                     <label class="visually-hidden" for="colFormLabel">Username</label>
                     <div class="input-group">
                       <input class="rounded-end-0 form-control" id="colFormLabel" type="email" name= "email" placeholder="Email" />
@@ -424,7 +426,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
                       <input class="rounded-end-0 form-control" id="colFormLabel" type="text" name= "postcode" placeholder="Postcode" />
                     </div>
                   </div>
-                  <div class="col-3 col-lg-4" style = "padding-right:100px; padding-top:20px" >
+                  <div class="display-15" style = "padding-top:25px">
                     <button class="btn btn-primary rounded-start-0" type="submit">Submit</button>
                   </div>
                 </form>
