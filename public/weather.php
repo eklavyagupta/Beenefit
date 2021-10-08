@@ -254,10 +254,10 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
           <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto pt-2 pt-lg-0">
-              <li class="nav-item px-2"><a class="nav-link fw-medium active" aria-current="page" href="index.html">Home</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href="timeline.html">Timeline</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium" href="weather.html">Discovery</a></li>
-              <li class="nav-item px-2"><a class="nav-link fw-medium active" href="bee_identification.html">Health check</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" style="border-radius: 5px;" aria-current="page" href="index.html">Home</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" style="border-radius: 5px;" href="timeline.html">Timeline</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium" style="border-radius: 5px;" href="weather.html">Discovery</a></li>
+              <li class="nav-item px-2"><a class="nav-link fw-medium active" style="border-radius: 5px;" href="bee_identification.html">Health check</a></li>
             </ul>
           </div>
         </div>
