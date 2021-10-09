@@ -452,7 +452,7 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
           </div>
           <div class="row justify-content-center">
           <div class="col-auto mb-2">
-              <p class="mb-0 fs--1 my-2 text-center">Icons made by<a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
+              <p class="mb-0 fs--1 my-2 text-center">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></p>
               <p class="mb-0 fs--1 my-2 text-center">Presented by <a href="https://www.beenefit.studio" title="BEENEFIT">BEENEFIT</a></p>
             </div>
           </div>
