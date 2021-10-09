@@ -118,9 +118,8 @@ $("#pre-selector").change(function ()  {
 				
             }
             else{
-                alert('It is not a bee image or is a clip art.')
 				$("#prediction-list").empty();
-				$("#prediction-list").append('p').text(`Try to upload another photo.`);
+				$("#prediction-list").append('p').text(`It is not a bee image or is a clip art. Try to upload another photo.`);
 
 				
             }
