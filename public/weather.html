@@ -98,7 +98,7 @@
             <script>
 
             // set the dimensions and margins of the graph
-            var margin = {top: 30, right: 80, bottom: 180, left: 100},
+            var margin = {top: 30, right: 60, bottom: 180, left: 80},
                 width = d3.select('#barchart').node().getBoundingClientRect().width - margin.left - margin.right,
                 height = 600 - margin.top - margin.bottom;;
 
@@ -140,7 +140,7 @@
               .attr("class", "h6")
             svg.append("text")
               .attr("transform", "rotate(-90)")
-              .attr("y", 0 - margin.left+40)
+              .attr("y", 0 - margin.left+20)
               .attr("x",0 - (height / 2))
               .attr("dy", "1em")
               .style("text-anchor", "middle")
