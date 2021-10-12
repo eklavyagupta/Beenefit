@@ -418,11 +418,11 @@ else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'<
                   <div class="col-5display-3">
                     <label class="visually-hidden" for="colFormLabel">Username</label>
                     <div class="input-group">
-                      <input class="rounded-end-0 form-control" id="colFormLabel" type="email" name= "email" placeholder="Email" />
+                      <input class="rounded-end-0 form-control" id="colFormLabel" type="email" name= "email" placeholder="Email" required/>
                     </div>
                     </br>
                     <div class="input-group">
-                      <input class="rounded-end-0 form-control" id="colFormLabel" type="text" name= "postcode" placeholder="Postcode" />
+                      <input class="rounded-end-0 form-control" id="colFormLabel" type="text" name= "postcode" placeholder="Vic Postcode" maxlength="4" pattern="\d{4}" required />
                     </div>
                   </div>
                   <div class="display-15" style = "padding-top:25px">
