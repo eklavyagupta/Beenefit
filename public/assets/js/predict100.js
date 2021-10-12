@@ -31,6 +31,7 @@ $("#pre-selector").change(function ()  {
 		let dataURL = reader.result;
 		$("#selected-image").attr("src", dataURL);
 		$("#prediction-list").empty();
+        $("#error").empty();
 
     }, false);
     if (file) {
@@ -119,8 +120,11 @@ $("#pre-selector").change(function ()  {
             }
             else{
 				$("#prediction-list").empty();
-				$("#prediction-list").append('p').text(`It is not a bee image or is a clip art. Try to upload another photo.`);
+                $("#error").empty();
+                $("#error").attr('style','color:red').text(`⚠️  It is not a bee image or is a clip art. Try to upload another photo.`);
 
+                
+                                    
 				
             }
 			        
@@ -205,6 +209,7 @@ $("#predict-button").click(async function () {
     if (top5[0].probability >= 0.95){
         console.log(top5[0].className)
         console.log(top5[0].probability)
+        $("#error").empty();
         $("#prediction-list").empty();
         $("#prediction-list").append('p').text('Your Bees Seems to be Healthy!!  But, please check it regularly to keep you Bees healthy.');
        }
@@ -218,6 +223,7 @@ $("#predict-button").click(async function () {
        }
         console.log(disease)
         if (disease == 'few varroa, hive beetles' | disease == 'varroa, small hive beetles' ){
+            $("#error").empty();
             $("#prediction-list").empty();
             $("#prediction-list").append(`<h5>Your hive may have varroa problems. </h5>`);
             $("#prediction-list").append(`<p>The control method is shown below:</p>`);
@@ -231,6 +237,7 @@ $("#predict-button").click(async function () {
             $("#prediction-list").append(`<li>Hard Chemicals(acaricides/miticides)</li>`);
         }
         if (disease == 'ant problems'){
+            $("#error").empty();
             $("#prediction-list").empty();
             $("#prediction-list").append(`<h5>Your hive may have ant problems. </h5>`);
             $("#prediction-list").append(`<p>The control method is shown below:</p>`);
@@ -242,6 +249,7 @@ $("#predict-button").click(async function () {
             $("#prediction-list").append(`<li>Build an oil barrier</li>`);
         }
         if (disease == 'hive being robbed'){
+            $("#error").empty();
             $("#prediction-list").empty();
             $("#prediction-list").append(`<h5>Your hive may have robbed problems. </h5>`);
             $("#prediction-list").append(`<p>The control method is shown below:</p>`);
@@ -252,6 +260,7 @@ $("#predict-button").click(async function () {
             $("#prediction-list").append(`<li>Move The Hive</li>`);
         }
         if (disease == 'missing queen'){
+            $("#error").empty();
             $("#prediction-list").empty();
             $("#prediction-list").append(`<h5>Your hive may have problems with missing queen. </h5>`);
             $("#prediction-list").append(`<p>The control method is shown below:</p>`);
