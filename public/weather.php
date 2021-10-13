@@ -145,13 +145,13 @@ if($air_qi == 5){
 } 
 
 // pop alert for wrong postcode
-else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'</script>";
+else {echo "<script>alert('Please enter a postcode of VIC'); location.href = 'index.html'</script>";
 }
 
 
 }
 // pop alert for wrong postcode
-else {echo "<script>alert('Not correct postcode'); location.href = 'index.html'</script>";
+else {echo "<script>alert('Please enter a postcode of VIC'); location.href = 'index.html'</script>";
 }
 
 
