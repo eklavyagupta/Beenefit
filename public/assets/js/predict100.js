@@ -206,7 +206,7 @@ $("#predict-button").click(async function () {
 		console.log(top5)
 	var final;
 
-    if (top5[0].probability >= 0.95){
+    if (top5[0].probability >= 0.9){
         console.log(top5[0].className)
         console.log(top5[0].probability)
         $("#error").empty();
