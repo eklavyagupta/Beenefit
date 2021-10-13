@@ -45,7 +45,7 @@ if (strlen($postcode_input) == 4 & preg_match($regex, $email_input)){
     }
     // pop the alert for wrong formate postcode or email
     else {
-        echo "<script>alert('Not correct postcode!'); location.href = 'index.html#sub'</script>";
+        echo "<script>alert('Please enter a postcode of VIC!'); location.href = 'index.html#sub'</script>";
     }
     
 
