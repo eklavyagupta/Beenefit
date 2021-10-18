@@ -146,11 +146,12 @@ $("#pre-selector").change(function ()  {
 
 
 
-
+// load model
 let model;
 (async function () {
 	
 	model = await tf.loadModel('https://raw.githubusercontent.com/Yuzhen299/test/master/model.json');
+    // initialse the pic
 	$("#selected-image").attr("src", "assets/img/illustrations/passion.png")
 	
 	
@@ -215,6 +216,7 @@ $("#predict-button").click(async function () {
        }
     else{
         var largest = top5[1].probability;
+        // get the maximum probability and corresponding class name
         for (let i = 0; i < top5.length; i++) {
         if (top5[i].className != 'healthy' & largest < top5[i].probability ){
             var largest = top5[i].probability;
@@ -222,6 +224,7 @@ $("#predict-button").click(async function () {
         }
        }
         console.log(disease)
+        // print the corresponding suggestions
         if (disease == 'few varroa, hive beetles' | disease == 'varroa, small hive beetles' ){
             $("#error").empty();
             $("#prediction-list").empty();
