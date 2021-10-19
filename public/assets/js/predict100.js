@@ -150,7 +150,7 @@ $("#pre-selector").change(function ()  {
 let model;
 (async function () {
 	
-	model = await tf.loadModel('https://raw.githubusercontent.com/Yuzhen299/test/master/model.json');
+	model = await tf.loadModel('https://raw.githubusercontent.com/eklavyagupta/Beenefit/main/model/model.json');
     // initialse the pic
 	$("#selected-image").attr("src", "assets/img/illustrations/passion.png")
 	
