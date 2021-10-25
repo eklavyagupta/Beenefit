@@ -4,7 +4,7 @@ $user ="azure";
 $pass ='6#vWHD_$';
 $db ="localdb";
 
-$db =new mysqli('127.0.0.1:50190', $user, $pass, $db) or die ("Unable to connect");
+$db =new mysqli('127.0.0.1:49297', $user, $pass, $db) or die ("Unable to connect");
 
 // sql query
 $weather_check= mysqli_query($db,"select lat, longitude from `beekeeper`b,`postcodes`p where p.postcode = b.postcode");
